@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Cart" table="cart">
+		<id name="cartid" type="java.lang.String">
+			<column name="cartid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="usersid" type="java.lang.String">
+			<column name="usersid" />
+		</property>
+		<property name="goodsid" type="java.lang.String">
+			<column name="goodsid" />
+		</property>
+		<property name="num" type="java.lang.String">
+			<column name="num" />
+		</property>
+		<property name="price" type="java.lang.String">
+			<column name="price" />
+		</property>
+		<property name="addtime" type="java.lang.String">
+			<column name="addtime" />
+		</property>
+		<many-to-one name="users" column="usersid" class="com.entity.Users"
+			fetch="join" insert="false" update="false" lazy="false" />
+		<many-to-one name="goods" column="goodsid" class="com.entity.Goods"
+			fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>

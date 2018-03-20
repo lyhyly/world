@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="topic" namespace="/topic" extends="default">
+		<!-- 准备添加 跳转到add页面 -->
+		<action name="createTopic" class="topicAction" method="createTopic">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/addtopic.jsp</result>
+		</action>
+
+		<!-- 添加记录 跳转回create方法 -->
+		<action name="addTopic" class="topicAction" method="addTopic">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">createTopic</result>
+		</action>
+
+		<!-- 修改记录 跳转回getALL方法 -->
+		<action name="updateTopic" class="topicAction" method="updateTopic">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllTopic</result>
+		</action>
+
+		<!-- 批量删除记录 跳转回getALL方法 -->
+		<action name="deleteTopicByIds" class="topicAction" method="deleteTopicByIds">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllTopic</result>
+			<result name="fail" type="chain">getAllTopic</result>
+		</action>
+
+		<!-- 删除记录 跳转回getALL方法 -->
+		<action name="deleteTopic" class="topicAction" method="deleteTopic">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllTopic</result>
+			<result name="fail" type="chain">getAllTopic</result>
+		</action>
+
+		<!-- 查询全部记录 跳转到list页面 -->
+		<action name="getAllTopic" class="topicAction" method="getAllTopic">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/listtopic.jsp</result>
+		</action>
+
+		<!-- 按主键查询 跳转到edit页面 为修改做准备 -->
+		<action name="getTopicById" class="topicAction" method="getTopicById">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/edittopic.jsp</result>
+		</action>
+
+		<!-- 按条件查询 跳转到query页面 -->
+		<action name="queryTopicByCond" class="topicAction" method="queryTopicByCond">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/querytopic.jsp</result>
+		</action>
+	</package>
+
+</struts>

@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8" ?><!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="index" namespace="/index" extends="default">
+		<action name="index" class="indexAction" method="index">
+			<result>/users/index.jsp</result>
+		</action>
+		<action name="exit" class="indexAction" method="exit">
+			<result type="chain">index</result>
+		</action>
+
+		<action name="preLogin" class="indexAction" method="preLogin">
+			<result>/users/login.jsp</result>
+		</action>
+		<action name="prePwd" class="indexAction" method="prePwd">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result>/users/editpwd.jsp</result>
+		</action>
+		<action name="preReg" class="indexAction" method="preReg">
+			<result>/users/register.jsp</result>
+		</action>
+		<action name="login" class="indexAction" method="login">
+			<result name="fail" type="chain">preLogin</result>
+			<result name="success" type="chain">usercenter</result>
+		</action>
+		<action name="reg" class="indexAction" method="reg">
+			<result type="chain">preLogin</result>
+		</action>
+
+		<action name="editPwd" class="indexAction" method="editPwd">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">prePwd</result>
+			<result name="fail" type="chain">preLogin</result>
+		</action>
+
+		<action name="personal" class="indexAction" method="personal">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">usercenter</result>
+		</action>
+
+		<action name="usercenter" class="indexAction" method="usercenter">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result>/users/usercenter.jsp</result>
+		</action>
+
+		<action name="article" class="indexAction" method="article">
+			<result>/users/article.jsp</result>
+		</action>
+		<action name="read" class="indexAction" method="read">
+			<result>/users/read.jsp</result>
+		</action>
+
+		<!-- 商品 -->
+		<action name="special" class="indexAction" method="special">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="recommend" class="indexAction" method="recommend">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="bcate" class="indexAction" method="bcate">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="scate" class="indexAction" method="scate">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="query" class="indexAction" method="query">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="all" class="indexAction" method="all">
+			<result>/users/list.jsp</result>
+		</action>
+		<action name="detail" class="indexAction" method="detail">
+			<result>/users/detail.jsp</result>
+		</action>
+		<action name="addTopic" class="indexAction" method="addTopic">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result name="success" type="redirect">/index/detail.action?id=${topic.goodsid}
+			</result>
+		</action>
+		<!-- 购物车 -->
+		<action name="addCart" class="indexAction" method="addCart">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">cart</result>
+		</action>
+		<action name="cart" class="indexAction" method="cart">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result>/users/cart.jsp</result>
+		</action>
+		<action name="deleteCart" class="indexAction" method="deleteCart">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">cart</result>
+		</action>
+
+		<!-- 订单 -->
+		<action name="preCheckout" class="indexAction" method="preCheckout">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result name="fail" type="chain">cart</result>
+			<result>/users/checkout.jsp</result>
+		</action>
+		<action name="checkout" class="indexAction" method="checkout">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result name="success" type="chain">showOrders</result>
+		</action>
+		<action name="showOrders" class="indexAction" method="showOrders">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result name="success">/users/orderlist.jsp</result>
+		</action>
+		<action name="over" class="indexAction" method="over">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result name="success" type="chain">showOrders</result>
+		</action>
+		<action name="orderdetail" class="indexAction" method="orderdetail">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result>/users/orderdetail.jsp</result>
+		</action>
+		<action name="deleteOrders" class="indexAction" method="deleteOrders">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">showOrders</result>
+		</action>
+		<action name="prePay" class="indexAction" method="prePay">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result>/users/pay.jsp</result>
+		</action>
+		
+		<action name="pay" class="indexAction" method="pay">
+			<interceptor-ref name="usersStack"></interceptor-ref>
+			<result type="chain">showOrders</result>
+			<result name="payerror" type="chain">prePay</result>
+		</action>
+
+
+
+	</package>
+</struts> 

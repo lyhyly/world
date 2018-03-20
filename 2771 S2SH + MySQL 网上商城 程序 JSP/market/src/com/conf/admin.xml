@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="admin" namespace="/admin" extends="default">
+		<!-- 管理员登录 -->
+		<action name="login" class="adminAction" method="login">
+			<result name="success">/admin/main.jsp</result>
+			<result name="fail">/admin/index.jsp</result>
+		</action>
+
+		<!-- 修改密码 -->
+		<action name="editpwd" class="adminAction" method="editpwd">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">prePwd</result>
+		</action>
+
+		<!-- 准备修改密码 -->
+		<action name="prePwd" class="adminAction" method="prePwd">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/editpwd.jsp</result>
+		</action>
+
+		<!-- 退出登录 -->
+		<action name="exit" class="adminAction" method="exit">
+			<result name="success">/admin/index.jsp</result>
+		</action>
+
+		<!-- 准备添加 跳转到add页面 -->
+		<action name="createAdmin" class="adminAction" method="createAdmin">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/addadmin.jsp</result>
+		</action>
+
+		<!-- 添加记录 跳转回create方法 -->
+		<action name="addAdmin" class="adminAction" method="addAdmin">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">createAdmin</result>
+		</action>
+
+		<!-- 修改记录 跳转回getALL方法 -->
+		<action name="updateAdmin" class="adminAction" method="updateAdmin">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllAdmin</result>
+		</action>
+
+		<!-- 批量删除记录 跳转回getALL方法 -->
+		<action name="deleteAdminByIds" class="adminAction" method="deleteAdminByIds">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllAdmin</result>
+			<result name="fail" type="chain">getAllAdmin</result>
+		</action>
+
+		<!-- 删除记录 跳转回getALL方法 -->
+		<action name="deleteAdmin" class="adminAction" method="deleteAdmin">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllAdmin</result>
+			<result name="fail" type="chain">getAllAdmin</result>
+		</action>
+
+		<!-- 查询全部记录 跳转到list页面 -->
+		<action name="getAllAdmin" class="adminAction" method="getAllAdmin">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/listadmin.jsp</result>
+		</action>
+
+		<!-- 按主键查询 跳转到edit页面 为修改做准备 -->
+		<action name="getAdminById" class="adminAction" method="getAdminById">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/editadmin.jsp</result>
+		</action>
+
+		<!-- 按条件查询 跳转到query页面 -->
+		<action name="queryAdminByCond" class="adminAction" method="queryAdminByCond">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/queryadmin.jsp</result>
+		</action>
+	</package>
+
+</struts>

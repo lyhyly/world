@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="org.gjt.mm.mysql.Driver">
+		</property>
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/market?useUnicode=true&amp;characterEncoding=UTF-8"></property>
+		<property name="username" value="root"></property>
+		<property name="password" value="root"></property>
+	</bean>
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.hbm2ddl.auto">update</prop>
+			</props>
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/entity/Admin.hbm.xml</value>
+				<value>com/entity/Users.hbm.xml</value>
+				<value>com/entity/Article.hbm.xml</value>
+				<value>com/entity/Bcate.hbm.xml</value>
+				<value>com/entity/Scate.hbm.xml</value>
+				<value>com/entity/Goods.hbm.xml</value>
+				<value>com/entity/Cart.hbm.xml</value>
+				<value>com/entity/Orders.hbm.xml</value>
+				<value>com/entity/Details.hbm.xml</value>
+				<value>com/entity/Topic.hbm.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	<bean id="indexAction" name="indexAction" class="com.action.IndexAction">
+		<property name="articleBusiness" ref="articleBusiness"></property>
+		<property name="cartBusiness" ref="cartBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+		<property name="goodsBusiness" ref="goodsBusiness"></property>
+		<property name="bcateBusiness" ref="bcateBusiness"></property>
+		<property name="scateBusiness" ref="scateBusiness"></property>
+		<property name="ordersBusiness" ref="ordersBusiness"></property>
+		<property name="detailsBusiness" ref="detailsBusiness"></property>
+		<property name="topicBusiness" ref="topicBusiness"></property>
+	</bean>
+	
+	<bean id="ajaxAction" name="ajaxAction" class="com.action.AjaxAction">
+		<property name="scateBusiness" ref="scateBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+		<property name="cartBusiness" ref="cartBusiness"></property>
+	</bean>
+	
+	<bean id="uploadAction" name="uploadAction" class="com.action.UploadAction"></bean>
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="adminDAO" name="adminDAO" class="com.dao.AdminDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="adminBusiness" name="adminBusiness" class="com.business.AdminBusiness">
+		<property name="adminDAO" ref="adminDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="adminAction" name="adminAction" class="com.action.AdminAction">
+		<property name="adminBusiness" ref="adminBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="usersDAO" name="usersDAO" class="com.dao.UsersDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="usersBusiness" name="usersBusiness" class="com.business.UsersBusiness">
+		<property name="usersDAO" ref="usersDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="usersAction" name="usersAction" class="com.action.UsersAction">
+		<property name="usersBusiness" ref="usersBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="articleDAO" name="articleDAO" class="com.dao.ArticleDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="articleBusiness" name="articleBusiness" class="com.business.ArticleBusiness">
+		<property name="articleDAO" ref="articleDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="articleAction" name="articleAction" class="com.action.ArticleAction">
+		<property name="articleBusiness" ref="articleBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="bcateDAO" name="bcateDAO" class="com.dao.BcateDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="bcateBusiness" name="bcateBusiness" class="com.business.BcateBusiness">
+		<property name="bcateDAO" ref="bcateDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="bcateAction" name="bcateAction" class="com.action.BcateAction">
+		<property name="bcateBusiness" ref="bcateBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="scateDAO" name="scateDAO" class="com.dao.ScateDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="scateBusiness" name="scateBusiness" class="com.business.ScateBusiness">
+		<property name="scateDAO" ref="scateDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="scateAction" name="scateAction" class="com.action.ScateAction">
+		<property name="scateBusiness" ref="scateBusiness"></property>
+		<property name="bcateBusiness" ref="bcateBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="goodsDAO" name="goodsDAO" class="com.dao.GoodsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="goodsBusiness" name="goodsBusiness" class="com.business.GoodsBusiness">
+		<property name="goodsDAO" ref="goodsDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="goodsAction" name="goodsAction" class="com.action.GoodsAction">
+		<property name="goodsBusiness" ref="goodsBusiness"></property>
+		<property name="bcateBusiness" ref="bcateBusiness"></property>
+		<property name="scateBusiness" ref="scateBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="cartDAO" name="cartDAO" class="com.dao.CartDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="cartBusiness" name="cartBusiness" class="com.business.CartBusiness">
+		<property name="cartDAO" ref="cartDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="cartAction" name="cartAction" class="com.action.CartAction">
+		<property name="cartBusiness" ref="cartBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+		<property name="goodsBusiness" ref="goodsBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="ordersDAO" name="ordersDAO" class="com.dao.OrdersDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="ordersBusiness" name="ordersBusiness" class="com.business.OrdersBusiness">
+		<property name="ordersDAO" ref="ordersDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="ordersAction" name="ordersAction" class="com.action.OrdersAction">
+		<property name="ordersBusiness" ref="ordersBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="detailsDAO" name="detailsDAO" class="com.dao.DetailsDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="detailsBusiness" name="detailsBusiness" class="com.business.DetailsBusiness">
+		<property name="detailsDAO" ref="detailsDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="detailsAction" name="detailsAction" class="com.action.DetailsAction">
+		<property name="detailsBusiness" ref="detailsBusiness"></property>
+		<property name="goodsBusiness" ref="goodsBusiness"></property>
+	</bean>
+
+	<!-- 定义DAO并注入sessionFactory的实例 -->
+	<bean id="topicDAO" name="topicDAO" class="com.dao.TopicDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<!-- Business里注入DAO -->
+	<bean id="topicBusiness" name="topicBusiness" class="com.business.TopicBusiness">
+		<property name="topicDAO" ref="topicDAO"></property>
+	</bean>
+	<!-- Action里注入Business -->
+	<bean id="topicAction" name="topicAction" class="com.action.TopicAction">
+		<property name="topicBusiness" ref="topicBusiness"></property>
+		<property name="usersBusiness" ref="usersBusiness"></property>
+		<property name="goodsBusiness" ref="goodsBusiness"></property>
+	</bean>
+
+</beans>

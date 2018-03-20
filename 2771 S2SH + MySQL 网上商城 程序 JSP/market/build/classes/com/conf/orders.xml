@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="orders" namespace="/orders" extends="default">
+		<!-- 准备添加 跳转到add页面 -->
+		<action name="createOrders" class="ordersAction" method="createOrders">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/addorders.jsp</result>
+		</action>
+
+		<!-- 添加记录 跳转回create方法 -->
+		<action name="addOrders" class="ordersAction" method="addOrders">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">createOrders</result>
+		</action>
+
+		<!-- 修改记录 跳转回getALL方法 -->
+		<action name="updateOrders" class="ordersAction" method="updateOrders">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllOrders</result>
+		</action>
+
+		<action name="send" class="ordersAction" method="send">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllOrders</result>
+		</action>
+
+		<!-- 批量删除记录 跳转回getALL方法 -->
+		<action name="deleteOrdersByIds" class="ordersAction" method="deleteOrdersByIds">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllOrders</result>
+			<result name="fail" type="chain">getAllOrders</result>
+		</action>
+
+		<!-- 删除记录 跳转回getALL方法 -->
+		<action name="deleteOrders" class="ordersAction" method="deleteOrders">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllOrders</result>
+			<result name="fail" type="chain">getAllOrders</result>
+		</action>
+
+		<!-- 查询全部记录 跳转到list页面 -->
+		<action name="getAllOrders" class="ordersAction" method="getAllOrders">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/listorders.jsp</result>
+		</action>
+
+		<!-- 按主键查询 跳转到edit页面 为修改做准备 -->
+		<action name="getOrdersById" class="ordersAction" method="getOrdersById">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/editorders.jsp</result>
+		</action>
+
+		<!-- 按条件查询 跳转到query页面 -->
+		<action name="queryOrdersByCond" class="ordersAction" method="queryOrdersByCond">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/queryorders.jsp</result>
+		</action>
+	</package>
+
+</struts>

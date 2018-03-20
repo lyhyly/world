@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="details" namespace="/details" extends="default">
+		<!-- 准备添加 跳转到add页面 -->
+		<action name="createDetails" class="detailsAction" method="createDetails">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/adddetails.jsp</result>
+		</action>
+
+		<!-- 添加记录 跳转回create方法 -->
+		<action name="addDetails" class="detailsAction" method="addDetails">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">createDetails</result>
+		</action>
+
+		<!-- 修改记录 跳转回getALL方法 -->
+		<action name="updateDetails" class="detailsAction" method="updateDetails">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllDetails</result>
+		</action>
+
+		<!-- 批量删除记录 跳转回getALL方法 -->
+		<action name="deleteDetailsByIds" class="detailsAction" method="deleteDetailsByIds">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllDetails</result>
+			<result name="fail" type="chain">getAllDetails</result>
+		</action>
+
+		<!-- 删除记录 跳转回getALL方法 -->
+		<action name="deleteDetails" class="detailsAction" method="deleteDetails">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllDetails</result>
+			<result name="fail" type="chain">getAllDetails</result>
+		</action>
+
+		<!-- 查询全部记录 跳转到list页面 -->
+		<action name="getAllDetails" class="detailsAction" method="getAllDetails">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/listdetails.jsp</result>
+		</action>
+
+		<!-- 按主键查询 跳转到edit页面 为修改做准备 -->
+		<action name="getDetailsById" class="detailsAction" method="getDetailsById">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/editdetails.jsp</result>
+		</action>
+
+		<!-- 按条件查询 跳转到query页面 -->
+		<action name="queryDetailsByCond" class="detailsAction" method="queryDetailsByCond">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/querydetails.jsp</result>
+		</action>
+	</package>
+
+</struts>

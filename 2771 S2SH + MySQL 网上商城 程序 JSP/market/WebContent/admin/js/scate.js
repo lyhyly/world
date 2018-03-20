@@ -1,0 +1,1 @@
+function check(){if(document.myform.bcateid.value==''){alert('请输入商品大类'); return false; }if(document.myform.scatename.value==''){alert('请输入商品小类'); return false; }}

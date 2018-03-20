@@ -1,0 +1,1 @@
+function check(){if(document.myform.bcatename.value==''){alert('请输入大类名称'); return false; }}

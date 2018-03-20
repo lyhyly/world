@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.custom.i18n.resources" value="messageresources"></constant>
+	<constant name="struts.multipart.maxSize" value="52428800"></constant>
+	<constant name="struts.i18n.encoding" value="UTF-8" />
+	<package name="default" namespace="/" extends="struts-default">
+		<!-- 拦截器是配置在struts.xml只拦截action -->
+		<interceptors>
+			<interceptor name="adminInterceptor" class="com.interceptor.AdminInterceptor"></interceptor>
+			<interceptor name="usersInterceptor" class="com.interceptor.UsersInterceptor"></interceptor>
+			<interceptor-stack name="adminStack">
+				<interceptor-ref name="adminInterceptor"></interceptor-ref>
+				<!-- 自定义拦截器 -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<!-- 默认拦截器 defaultStack固定写法 -->
+				<!--拦截器栈 限执行自己的在执行默认的，可被多次调用 -->
+			</interceptor-stack>
+			<interceptor-stack name="usersStack">
+				<interceptor-ref name="usersInterceptor"></interceptor-ref>
+				<!-- 自定义拦截器 -->
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<!-- 默认拦截器 defaultStack固定写法 -->
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+			<result name="usererror" type="redirectAction">preLogin.action</result>
+			<result name="adminerror">/admin/index.jsp</result>
+			<result name="db error">/index.jsp</result>
+		</global-results>
+	</package>
+
+	<include file="com/conf/index.xml"></include>
+	<include file="com/conf/ajax.xml"></include>
+	<include file="com/conf/upload.xml"></include>
+	<include file="com/conf/image.xml"></include>
+	<include file="com/conf/admin.xml"></include>
+	<include file="com/conf/users.xml"></include>
+	<include file="com/conf/article.xml"></include>
+	<include file="com/conf/bcate.xml"></include>
+	<include file="com/conf/scate.xml"></include>
+	<include file="com/conf/goods.xml"></include>
+	<include file="com/conf/cart.xml"></include>
+	<include file="com/conf/orders.xml"></include>
+	<include file="com/conf/details.xml"></include>
+	<include file="com/conf/topic.xml"></include>
+</struts>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Details" table="details">
+		<id name="detailsid" type="java.lang.String">
+			<column name="detailsid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="ordercode" type="java.lang.String">
+			<column name="ordercode" />
+		</property>
+		<property name="goodsid" type="java.lang.String">
+			<column name="goodsid" />
+		</property>
+		<property name="num" type="java.lang.String">
+			<column name="num" />
+		</property>
+		<property name="price" type="java.lang.String">
+			<column name="price" />
+		</property>
+		<many-to-one name="goods" column="goodsid" class="com.entity.Goods"
+			fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>

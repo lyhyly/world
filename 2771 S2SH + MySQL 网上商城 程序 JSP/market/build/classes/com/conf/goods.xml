@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" 
+"http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<package name="goods" namespace="/goods" extends="default">
+		<!-- 准备添加 跳转到add页面 -->
+		<action name="createGoods" class="goodsAction" method="createGoods">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/addgoods.jsp</result>
+		</action>
+
+		<!-- 添加记录 跳转回create方法 -->
+		<action name="addGoods" class="goodsAction" method="addGoods">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">createGoods</result>
+		</action>
+
+		<!-- 修改记录 跳转回getALL方法 -->
+		<action name="updateGoods" class="goodsAction" method="updateGoods">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllGoods</result>
+		</action>
+
+		<!-- 批量删除记录 跳转回getALL方法 -->
+		<action name="deleteGoodsByIds" class="goodsAction" method="deleteGoodsByIds">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllGoods</result>
+			<result name="fail" type="chain">getAllGoods</result>
+		</action>
+
+		<!-- 删除记录 跳转回getALL方法 -->
+		<action name="deleteGoods" class="goodsAction" method="deleteGoods">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success" type="chain">getAllGoods</result>
+			<result name="fail" type="chain">getAllGoods</result>
+		</action>
+
+		<!-- 查询全部记录 跳转到list页面 -->
+		<action name="getAllGoods" class="goodsAction" method="getAllGoods">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/listgoods.jsp</result>
+		</action>
+
+		<!-- 按主键查询 跳转到edit页面 为修改做准备 -->
+		<action name="getGoodsById" class="goodsAction" method="getGoodsById">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/editgoods.jsp</result>
+		</action>
+
+		<!-- 按条件查询 跳转到query页面 -->
+		<action name="queryGoodsByCond" class="goodsAction" method="queryGoodsByCond">
+			<interceptor-ref name="adminStack"></interceptor-ref>
+			<result name="success">/admin/querygoods.jsp</result>
+		</action>
+	</package>
+
+</struts>

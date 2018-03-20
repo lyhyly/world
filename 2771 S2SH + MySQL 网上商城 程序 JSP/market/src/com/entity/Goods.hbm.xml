@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" 
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.entity.Goods" table="goods">
+		<id name="goodsid" type="java.lang.String">
+			<column name="goodsid" length="255" />
+			<generator class="uuid.hex"></generator>
+		</id>
+		<property name="goodsname" type="java.lang.String">
+			<column name="goodsname" />
+		</property>
+		<property name="image" type="java.lang.String">
+			<column name="image" />
+		</property>
+		<property name="bcateid" type="java.lang.String">
+			<column name="bcateid" />
+		</property>
+		<property name="scateid" type="java.lang.String">
+			<column name="scateid" />
+		</property>
+		<property name="marketprice" type="java.lang.String">
+			<column name="marketprice" />
+		</property>
+		<property name="price" type="java.lang.String">
+			<column name="price" />
+		</property>
+		<property name="recommend" type="java.lang.String">
+			<column name="recommend" />
+		</property>
+		<property name="special" type="java.lang.String">
+			<column name="special" />
+		</property>
+		<property name="storage" type="java.lang.String">
+			<column name="storage" />
+		</property>
+		<property name="addtime" type="java.lang.String">
+			<column name="addtime" />
+		</property>
+		<property name="sellnum" type="java.lang.String">
+			<column name="sellnum" />
+		</property>
+		<property name="hits" type="java.lang.String">
+			<column name="hits" />
+		</property>
+		<property name="contents" type="java.lang.String">
+			<column name="contents" />
+		</property>
+		<many-to-one name="bcate" column="bcateid" class="com.entity.Bcate"
+			fetch="join" insert="false" update="false" lazy="false" />
+		<many-to-one name="scate" column="scateid" class="com.entity.Scate"
+			fetch="join" insert="false" update="false" lazy="false" />
+	</class>
+</hibernate-mapping>
