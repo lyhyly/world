@@ -1,0 +1,396 @@
+<html xmlns:o="urn:schemas-microsoft-com:office:office"xmlns:w="urn:schemas-microsoft-com:office:word"xmlns="http://www.w3.org/TR/REC-html40"><span style="color:#008800;">基于Servlet+Jsp的网上商城设计与实现<br>
+刘  阳<br>
+（安阳师范学院 软件学院, 河南 安阳 455002）<br>
+<font color="red"  href="../sentence_detail/A_449.htm">摘  要：随着当今网络科技的飞速发展，网络已经成为人们获取和交换信息最有效、最便捷的途径，而网络购物也已经成为人们日常生活中的常态。网络购物是一种将商品销售和计算机网络结合起来的一种新型购物模式，</font>是商品经济与现代科技相结合的产物，是当前互联网+的大时代背景下必然结果。<br>
+<font color="red"  href="../sentence_detail/A_681.htm">本文主要依据网上商城系统的开发设计，与学过的面向对象的可视化语言相结合，以及自己根据前人工作经验开发设计的系统。本系统以MyEclipse作为开发工具，以MySQL数据库存储数据，整个系统用简洁明快的界面展现，操作简单可行，用户使用方便、简洁。</font><font color="red"  href="../sentence_detail/A_149.htm"><br>
+本系统采用当今社会比较先进的SSH（即Struts2、Spring、Hibernate）作为基础框架，旨在设计开发一个性能优越、可扩展性强和安全可靠稳定的网上商城系统。系统主要分为前台和后台两大模块，前台包括登录注册、首页、网站新闻、特价商品、全部商品展示等模块；后台包括管理员管理、注册用户管理、公告管理、商品管理、订单管理等功能模块</font><br>
+关键词：网络购物；互联网+；SSH；MySQL；<br>
+Abstract<br>
+<font color="red"  href="../sentence_detail/285.htm">With the rapid development of network technology, </font>the Internet has become the most effective way for people to access and exchange information. Trading goods through the Internet has become a new type of shopping method. Online shopping mall system is a new type of e-commerce system combining merchandise sales <font color="red"  href="../sentence_detail/545.htm">and computer network functions.</font> It is a very active and powerful technology application field in the current new technology revolution.<br>
+<font color="red"  href="../sentence_detail/A_185.htm">In this paper, based on the development and design of online shopping mall system, combined </font>with the learned object-oriented visual language, <font color="#FF7F00"  href="../sentence_detail/637.htm">and based on the experience of predecessors, </font>we develop and design the system. The system uses MyEclipse as a front-end development tool, MySQL database to store data, <font color="red"  href="../sentence_detail/881.htm">the entire system with a simple and neat</font> interface, make the operation simple and feasible, <font color="red"  href="../sentence_detail/A_261.htm">the user easy to use, simple.</font><br>
+The system uses today\&amp;amp;#039;s more advanced social <font color="#FF7F00"  href="../sentence_detail/A_757.htm">S2SH (Struts2, Spring, Hibernate) framework for the development of a technology superior performance,</font> scalability, strong, reliable and stable online store system.<font color="#FF7F00"  href="../sentence_detail/353.htm"> The system is mainly divided into front and </font>back two major modules, the front desk, including registration, home, website news, specials, all goods and other modules; background includes <font color="red"  href="../sentence_detail/A_845.htm">administrator management, registered user management, bulletin management, product management, order management module.</font><br>
+Keywords: Online shopping；Internet+；SSH；MySQL；<br>
+目录<br>
+1 绪论	1<br>
+1.1 课题目的和意义	1<br>
+1.2 国内外的研究现状	1<br>
+1.3 课题的研究方法、技术路线	2<br>
+1.4 本文研究内容	2<br>
+2 相关技术简介	4<br>
+2.1 Jsp技术介绍	4<br>
+2.2 MyEclipse简介	4<br>
+2.3 Tomcat简介	4<br>
+2.4 MySQL数据库	4<br>
+2.5 S2SH架构技术	5<br>
+3 系统分析	8<br>
+3.1 系统设计目标	8<br>
+3.2 系统可行性分析	8<br>
+3.3 系统功能需求概述	9<br>
+3.4 系统设计规则	9<br>
+3.5 运行环境	10<br>
+4 系统设计	11<br>
+4.1 系统架构设计目标	11<br>
+4.2 系统架构设计	11<br>
+4.3 系统架构类图	12<br>
+4.4 系统架构类交互图	13<br>
+4.5 数据库结构设计	14<br>
+4.5.1 E-R图	14<br>
+4.5.2 数据表字段设计	16<br>
+5 详细设计	18<br>
+5.1 系统配置	18<br>
+5.1.1 应用层配置	18<br>
+5.1.2 数据库连接配置	18<br>
+5.1.3 SessionFactory模式的配置	19<br>
+5.2 功能模块实现	19<br>
+5.2.1 系统登录实现	19<br>
+5.2.2 添加管理员模块	20<br>
+5.2.3 注册用户管理模块	20<br>
+5.2.4 公告信息管理模块	21<br>
+5.2.5 商品信息管理模块	21<br>
+5.2.6 订单信息管理模块	22<br>
+6 系统测试	23<br>
+6.1 功能测试	23<br>
+6.2 用例测试	23<br>
+6.3 测试结果分析	24<br>
+7 总结与展望	25<br>
+参考文献	26<br>
+致 谢	28<br>
+1 引言<br>
+1.1 课题目的和意义<br>
+<font color="#FF7F00"  href="../sentence_detail/A_697.htm">在21世纪已经过去五分之一的今天，网络已经成为人们日常生活中不可缺少的东西，越来越多人已经离不开网络。人们已经不再满足于了解最新信息、查找资料等一些传统的网络使用方式，而是渐渐的将生活中的方方面面转移到网络上。</font>网购、外卖、网上支付、O2O、B2B等等，这些都是互联网的产物。<font color="#FF7F00"  href="../sentence_detail/633.htm">我们已经进入到了万物联网的时代。网上购物，</font>成了当今广大群众不可获取的获取商品的方式。<font color="red"  href="../sentence_detail/A_561.htm">而越来越多的商家，也逐渐重视起网络的作用，充分利用起网络的低成本、高效性来宣传企业形象和销售商品。</font>因此，我们顺应时代，应用新技术，来为社会做出自己的一份贡献。<br>
+在商品经济时代，绝大部分的商业活动都是面对面的，如：<font color="red"  href="../sentence_detail/A_321.htm">店铺销售、广交会、上门推销等。这些销售活动，都会受到地域、时间、环境等方面的影响，</font>从而给企业、公司等的销售管理带来极大的不便。而且各类信息的人工维护，也存在诸多缺点。<font color="red"  href="../sentence_detail/725.htm">而网上商城，正好能全面解决这样的问题。</font>从产品的生产到销售再到客户订单直到交易完成。这一整个过程，商品管理系统为商家、客户以及运送人员等的信息管理带来了极大的方便。<font color="red"  href="../sentence_detail/A_257.htm">这种系统能够为用户提供可靠的信息储存和快捷的信息处理手段。作为计算机应用的一部分，使用计算机对企业、公司的产品销售信息进行管理，具有传统管理模式所无法比拟的优点。因此，开发这样一套管理系统成为很有必要的事情，</font>它能够为销售信息同步、传播等目的提供有效的解决方案，用结构化的思维方式去处理商品从生产到使用这一整个过程的所有信息。<br>
+1.2 国内外的研究现状<font color="red"  href="../sentence_detail/A_265.htm"><br>
+电子商务无疑是一个发展潜力巨大的市场，发展前景毋庸置疑。电子商务系统将会为社会带来巨大的解决效益。互联网的快速发展、智能手机的普及、网络的飞速发展使得网上购物的发展提供了更加强大的动力。如今的网络购物环境在得到改善的同时，网银、各类第三方支付平台等各类系统使得网上交易变得更加安全，这些变化使得物流、银行等的结算变得更加高效，市场运作的规范及对应的政策法规的完善也使得网民对网上购物的信任度逐年上升，从之前的拒绝到现在的接受，从怀疑到现在的信任，网络购物的观念逐步深入人心，融入了人们的生活当中。</font><br>
+<font color="red"  href="../sentence_detail/A_377.htm">《2012年度中国网络零售市场数据监测报告》显示出了中国电子商务过去的发展状况良好。自从2008年以来整个电视商务行业呈现出高速增长的态势。以京东商城为例，过去的几年取得了很好的成就。京东商城在2012年的中国自营B2C市场中占据了49%的份额，凭借全供应链的优势继续扩大在中国电子商务市场的领先优势。京东商城已经建立华北、华东、华南、西南、华中、东北六大物流中心，同时在全国超过360座城市建立核心城市配送站。另外中国的网络购物用户也是逐年增长，这一点在《2012年度中国网络零售市场数据监测报告》中已经有详细的描述。自十二届全国人大三次会议，李克强总理首次提出“互联网+”</font>行动计划至今，我国万物互联的形式可谓形势大好，“大众创业，万众创新”以及今年的两会，都显示出了互联网经济在我我一片大好的发展形势。<font color="red"  href="../sentence_detail/A_213.htm"><br>
+国外电子商务网站应用发展较早，相关标准和法律比较规范健全。特别是欧美等地更是走在我们的前列。当我们还在搜索购物的时候，国外的比较购物已经比较成熟了，国外的购物搜索社区发展也更加深入，未来还将衍生出另一个网络购物的新模式即分享购物。电子商务研究中心表明，网购用户因为规模增长分析：购物环境在线成熟和未成熟;快速，轻松地不受地域限制;政府规章和物流环境支付的日益成熟;网上购物已经成为融入人们的生活。这说明在中国发展网上购物具有良好的群众基础，网上购物方式日趋被大家所接受。</font><br>
+1.3 课题的研究方法、技术路线<br>
+(1)研究方法：<br>
+系统通过搭建MyEclipse + MySQL数据库来开发本系统。系统主要分为前台和后台两大模块，<font color="red"  href="../sentence_detail/429.htm">前台包括登录注册、首页、网站新闻、特价商品、</font>全部商品等模块；后台包括管理员管理、注册用户管理、<font color="red"  href="../sentence_detail/45.htm">公告管理、商品管理、订单管理等功能模块</font>。<br>
+(2)技术路线：<font color="red"  href="../sentence_detail/A_549.htm"><br>
+本系统基于B/S(Browser/server，浏览器/服务器)三层架构体系结构，这种模式采用多种标准的协议和技术，能够在任何硬件平台和软件环境下良好的运行。本系统采用当今社会采用极为广泛的SSH（即Struts2、Spring、Hibernate）框架技术开发一个性能优越、可扩展性强和安全可靠稳定的网上商城系统。</font><br>
+1.4 本文研究内容<font color="#FF7F00"  href="../sentence_detail/A_161.htm"><br>
+本文主要分为六个章节，第一部分为前言，主要介绍了课题背景、研究意义、国内外研究现状、课题的研究方法、技术路线以及本文研究的主要内容等。</font><br>
+第二部分是相关技术的介绍，主要介绍了JSP、MyEclipse、<font color="#FF7F00"  href="../sentence_detail/53.htm">Tomcat、Struts2、 Hibernate框架和MySQL数据库。</font><br>
+第三部分为系统分析，主要介绍了项目规划、可行性分析、<font color="red"  href="../sentence_detail/157.htm">系统设计的特点、系统设计的总体规划、运行环境等。</font><br>
+第四部分是系统设计，系统架构设计和功能模块设计是主要的设计内容。<br>
+第五部分是系统设计的细节，主要介绍了系统的详细设计过程。<font color="red"  href="../sentence_detail/A_361.htm"><br>
+第六部分为系统调试与测试，对本系统进行了功能和界面的测试。</font><font color="#FF7F00"  href="../sentence_detail/A_577.htm"><br>
+第七部分为总结与展望，主要对本文的研究工作进行了总结以及对进一步工作进行了展望。</font><br>
+2 相关技术简介<br>
+2.1 Jsp技术介绍<br>
+<font color="red"  href="../sentence_detail/A_593.htm">JSP是由SunMicrosystems网站倡导，许多网站参与一起建立的一种动态的技术标准。加入Java程序片段和JSP标记传统的网页HTML文件（*.HTM ， *.HTML） ，并构成了JSP页面中的Java程序片段可以操作数据库，重新定向网页以及发送E-mail等方式，实现建立动态系统的功能要求。所有程序操作都在服务器，网络上传到客户端执行的只是得到的结果，这大大降低了客户端浏览器的要求，即使您的浏览器不支持Java ，您还可以访问JSP页面。</font><br>
+2.2 MyEclipse简介<font color="red"  href="../sentence_detail/A_613.htm"><br>
+MyEclipse（My Eclipse Enterprise Workbench，简称MyEclipse）是一组用于开发Java、JavaEE的Eclipse插件集合，MyEclipse的功能非常强大，支持的范围也十分广泛，尤其对各种开源产品的支持非常理想。</font><font color="#FF7F00"  href="../sentence_detail/A_801.htm"><br>
+MyEclipse是在Eclipse基础上加上自己的插件，MyEclipse是近几年发展起来较为成熟的集成开发环境，以插件的形式运行在Eclipse平台上，是一款功能强大的J2EE集成开发环境，支持代码编写、配置、测试以及除错功能。</font><br>
+2.3 Tomcat简介<font color="red"  href="../sentence_detail/A_273.htm"><br>
+Tomcat是一个小型的轻量级应用服务器，在中小型系统和并发访问用户不是很多的场合下被普遍使用，是开发和调试JSP 程序的首选。可以这样认为，当在一台机器上配置好Apahce服务器，可利用它响应对HTML页面的访问请求。实际上Tomcat 部分是Apache 服务器的扩展，但它是独立运行的，所以当运行tomcat 时，它实际上作为一个与Apache 独立的进程单独运行的。</font><br>
+2.4 MySQL数据库<br>
+在软件项目中，通过使用数据库来操作数据，可以保证数据的独立性、一致性和安全性，为系统提供有效地访问数据的方式，<font color="red"  href="../sentence_detail/693.htm">同时为程序员减少了应用程序的开发时间。</font><br>
+<font color="red"  href="../sentence_detail/21.htm">MySQL支持多线程的特点，可以方便的利用系统资源，有效提高速度，</font><font color="#FF7F00"  href="../sentence_detail/485.htm">而且提供了TCP/IP、ODBC和JDBC等多种方式途径来连接数据库；</font>MySQL是先进应用最广泛的开源关系型数据库，由于阿里巴巴的加持，<font color="#FF7F00"  href="../sentence_detail/537.htm">国内MySQL的使用更是异常广泛，社区也更加活跃。</font><font color="red"  href="../sentence_detail/305.htm">是选择数据库的不二之选。</font><br>
+使用MySQL建立系统数据库，可以很好的胜任千万级的数据存储，而且开源也是MySQL的绝佳优势。<br>
+2.5 SSH架构技术<br>
+<font color="red"  href="../sentence_detail/721.htm">SSH是struts2 + Spring + Hibernate，</font>是众多开源Web框架中较受欢迎的开源Java Web应用框架的一个综合框架。 <br>
+Struts2<br>
+<font color="red"  href="../sentence_detail/A_893.htm">Struts 2是Struts的下一代产品，其本身与struts并无太大关系，只是由于当时struts横行天下，开发者为纪念而起的这个名字。Struts2是在Struts的影响下和WebWork的技术基础上开发的全新的Web层框架。其全新的Struts 2的体系结构与Struts 1的体系结构差别巨大。Struts 2以WebWork为核心，采用拦截器的机制来处理用户的请求，这样的设计也使得业务逻辑控制器能够与ServletAPI完全脱离开，实现可插拔式编程。所以Struts 2可以理解为WebWork的更新产品。虽然从Struts 1到Struts 2有着太大的变化，但是相对于WebWork，Struts 2的变化很小。</font><font color="red"  href="../sentence_detail/A_9.htm"><br>
+对于Struts1框架而言，由于与JSP/Servlet耦合非常紧密，因而导致了一些严重的问题。首先，Struts1支持的表现层技术单一。由于Struts1出现的年代比较早，那个时候没有FreeMarker、Velocity等技术，因此它不可能与这些视图层的模版技术进行整合。其次，Struts1与Servlet API的严重耦合，使应用难于测试。最后，Struts1代码严重依赖于Struts1 API，属于侵入性框架。</font><br>
+Spring <br>
+Spring是一个功能强大的框架，解决了很多问题上有着共同的J2EE开发。<font color="#FF7F00"  href="../sentence_detail/A_457.htm">并提供了一种一致的方式来管理业务对象的编程接口，用于注射的鼓励，而不是良好的编程习惯。</font>基于使用控制容器倒置的JavaBean属性是基于Spring的架构。<font color="red"  href="../sentence_detail/357.htm">Spring提供了唯一的数据访问抽象，包括JDBC框架，方便，</font>高效地，这样可以提高效率，减少出错的可能性。架构进行数据访问Spring，Hibernate和绘图解决方案整合的O <font color="red"  href="../sentence_detail/A_173.htm">/ R Spring也提供了一个唯一的事务管理抽象，它可以在各种管理技术的基本交易，例如JTA或者JDBC事务提供一个一致的编程模型。 Spring提供了用Java编写的AOP框架标准的通用语言，它给人的POJOs提供了声明式的事务管理。这个框架足够强大，除了EJB的复杂性，使得EJB应用程序同时享受与传统的键相关联的服务。</font>春节前国际奥委会和MVC框架还提供了一个强大而灵活的Web集成[15]。 <br>
+Hibernate <br>
+<font color="#FF7F00"  href="../sentence_detail/A_629.htm">所谓的Hibernate开源的对象关系映射框架，对象可以是非常轻量级封装JDBC，Java程序员可以随心所欲，通过面向对象的编程思维来操纵数据库对象。 Hibernate可以在任何应用程序中使用JDBC，无论是在Java实用程序的客户端程序，也可以在Servlet的/ JSP的Web应用中使用，最具革命性的是，Hibernate可以取代CMP </font>EJB的J2EE应用程序体系结构来解决数据持久化的重任。 <br>
+SSH框架的组合模式，三者各自的作用 <font color="red"  href="../sentence_detail/A_909.htm"><br>
+Struts是一个很好的MVC框架，关键技术是Servlet和JSP。 Struts的MVC设计模式可以使我们很清楚的逻辑，让我们写一个结构化的程序。 </font><br>
+<font color="#FF7F00"  href="../sentence_detail/241.htm">Spring提供了一个一致的方式来管理业务对象，和依赖注入编程接口，</font>而不是依靠良好编程习惯来完成对象的管理，强大的IOC和AOP使得程序更加便于管理和增强。<br>
+<font color="#FF7F00"  href="../sentence_detail/13.htm">Hibernate的持久性数据是用来提供一个完全面向对象的数据库操作。</font> JDBC来Hibernate的一个非常轻量级封装，它使处理关系数据库变得非常容易。<br>
+以下是SSH架构图：<br>
+图2-2  SSH架构图<br>
+SSH架构图<br>
+Struts负责Web层：<font color="red"  href="../sentence_detail/A_529.htm"><br>
+ActionFormBean接收网页中表单提交的数据，然后通过Action进行处理，再Forward到对应的网页，在Struts-config.xml中定义了&amp;lt;action-mapping&amp;gt;，ActionServlet会加载进来。</font><br>
+Spring负责业务层管理，即Service：<font color="red"  href="../sentence_detail/A_349.htm"><br>
+Service为Action提供统一的调用接口，封装持久层的DAO，并集成Hibernate，Spring可对JavaBean和事物进行统一管理。</font><br>
+Hibernate负责持久层，完成数据库的CRUD操作：<font color="red"  href="../sentence_detail/A_501.htm"><br>
+Hibernate有一组hbm.xml文件和PO，是与数据库中的表相比对的结果，然后定义DAO，这些类是与数据库相关的。</font><font color="red"  href="../sentence_detail/A_713.htm"><br>
+在Struts+Spring+Hibernate系统中，对象之间的调用流程如下：</font><br>
+Struts——&amp;gt;Spring——&amp;gt;Hibernate<br>
+JSP——&amp;gt;Action——&amp;gt;Service——&amp;gt;DAO——&amp;gt;Hibernate<br>
+图2-3  SSH框架中对象之间调用流程图<br>
+3 系统分析<br>
+3.1 系统设计目标<br>
+网上商城系统的具体开发目标为：<br>
+（1）能够提供全天候、方便快捷的网上商城管理服务。用户可以通过该平台搜索自己喜欢的商品，然后用通过网站完成一整个购物过程，并可监控过程。<br>
+（2）能够完整的完成信息的维护和管理，其中主要包括对站内新闻、广告、商品等信息的维护功能的实现。<br>
+（3）具备相对高效的信息数据管理方案，可以高效的完成信息的修改与存储等。<br>
+（4）系统管理员能够登录后台以完成对商城的有效管理。<br>
+（5）系统具备良好的安全性，能够确保用户信息等信息不外泄。<br>
+3.2 系统可行性分析<br>
+1、操作的可行性分析<br>
+<font color="#FF7F00"  href="../sentence_detail/A_297.htm">系统的登录界面简单和友好，采用常见的界面窗口的登录界面，而系统的开发则采用的是较为常用的JSP技术。这些策使得用户不需要很长的时间就能够快速熟悉系统，并掌握系统的操作方法。此外，为了方便系统管理维护人员，用户登录系统后会给出了一些提示，使得整个系统更加人性化，用户操作更简单方便。</font><br>
+2、可行性分析<br>
+企业要长期生存，必须先有一个良好的企业文化，<font color="red"  href="../sentence_detail/A_569.htm">其次需要有一个完善的管理，再采用科学的方法实现可持续发展，最后还要与时俱进，不断改革，使企业的网站的时间去适应社会的变化。最重要的是要确保科学的管理方法，为企业获得长远发展的竞争力提高的唯一途径。</font><br>
+3、技术可行性分析<br>
+（1）硬件可行性分析<font color="red"  href="../sentence_detail/A_33.htm"><br>
+系统的硬件要求方面不存在特殊的要求，只需要在普通的硬件配置就能够轻松的实现，只是需要确保系统的正常工作即可，以及拥有较高的效率。如果有特别低的硬件，它可以导致系统的低性能以及效率低，从而导致整个系统的运行不顺畅。以目前普遍的个人计算机的配置而言，这是十分容易实现的 。因此，本系统的开发在硬件方面是可行的。</font><br>
+（2）软件可行性分析<br>
+<font color="red"  href="../sentence_detail/A_849.htm">Java语言提供了一个共同的机制类似的接口动态模型，设计更集中。另外，在使用Java语言可以很容易实现模块化和存储信息。此外，代码复用，也可以很好的体现。因此，考虑到系统的实际情况，选择JAVA作为本系统开发语言的时候。通过上述分析，该系统的设计实现在软件方面是可行的。</font>并且使用tomcat作为服务器，可以满足大约500的并发量，足以满足企业初期的需求。<br>
+至此，我们进行了三个方面的可行性研究，可以看出，该系统的开发是没有问题的。<br>
+3.3 系统功能需求概述<br>
+系统主要分为前台和后台两大模块，<font color="red"  href="../sentence_detail/429.htm">前台包括登录注册、首页、网站新闻、特价商品、</font>全部商品等模块；后台包括管理员管理、注册用户管理、<font color="red"  href="../sentence_detail/45.htm">公告管理、商品管理、订单管理等功能模块</font>。<br>
+系统功能结构图如图3-1所示：<br>
+图3-1系统功能结构图<br>
+3.4 系统设计规则<font color="red"  href="../sentence_detail/A_393.htm"><br>
+系统的设计规则无论在哪个系统都要有。系统也一样，它的主要设计规则有：</font><br>
+简单性：对于一个系统来说是非常重要的，使系统操作简单易懂的同时，<font color="#FF7F00"  href="../sentence_detail/169.htm">也要让系统的功能完善，具备健壮性。</font><br>
+针对性：该系统设计的定向开发设计是关于网络购物的，专业性和针对性很强。<br>
+<font color="#FF7F00"  href="../sentence_detail/73.htm">实用性：系统主要分为前台和后台两大模块，前台包括登录注册、</font>首页、网站新闻、特价商品、全部商品等模块；后台包括管理员管理、注册用户管理、<font color="red"  href="../sentence_detail/45.htm">公告管理、商品管理、订单管理等功能模块</font>，基本满足了一个商城的所有需求，因此具有良好的实用性。<br>
+3.5 运行环境<br>
+本系统是一个web版的应用程序，需要在服务器上部署中间件Tomcat、MySQL数据库，其他的客户端通过网络进行访问该服务器即可。<br>
+（1）开发硬件平台：<br>
+CPU：酷睿双核 3.2GHZ<br>
+内存：4G以上<br>
+硬盘：320GB<br>
+（2）服务器端硬件平台：<br>
+<font color="red"  href="../sentence_detail/A_609.htm">Web服务器参考配置：Intel  Xeon  Quad Core  E5530 80W 2.40GHz/5.8GT/8MB Cache, 2x2GB DDR3-1066MHz, 2.</font>5in HS 146GB SAS,HS  675W PSU, ServeRAID <font color="red"  href="../sentence_detail/201.htm">MR10i(RAID 5), 2*Giga Ethernet,Light Path, </font>CD-RW/DVD Combo, 1U,3 Years Onsite Next Business Day.<font color="red"  href="../sentence_detail/A_857.htm"> 146GB 10K 6Gbps SAS 2.5\&amp;amp;quot; SFF Slim-HS HDD x3550M2/x3650M2/HS22</font><br>
+ (3) 开发软件平台：<br>
+操作系统：Windows 7 x64<br>
+数据库：MySQL<br>
+4 系统设计<br>
+4.1 系统架构设计目标<br>
+软件架构设计要达到如下的目标：<br>
+1．可行性。架构的设计是真个系统的开发的基础。<br>
+2．高容错。系统的可靠性对于商业经营和管理来说，占有非常重要的分量，因此，软件系统的架构设计必须具备可靠性。<br>
+3．安全行。由于数据库中存储了大量数据，这些数据具有重要价值，因此，系统的数据库的安全性非常重要。<br>
+4．高可用。在系统功能方面，后期可以根据客户群的不同需求和市场需求的变化进行调整。<br>
+5．可扩展性。在新的技术研发出来之后，可以进行新技术的导入，扩展系统现有的功能。<br>
+<font color="red"  href="../sentence_detail/A_541.htm">6．便于维护。系统的可维护性主要包括两方面，一是排除现有的错误，二是将新的功能需求导入到系统中去。</font>合理的维护系统可以减少运营成本。<br>
+7．可升级性。软件必须能够在用户数量增多的情况下，升级服务器，保持合理的性能。只有这样，才可以具备可持续运营。<br>
+8．易用性。系统操作必须简单、易于使用。<br>
+4.2 系统架构设计<font color="red"  href="../sentence_detail/A_329.htm"><br>
+下面我们将根据架构设计原则和目标来建立系统的架构设计模型。将信息系统中对象分层，可分为三层：控制层、业务层、数据访问层（如下图4-1所示），再把各层中的一些公共部分提出来：权限管理、异常处理，这样得到包图如图4-2所示：</font><br>
+图4-1  系统体系架构图<br>
+图4-2  系统功能模块包图<br>
+4.3 系统架构类图<font color="red"  href="../sentence_detail/A_729.htm"><br>
+将包图展开，得到类图，它是架构的静态结构图，表达了各个类之间的静态联系。网上商城系统架构类图如下图4-3所示。</font><br>
+图4-3 系统架构类图<br>
+4.4 系统架构类交互图<br>
+系统架构类的工作流程：<br>
+1、控制层对象在接收了用户的输入请求后，调用业务代理对象发送处理请求。<br>
+2、业务代理对象接收到请求后，调用权限管理对象发送验证权限请求。<br>
+3、权限管理对象验证权限后将验证结果返回给业务代理对象。<font color="red"  href="../sentence_detail/A_109.htm"><br>
+4、业务代理对象根据验证结果进行以下处理：对于不符合权限的请求则返回提示信息；对于符合权限的请求，则将请求转发给业务对象。</font><br>
+5、业务对象进行业务处理。对于业务处理中的数据持久化操作，<font color="red"  href="../sentence_detail/A_93.htm">通过调用数据库访问对象进行操作，期间的任何异常都交给异常处理对象处理。最后返回处理结果信息给业务代理对象。</font><br>
+6、业务代理对象将处理结果信息返回给用户界面。<br>
+系统架构类的交互图如图4-4所示：<br>
+ 图4-4  系统架构类的交互图<br>
+4.5 数据库结构设计<br>
+4.5.1 E-R图<br>
+<font color="red"  href="../sentence_detail/A_597.htm">现今应用的最广泛的数据库是关系型数据库。因为它是一个面向对象的系统设计，当然，数据库的设计，必须是面向对象的。</font>现在应该怎么考虑对类进行持久性操作，即对象类是怎样映射到关系数据库的二维表中的。本文利用微软的Visio进行E-R图的绘制，展示如下：<br>
+图4-5用户实体属性E-R分图<br>
+图4-6公告实体属性E-R分图<br>
+图4-7 商品信息实体属性E-R分图<br>
+图4-8 订单信息实体属性E-R分图<br>
+4.5.2 数据表字段设计<font color="#FF7F00"  href="../sentence_detail/A_385.htm"><br>
+由于论文的篇幅有限，这里引用的表只是设计的一部分。</font><br>
+（1）admin表。<br>
+表4-1 admin表<font color="#FF7F00"  href="../sentence_detail/A_1.htm"><br>
+字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</font><br>
+adminid	编号	int	4	是	否<br>
+username	用户名	varchar	40	否	否<br>
+password	密码	varchar	40	否	否<br>
+realname	姓名	varchar	40	否	否<br>
+contact	联系方式	varchar	40	否	否<br>
+（2）article表。<br>
+表4-2 article表<font color="#FF7F00"  href="../sentence_detail/A_1.htm"><br>
+字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</font><br>
+articleid	编号	int	4	是	否<br>
+title	标题	varchar	40	否	否<br>
+image	图片	varchar	40	否	否<br>
+contents	内容	varchar	40	否	否<br>
+addtime	发布日期	varchar	40	否	否<br>
+hits	点击数	varchar	40	否	否<br>
+（3）bcate表。<br>
+表4-3 bcate表<font color="#FF7F00"  href="../sentence_detail/A_1.htm"><br>
+字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</font><br>
+bcateid	编号	int	4	是	否<br>
+bcatename	大类名称	varchar	40	否	否<br>
+（4）cart表。<br>
+表4-4 cart表<font color="#FF7F00"  href="../sentence_detail/A_1.htm"><br>
+字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</font><br>
+cartid	编号	int	4	是	否<br>
+usersid	用户	varchar	40	否	否<br>
+goodsid	商品	varchar	40	否	否<br>
+num	数量	varchar	40	否	否<br>
+price	价格	varchar	40	否	否<br>
+addtime	加入日期	varchar	40	否	否<br>
+（5）details表。<br>
+表4-5 details表<font color="#FF7F00"  href="../sentence_detail/A_1.htm"><br>
+字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</font><br>
+detailsid	编号	int	4	是	否<br>
+ordercode	订单号	varchar	40	否	否<br>
+goodsid	商品	varchar	40	否	否<br>
+num	数量	varchar	40	否	否<br>
+price	单价	varchar	40	否	否<br>
+5 详细设计<br>
+5.1 系统配置<br>
+5.1.1 应用层配置<br>
+系统采用目前流行的Struts2框架进行开发。先来看看Struts2框架是如何配置到应用程序中的。<br>
+在WEB-INF/web.xml文件的配置代码如下：<br>
+&amp;lt;filter&amp;gt;<br>
+    &amp;lt;filter-name&amp;gt;struts&amp;lt;/filter-name&amp;gt;<br>
+    &amp;lt;filter-class&amp;gt;<br>
+			org.apache.struts2.dispatcher.FilterDispatcher<br>
+		&amp;lt;/filter-class&amp;gt;<br>
+  &amp;lt;/filter&amp;gt;<br>
+  &amp;lt;filter-mapping&amp;gt;<br>
+    &amp;lt;filter-name&amp;gt;struts&amp;lt;/filter-name&amp;gt;<br>
+    &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;<br>
+  &amp;lt;/filter-mapping&amp;gt;<br>
+  &amp;lt;filter&amp;gt;<br>
+    &amp;lt;filter-name&amp;gt;struts-cleanup&amp;lt;/filter-name&amp;gt;<br>
+    &amp;lt;filter-class&amp;gt;<font color="red"  href="../sentence_detail/A_809.htm"><br>
+			org.apache.struts2.dispatcher.ActionContextCleanUp</font><br>
+		&amp;lt;/filter-class&amp;gt;<br>
+  &amp;lt;/filter&amp;gt;<br>
+  &amp;lt;filter-mapping&amp;gt;<br>
+    &amp;lt;filter-name&amp;gt;struts-cleanup&amp;lt;/filter-name&amp;gt;<br>
+    &amp;lt;url-pattern&amp;gt;/*&amp;lt;/url-pattern&amp;gt;<br>
+  &amp;lt;/filter-mapping&amp;gt;<br>
+当加入这个配置到web.xml文件之后，在浏览器中敲入的访系统的所有请求路径都会经过openSessionInViewFilter这个filter进行过滤。<font color="red"  href="../sentence_detail/A_253.htm">由这个过滤器进行转发相应的请求，进入Struts2的工作流程中。这就是算是把Struts2框架配置到程序中了。</font><br>
+5.1.2 数据库连接配置<br>
+服务器端程序采用spring框架来访问数据库：以下是spring连接数据库的配置文件，该配置是针对dataSource的连接数据库的配置：<br>
+&amp;lt;bean id=\&amp;quot;dataSource\&amp;quot;<br>
+		class=\&amp;quot;org.apache.commons.dbcp.BasicDataSource\&amp;quot;&amp;gt;<br>
+		&amp;lt;property name=\&amp;quot;driverClassName\&amp;quot;<font color="red"  href="../sentence_detail/A_565.htm"><br>
+			value=\&amp;quot;com.microsoft.jdbc.sqlserver.SQLServerDriver\&amp;quot;&amp;gt;</font><br>
+		&amp;lt;/property&amp;gt;<br>
+		&amp;lt;property name=\&amp;quot;url\&amp;quot;<font color="#FF7F00"  href="../sentence_detail/A_665.htm"><br>
+			value=\&amp;quot;jdbc:sqlserver://localhost:1433;databaseName=training_db;user=sa\&amp;quot;&amp;gt;</font><br>
+		&amp;lt;/property&amp;gt;<br>
+		&amp;lt;property name=\&amp;quot;username\&amp;quot; value=\&amp;quot;sa\&amp;quot;&amp;gt;&amp;lt;/property&amp;gt;<font color="#FF7F00"  href="../sentence_detail/A_853.htm"><br>
+		&amp;lt;property name=\&amp;quot;password\&amp;quot; value=\&amp;quot;1234\&amp;quot;&amp;gt;&amp;lt;/property&amp;gt;</font><br>
+	&amp;lt;/bean&amp;gt;<br>
+5.1.3 SessionFactory模式的配置<br>
+&amp;lt;bean id=\&amp;quot;sessionFactory\&amp;quot;<font color="red"  href="../sentence_detail/A_765.htm"><br>
+		class=\&amp;quot;org.springframework.orm.hibernate3.LocalSessionFactoryBean\&amp;quot;&amp;gt;</font><br>
+		&amp;lt;property name=\&amp;quot;dataSource\&amp;quot;&amp;gt;<br>
+			&amp;lt;ref bean=\&amp;quot;dataSource\&amp;quot; /&amp;gt;<br>
+		&amp;lt;/property&amp;gt;<br>
+		&amp;lt;property name=\&amp;quot;hibernateProperties\&amp;quot;&amp;gt;<br>
+			&amp;lt;props&amp;gt;<br>
+				&amp;lt;prop key=\&amp;quot;hibernate.dialect\&amp;quot;&amp;gt;<br>
+					org.hibernate.dialect.MySQLDialect<br>
+				&amp;lt;/prop&amp;gt;<br>
+				&amp;lt;prop key=\&amp;quot;hibernate.show_sql\&amp;quot;&amp;gt;true&amp;lt;/prop&amp;gt;<font color="#FF7F00"  href="../sentence_detail/A_841.htm"><br>
+				&amp;lt;prop key=\&amp;quot;hibernate.hbm2ddl.auto\&amp;quot;&amp;gt;update&amp;lt;/prop&amp;gt;</font><br>
+			&amp;lt;/props&amp;gt;<br>
+		&amp;lt;/property&amp;gt;<br>
+		&amp;lt;property name=\&amp;quot;mappingResources\&amp;quot;&amp;gt;<br>
+			&amp;lt;list&amp;gt;<br>
+				&amp;lt;value&amp;gt;com/model/Sysuser.hbm.xml&amp;lt;/value&amp;gt;<br>
+				&amp;lt;value&amp;gt;com/model/Course.hbm.xml&amp;lt;/value&amp;gt;<br>
+				&amp;lt;value&amp;gt;com/model/Check.hbm.xml&amp;lt;/value&amp;gt;<br>
+				&amp;lt;value&amp;gt;com/model/Result.hbm.xml&amp;lt;/value&amp;gt;<br>
+				&amp;lt;value&amp;gt;com/model/Job.hbm.xml&amp;lt;/value&amp;gt;<br>
+			&amp;lt;/list&amp;gt;<br>
+		&amp;lt;/property&amp;gt;<br>
+	&amp;lt;/bean&amp;gt;<br>
+5.2 功能模块实现<br>
+5.2.1 系统登录实现<font color="#FF7F00"  href="../sentence_detail/A_397.htm"><br>
+系统登录模块实现用户登录系统实现管理的功能，用户需要输入用户名、密码进行登录。系统登录实现界面如图5-1所示。</font><br>
+图5-1  系统登录实现界面<br>
+实现代码如下：<br>
+&amp;lt;script type=\&amp;quot;text/javascript\&amp;quot;&amp;gt;<br>
+			function checkLogin(){<br>
+				var username  = document.myform.username.value;<br>
+				var password = document.myform.password.value;<br>
+				if(username==\&amp;#039;\&amp;#039;){<br>
+					alert(\&amp;#039;请输入用户名\&amp;#039;);<br>
+					document.myform.username.focus();<br>
+					return false;<br>
+				}<br>
+				if(password==\&amp;#039;\&amp;#039;){<br>
+					alert(\&amp;#039;请输入密码\&amp;#039;);<br>
+					document.myform.password.focus();<br>
+					return false;<br>
+				}<br>
+			}<br>
+		&amp;lt;/script&amp;gt;<br>
+																							<br>
+5.2.2 添加管理员模块<br>
+添加管理员模块实现界面如图5-2 所示。<br>
+图5-2  添加管理员模块实现界面<br>
+5.2.3 注册用户管理模块<font color="#FF7F00"  href="../sentence_detail/A_401.htm"><br>
+注册用户管理模块主要实现管理员对注册用户信息的查询、删除、修改、添加等功能。注册用户管理模块实现界面如图5-3 所示。</font><br>
+图5-3  注册用户管理模块实现界面<br>
+5.2.4 公告信息管理模块<font color="red"  href="../sentence_detail/A_833.htm"><br>
+公告信息管理模块主要实现了管理员对公告信息的查询、删除、修改、添加等功能。添加公告实现界面如图5-4 所示。</font><br>
+图5-4  添加公告实现界面<br>
+5.2.5 商品信息管理模块<font color="#FF7F00"  href="../sentence_detail/A_417.htm"><br>
+商品信息管理模块主要实现管理员对商品信息、商品类别的增删改查等操作，商品信息管理模块实现界面如图5-5所示。</font><br>
+图5-5  商品信息管理实现界面<br>
+5.2.6 订单信息管理模块<font color="#FF7F00"  href="../sentence_detail/A_513.htm"><br>
+订单信息管理模块主要实现管理员对订单信息进行查看、发货、删除等操作，订单信息管理模块实现界面如图5-6所示。</font><br>
+图5-6  订单信息管理实现界面<br>
+6 系统测试<br>
+系统测试是程序设计的最后一步工作，也是软件设计的最后一道工序，<font color="red"  href="../sentence_detail/A_189.htm">这一步占有很重要的分量，也是非常重要的一步。检查软件程序的质量、性能、可靠性等是否符合用户需求。采用一套严谨的、规范的、完善的测试方案，将大大提高软件的质量、可信度、可靠性等，同时也降低了软件的出错率，降低用户操作系统时的风险系数。通常系统测试包括：功能测试，安全测试，可用性测试，性能测试、兼容性测试等方面。</font><br>
+6.1 功能测试<font color="#FF7F00"  href="../sentence_detail/A_813.htm"><br>
+功能测试主要包括五项内容：适用性、准确性、可操作性、依从性、安全性。</font><br>
+本系统功能测试如表6-1所示：<br>
+表6-1  系统功能测试<br>
+测试内容	测试结果<br>
+适用性	好<br>
+准确性	好<br>
+可操作性	好<br>
+依从性	好<br>
+安全性	好<br>
+6.2 用例测试<br>
+由于篇幅的原因，本节给出系统维护功能的测试用例。具体测试方面如表6-2所示。<br>
+表6-2  系统用例测试<br>
+序号	用例名称	用例操作	预期结果	测试结果<br>
+<font color="#FF7F00"  href="../sentence_detail/737.htm">1	用户登录	输入用户名、密码	输入正确用户名和密码进入系统主界面，</font>输入错误用户名或密码给出提示	符合预期<br>
+2	添加商品信息	在页面内输入商品信息，点击“添加”按钮	正确存储商品信息	符合预期<br>
+3	查看商品信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看商品信息	正确显示商品信息	符合预期<br>
+4	添加用户信息	在页面内输入用户信息，点击“添加”按钮	正确存储用户信息	符合预期<br>
+5	查看用户信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看用户信息	正确显示用户信息	符合预期<font color="#FF7F00"  href="../sentence_detail/A_573.htm"><br>
+6	翻页功能	点击“上一页”“下一页”“首页”“尾页”	跳转到正确页	符合预期</font><br>
+6.3 测试结果分析<br>
+经过对上述测试结果分析，本系统符合网上商城系统的客户要求和用户需求。所有基本功能点实现，操作简单，操作流程符合业务需求，<font color="red"  href="../sentence_detail/277.htm">产品运行性能良好，是一款值得推广的大众化软件系统。</font><br>
+7 总结与展望<br>
+本文主要阐述了如何利用SSH框架开发一个性能优化、<font color="red"  href="../sentence_detail/57.htm">可扩展性强和安全可靠的网上商城系统。</font>系统主要分为前台和后台两大模块，<font color="red"  href="../sentence_detail/429.htm">前台包括登录注册、首页、网站新闻、特价商品、</font>全部商品等模块；后台包括管理员管理、注册用户管理、<font color="red"  href="../sentence_detail/A_45.htm">公告管理、商品管理、订单管理等功能模块。</font><font color="red"  href="../sentence_detail/A_781.htm">然后根据这些功能进行分析设计，对所有到的技术Struts2、hibernate等进行简要的介绍。接着进行需求分析的描述。接着是概要设计和详细设计。</font>描述这个系统的部分功能的实现方案及过程。<font color="red"  href="../sentence_detail/A_209.htm"><br>
+本设计所实现的是一个网上商城系统，主要使用了JSP，Struts2，Hibernate技术。系统按照总体设计、数据库设计、各个模块设计和代码分析，网上商城系统的基本功能已得到实现。由于时间及本人所学有限，该系统还有许多地方需要改进，并且还有许多自己未实现的功能，本人会在以后的学习过程中进一步加强和完善。</font><br>
+本系统具有以下优点：<br>
+1、该系统可以运行在多个操作系统平台，数据库采用MySQL，开发环境选择myeclipse，可移植性好。<br>
+2、系统的用户权限进行划分，不同用户具有不同的操作权限，这不仅方便了用户，也保证了系统的安全性。<br>
+3、该系统界面简单，操作方便。<br>
+但也存在以下缺点需要改进：<br>
+1、界面跳转复杂，接口不能被刷新，可以改进。<br>
+2、功能比较简单，没有进一步提高一些选修的程序等，不能更好的为用户服务。<br>
+3、数据库设计有冗余，需要进一步优化。<br>
+参考文献<br>
+[1] 李兴华,王月清.名师讲坛:Java Web开发实战经典基础篇(JSP、Servlet、Struts、Ajax) [平装][M].清华大学出版社,2010.<br>
+[2] 李刚.轻量级Java EE企业应用实战(第3版):Struts 2+Spring 3+Hibernate整合开发[M].电子工业出版社,2012.<br>
+[3] 孙卫琴：《精通Hibernate：Java对象持久化技术详解》[M].电子工业出版社出版,2010.<br>
+[4] Budi Kurniawan (作者),崔毅 (译者),俞哲皆 (译者),俞黎敏 (译者).Servlet和JSP学习指南[M].机械工业出版社,2013.<br>
+[5] 中国电子商务研究中心. 《2012年度中国网络零售市场数据监测报告》 2013.1.29.<br>
+[6]孙奇. 基于MVC模式的Web开发框架Ruby on Rails的研究[D]. 北京交通大学, 2016.<br>
+[7]冯彦. 基于JSP和Struts框架的动态Web开发技术研究以及实践[D]. 吉林大学, 2015.<br>
+[8]杨洁. 基于ASP.NET Ajax的Web开发研究及应用[D]. 武汉理工大学, 2014.<br>
+[9]贾广宇. MVC设计模式下Web开发框架的研究与应用[D]. 大连海事大学, 2016.<br>
+[10]李浩. 基于J2EE的WEB开发框架的研究与应用[D]. 汕头大学, 2014.<br>
+[11]Kelley L A, Al. E. The Phyre2 web portal for protein modeling, prediction and analysis.[J]. Nature Protocol, 2015, 10(6):845-58.<br>
+[12]Ferrel P J, Kawai K, Everhart D, et al. Distributing web applications across a pre-existing web: US, US8943035[P]. 2015.<br>
+[13]郭克华. Java ME移动开发实例精讲[J]. 2016.<br>
+[14]陈佳, 李树强. web开发实践 : 慕课版[M]. 人民邮电出版社, 2016.<br>
+[15]田家旗. Java开发语言的开发平台与J2EE编程技术问题研究[J]. 信息技术与信息化, 2016(4):112-113.<br>
+[16]赵姝菊. 高职特色Java开发实训课程实践教学研究[J]. 科技视界, 2016(25):112-112.<br>
+[17]蓝厚国. 浅析Java开发平台结合oracle数据库在社保系统中的实际应用[J]. 科技展望, 2016, 26(1).<br>
+[18]王循. Java Web快速开发框架中部分关键技术初步研究[D]. 吉林大学, 2015.<br>
+[19]Farcic V, Garcia A. Test-Driven Java Development[M]. Packt Publishing, 2015.<br>
+[20]Roumeliotis-Curator R. Learning Path: Enterprise Java Development[M]. O\&amp;#039;Reilly Media, Inc. 2015.<br>
+[21]Jackson W. Setting Up a Java 8 Game Development Environment[M]// Beginning Java 8 Games Development. Apress, 2014:1-17.<br>
+[22]徐明华, 邱加永, 纪希禹. Java基础与案例开发详解[M]. 清华大学出版社, 2016.<br>
+[23]柴群, 梁剑波. 《Java编程基础》课程教学的思考[J]. 通讯世界, 2015(3):173-174.<br>
+致 谢<br>
+<font color="#FF7F00"  href="../sentence_detail/A_193.htm">四年的学习生活在这个季节将结束，但是在我的生命这仅仅只是一个逗号，我将面对的旅程的另一个的开始。四年的求学生涯，以支持老师，朋友和亲戚，这只是困难的，但也得到一个完整的包，下一段付印之际，各种思想，感情不能平静。 </font><br>
+<font color="#FF7F00"  href="../sentence_detail/49.htm">首先想在论文写作中要感谢我的老师贾伟峰给了我很大的帮助，</font>他对我论文的严格要求，使我获得了很大的收获。以及深厚的理论知识，实践经验，严谨的治学态度和扎实的研究方法的影响和激励着我，让我一个不少。<font color="red"  href="../sentence_detail/333.htm">在这方面，我谨表示衷心的感谢和由衷的。</font><font color="red"  href="../sentence_detail/A_525.htm"><br>
+其次，我要感谢专业课的所有老师们，是他们在我的专业课的学习过程中无私的教授给我许多专业知识和技能，使我能够在论文写作的过程中顺利解决难题和疑问。同时还要感谢所有给予我关心和帮助的同学和朋友们，她们在生活和学习中给了我大量的帮助，对她们的关怀和帮助致以崇高的敬意。在今后的人生道路上，我一定谨遵恩师的教诲，发挥自己的潜能。</font><font color="red"  href="../sentence_detail/A_445.htm"><br>
+最后，对阅读和评审本论文的各位老师表示衷心的感谢!</font></span></html>
