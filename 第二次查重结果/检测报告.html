@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="css/public.css"/>
+<link type="text/css" rel="stylesheet" href="css/reportStyle.css"/>
+<script type="text/javascript" src="JS/jquery-1.8.1.min.js"></script>
+<title>报告</title>
+<script>
+$(function(){
+	
+	$(".check-report").hover(function(){
+		$(".erweima").toggle();
+		});
+	
+		$("iframe").height($(window).height()-64);
+		$(window).resize(function(){
+			$(".content").css("height",$(window).height()-64+"px");
+			});
+
+	
+		$(".sidebarLi").click(function(){
+		$(".sidebarLi").removeClass("currentLi");
+		$(this).addClass("currentLi");
+		i=$(this).index();
+		if(i==0){
+			$("iframe").attr("src","html/r_jianjie.html")
+			}else if(i==1){
+				$("iframe").attr("src","html/r_xiangxi.html")
+			}else if(i==2){
+				$("iframe").attr("src","html/r_bidui.html")
+			}else if(i==3){
+				$("iframe").attr("src","PDF报告.pdf")
+			}else
+			{
+				$("iframe").attr("src","html/miji.html")
+			}
+			
+		});
+
+		
+
+});
+</script>
+<style>
+html{ overflow-y:hidden;}
+</style>
+</head>
+<body>
+<!--顶部-->
+<div class="topBox">
+	<div class="top clearfix">
+    	<div class="logo"><a href="http://www.guolem.com/" target="_blank"><img src="images/logo.png"/></a></div>
+    	<!--左边导航-->
+    	<ul class="sidebar-nav">
+        	<li class="sidebarLi currentLi"><a class="report-jianjie"><span class="none_f">简洁报告</span></a></li>
+		<li class="sidebarLi"><a class="report-xiangxi"><span class="none_f">比对报告</span></a></li>
+            	<li class="sidebarLi"><a class="report-duibi"><span class="none_f">详细报告</span></a></li>
+            
+            	<li class="sidebarLi"><a class="report-pdf"><span class="none_f">PDF报告</span></a></li> 
+           <!-- <li class="sidebarLi"><a class="report-yinyong"><span class="none_f">引用整理</span></a></li>-->
+            <li class="sidebarLi"><a class="report-guanjianchi"><span class="none_f">修改指导</span></a></li> 
+        </ul>
+    </div>
+</div>
+
+<!--内容-->
+<div class="content">
+	<!--侧边栏-->
+    <!--右内容-->
+    <!--常用-->
+    <iframe id="ifm" src="html/r_jianjie.html" style="width:100%;box-sizing:border-box;border:0;overflow-x:hidden;border:0 none">
+    
+    </iframe>
+</div>
+
+
+</body>
+</html>

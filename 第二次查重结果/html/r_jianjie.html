@@ -1,0 +1,1992 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../css/public.css"/>
+<link type="text/css" rel="stylesheet" href="../css/reportStyle.css"/>
+<script type="text/javascript" src="../JS/jquery-1.8.1.min.js"></script>
+<title>简洁报告</title>
+<style>
+/*详细报告*/
+/*简介报告*/
+.rj-jieguo-title{ color:#0193ef; font:bold 20px "微软雅黑"; border-bottom:solid 1px #f4f4f4; padding-bottom:6px; margin-bottom:10px;}
+.rj-jieguo-title span{ font-size:14px; }
+/*简洁报告 检测结果*/
+.rj-jieguo-table{ min-width:930px;}
+.rj-jieguo-table .xuhao{color:#000; font-weight:bold; text-align:center;}
+.rj-jieguo-table th{text-align:center; background-color:#f0f3f5; padding: 0 1em; color:#000;font-family:"微软雅黑"; line-height:32px;}
+.rj-jieguo-table td{ color:#535353;line-height:22px; padding:1em 1em; font-family:"微软雅黑";}
+.rj-jieguo-table .color-red{color:#ee2650; font-weight:bold;}
+.rj-jieguo-table .bg-blue{background-color:#f0f3f5}
+/*嵌套table*/
+.rj-jieguo-table-son { width:100%;}
+.rj-jieguo-table-son td{ color:#535353; font-family:"微软雅黑"; line-height:22px; padding: 1em 1em; border-right:solid 1px #f0f3f5;}
+.rj-jieguo-table-son .jiance_jieguo{ float:left;}
+.rj-jieguo-table-son .jiance_jieguo .circle{ width:8px; height:8px;border-radius:50%; display:inline-block; margin-right:10px; }
+.rj-jieguo-table-son td img{ float:left;margin-left: 42%;}
+.rj-jieguo-table-son  .jiance_fanwei{ float:left; height:142px;}
+.rj-jieguo-table-son  .jiance_fanwei dt{}
+.rj-jieguo-table-son  .jiance_fanwei dd{ float:left; margin-right:20px;}
+
+/*指标说明*/
+.zhibiao-shuoming{ margin-top:20px; color:#a2a3a4; line-height:22px;}
+
+.huizong{ color:#000; font-family:"微软雅黑"; font-size:12px; font-weight:normal; margin-bottom:10px;}
+
+/*引用文献汇总*/
+.rj-jieguo-table-2 th{}
+.rj-jieguo-table-2 td{text-align:left;}
+
+/*相似文献汇总*/
+.rj-jieguo-table-3 th{}
+.rj-jieguo-table-3 td{text-align:center;}
+.rj-jieguo-table-3 .two-lines{text-align:left; }
+.rj-jieguo-table-3 .two-lines span{ display:block;}
+.rj-jieguo-table-3 .two-lines .color-535353{ color:#535353;}
+.rj-jieguo-table-3 .two-lines .color-a2a3a4{ color:#a2a3a4;}
+
+
+/*申明*/
+.shengming{ background-color:#fafafa; padding:10px; margin-top:30px; color:#a2a3a4; line-height:24px;}
+.shengming a{ color:#0080ff;}
+.shengming a:hover{ text-decoration:underline;}
+
+
+</style>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+	<script src="../js/highcharts.js"></script>
+	
+	
+    <script type="text/javascript">
+$(function () {
+    $('#container').highcharts({
+   		exporting:{
+   			enabled:false
+   			},
+        chart: {
+height:220,
+            plotBackgroundColor: null,
+            plotBorderWidth: null,
+            plotShadow: false
+            
+        },
+        colors:['#32cd32','#FF0000','#FFFF66'],
+        title: {
+            text: ''
+        },
+        tooltip: {
+    	    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+        
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    color: '#000000',
+                    connectorColor: '#000000',
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                },
+                showInLegend: true
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: '百分比',
+            
+            data: [
+                ['自写率',66.51],
+                ['复写率',33.20],
+                ['引用率',0.29]
+            ]
+        }]
+    });
+});
+    
+
+		</script>
+</head>
+<body>
+<div class="outSide_box">
+		<div class="lunwen_biaoti">
+		<h1><i class="icon icon_arrow1"></i>基于Servlet Jsp的网上商城设计与实现<i  class="icon icon_arrow2"></i></h1>
+		<p>作者：刘阳</p>
+		<p>报告编号：1c21714211766720</p>
+		<p>检测时间：2018-04-29 21:35:09</p>
+	</div>
+	<h1 class="rj-jieguo-title">简洁报告/<span>检测结果</span></h1>
+    <table class="rj-jieguo-table" border="1" bordercolor="#f0f3f5"  width="85%" style="position:relative;">
+    	<tr><td></td></tr>
+    	<tr class="bg-blue"><td >总相似比：<i class="color-red">33.49%</i><span style="margin-left:40px;">总字数：<i class="color-red">17,057</i></span></td></tr>
+        <tr><td style="padding:0">
+        	<!--嵌套-->
+        	<table  class="rj-jieguo-table-son"><tr>
+              <td style="width:136px;">自  写 率：66.51%</td><td style="width:136px; text-align:center;"> 复写率：33.20%</td><td style=" border:none;">引用率：0.29%</td>
+            </tr></table>
+        </td></tr>
+        <tr><td style="padding:0">
+        	<!--嵌套-->
+       		<table  class="rj-jieguo-table-son"><tr>
+              <td style="width:230px;">去除本人已发表文献复写率：33.49%</td><td style=" width:230px;text-align:center;">去除引用文献复制比：33.20%</td><td style=" border:none;">单篇最大文字复制比：1.83%</td>
+            </tr></table>
+        </td></tr>
+        <tr class="bg-blue"><td >相似片断：<i class="color-red">119</i></td></tr>
+         <tr><td style="padding:0">
+         <!--嵌套-->
+         	<table  class="rj-jieguo-table-son" width="100%">
+            	<tr style="border-bottom:solid 1px #f0f3f5;">
+            		<td style="text-align:center;">本地库：111  </td>
+            		<td style="text-align:center;">互联网片断：8</td>
+            		<td style="border:none;">自建库片断：0</td>
+            		<td style="border:none;">外文库：0</td>
+            	</tr>
+                <tr>
+                    <td  colspan="5" style="width:50%; overflow:hidden;">
+                        <div id="container" ></div>
+                    </td>
+                    <td style="width:50%; overflow:hidden; border:none;">
+                        <dl class="jiance_fanwei">
+                            <dt>检测范围：</dt>
+                            <dd>中国期刊论文网络数据库</dd>
+                            <dd>中文科技期刊数据库</dd>
+                            <dd>中文重要学术期刊库</dd>
+                            <dd>中国重要社科期刊库</dd>
+                            <dd>中国重要文科期刊库</dd>
+                            <dd>中国中文报刊报纸数据库</dd>
+                            <dd>中国学位论文数据库</dd>
+                            <dd>中国优秀硕博论文数据库</dd>
+                            <dd>高校特色论文库</dd>
+                            <dd>互联网数据资源</dd>
+                        </dl>	
+                    </td>
+                </tr>
+            </table>
+         </td></tr>
+    </table>
+    <dl class="zhibiao-shuoming">
+    	<dt>指标说明：</dt>
+    	<dd>1. 总字数：送检论文的总字符数，包括中文、阿拉伯数字、外文字符、标点符号等，制表符和图表不计入统计</dd>
+        <dd>2. 总相似比：送检论文与比对文献相似的部分（包括参考引用）占整个送检论文的比重，总相似比=复写率+引用率</dd>
+        <dd>3. 自写率：送检论文中剔除雷同片段和引用片段后占整个送检论文的比重</dd>
+        <dd>4. 复写率：送检论文中与检测范围所有文献相似的部分（不包括参考引用部分）占整个送检论文的比重</dd>
+        <dd>5. 引用率：送检论文中被系统识别为引用的部分占整个送检论文的比重（引用部分指正确标注的参考引用文献）</dd>
+    </dl>
+    <!--结果汇总-->
+    <h1 class="rj-jieguo-title" style="margin-top:30px;"><span>结果汇总</span></h1>
+    <h2 class="huizong">引用文献汇总：</h2>
+    <table  class="rj-jieguo-table rj-jieguo-table-2" border="1" bordercolor="#f0f3f5"  width="85%" >
+    	<tr><th>序号</th><th>引用片段</th></tr>
+			        <tr>
+			        	<td class="xuhao">1</td>
+			        	<td>这个框架足够强大，除了EJB的复杂性，使得EJB应用程序同时享受与传统的键相关联的服务</td>
+			        </tr>
+    </table>
+    <h2 class="huizong" style="margin-top:10px;">相似文献汇总：</h2>
+    <table  class="rj-jieguo-table rj-jieguo-table-3" border="1" bordercolor="#f0f3f5"  width="85%" >
+    	<tr><th>序号</th><th>相似文献</th><th>片段数</th><th>所占%</th><th>来源</th></tr>
+           <tr>
+           	<td class="xuhao">1</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于B/S模式网购系统的设计与实现</span>
+        		<span  class="color-a2a3a4">郭庆林- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>5</td>
+        	<td>1.83%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">2</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于B/S模式的校内电子商务实训系统</span>
+        		<span  class="color-a2a3a4">姚伟;刘舟荷;陈立;温且兵;肖文艳;- 《企业家天地(理论版)》 - 2010</i></span>
+        	</td>
+        	<td>2</td>
+        	<td>1.14%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">3</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于uml的食堂管理系统的分析与设计</span>
+        		<span  class="color-a2a3a4">叶华永- 《》 - </i></span>
+        	</td>
+        	<td>2</td>
+        	<td>0.91%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">4</td>
+        	<td class="two-lines">
+        		<span class="color-535353">北京地区重点学科信息平台的设计与实现</span>
+        		<span  class="color-a2a3a4">于涵- 《》 - </i></span>
+        	</td>
+        	<td>5</td>
+        	<td>0.85%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">5</td>
+        	<td class="two-lines">
+        		<span class="color-535353">商品促销网站的设计与实现</span>
+        		<span  class="color-a2a3a4">吴兰英- 《中国优秀硕士学位论文全文数据库》 - 2011</i></span>
+        	</td>
+        	<td>2</td>
+        	<td>0.67%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">6</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SSH的网上购物系统的设计与实现</span>
+        		<span  class="color-a2a3a4">秦川;吴旻倩;- 《信息通信》 - 2013</i></span>
+        	</td>
+        	<td>2</td>
+        	<td>0.62%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">7</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于GSM及GPS的物流运输管理系统的设计和实现</span>
+        		<span  class="color-a2a3a4">王莉- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.58%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">8</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SSH的高校OA系统的设计与实现</span>
+        		<span  class="color-a2a3a4">刘激韵- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>2</td>
+        	<td>0.54%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">9</td>
+        	<td class="two-lines">
+        		<span class="color-535353">2014年中国电子商务用户体验与投诉监测报告</span>
+        		<span  class="color-a2a3a4">莫岱青;- 《计算机与网络》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.53%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">10</td>
+        	<td class="two-lines">
+        		<span class="color-535353">疫苗接种管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">陈宇斌- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.52%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">11</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于j2ee的虚拟仪器实验室系统的研究与实现</span>
+        		<span  class="color-a2a3a4">姚晓丽- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.52%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">12</td>
+        	<td class="two-lines">
+        		<span class="color-535353">资产管理预防性维护子系统的设计与实现</span>
+        		<span  class="color-a2a3a4">夏炳俐- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.5%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">13</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SPC的质量管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">岳洋- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.48%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">14</td>
+        	<td class="two-lines">
+        		<span class="color-535353">城市公交查询与反馈系统的设计与实现</span>
+        		<span  class="color-a2a3a4">李添源- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.48%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">15</td>
+        	<td class="two-lines">
+        		<span class="color-535353">我国IT服务业市场结构分析</span>
+        		<span  class="color-a2a3a4">叶森森- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.46%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">16</td>
+        	<td class="two-lines">
+        		<span class="color-535353">计算机资源优化分析与实现</span>
+        		<span  class="color-a2a3a4">张彦东- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.46%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">17</td>
+        	<td class="two-lines">
+        		<span class="color-535353">港口岸线资源管理系统设计与实现</span>
+        		<span  class="color-a2a3a4">李学先- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.45%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">18</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SSH框架的员工管理系统</span>
+        		<span  class="color-a2a3a4">王健合- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.44%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">19</td>
+        	<td class="two-lines">
+        		<span class="color-535353">2016毕业(设计)论文排版格式模板-五星文库</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.41%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">20</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于Visual Basic 6.0及Access 2003数据库技术开发资料室图书管理系统</span>
+        		<span  class="color-a2a3a4">宋晓英;李丹;- 《电子世界》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.41%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">21</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于架构式的高职院校人事管理系统研究和实现</span>
+        		<span  class="color-a2a3a4">戴汉良- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.39%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">22</td>
+        	<td class="two-lines">
+        		<span class="color-535353">湖南省人口计生信息通报管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">郭星- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.37%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">23</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于VB的工业闭式齿轮润滑油选择系统</span>
+        		<span  class="color-a2a3a4">袁丽娟;吴晓铃;徐万里;- 《机械传动》 - 2006</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.37%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">24</td>
+        	<td class="two-lines">
+        		<span class="color-535353">六安精工公司文件管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">杜云林- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.36%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">25</td>
+        	<td class="two-lines">
+        		<span class="color-535353">软件架构技术在工业控制设备hmi软件中的应用</span>
+        		<span  class="color-a2a3a4">李飞- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.36%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">26</td>
+        	<td class="two-lines">
+        		<span class="color-535353">B2C电子商务网站规划与设计在教学中的实践研究</span>
+        		<span  class="color-a2a3a4">任雪莲- 《中国优秀硕士学位论文全文数据库》 - 2011</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.36%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">27</td>
+        	<td class="two-lines">
+        		<span class="color-535353">一个网站信息发布系统的设计与实现</span>
+        		<span  class="color-a2a3a4">朱清;张芳;- 《科学咨询(科技·管理)》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">28</td>
+        	<td class="two-lines">
+        		<span class="color-535353">成都立昌达商务公司网上销售系统设计与实现</span>
+        		<span  class="color-a2a3a4">刘应武- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">29</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于电信CRM的数据维护管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">石磊- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">30</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SPRING+HIBERNATE框架的进销存管理软件的开发与设计</span>
+        		<span  class="color-a2a3a4">李进非- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">31</td>
+        	<td class="two-lines">
+        		<span class="color-535353">仓库管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">金煜琦- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">32</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于Web Service 3G手机的设计与实现——G3乐游系统</span>
+        		<span  class="color-a2a3a4">张令春;郑文艳;- 《电脑知识与技术》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.35%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">33</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于STRUTS框架的电信详单查询系统的设计与实现</span>
+        		<span  class="color-a2a3a4">姜禹- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.34%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">34</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SSH框架的社区管理信息系统设计</span>
+        		<span  class="color-a2a3a4">杨钟鸣;- 《东华理工大学学报(自然科学版)》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.34%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">35</td>
+        	<td class="two-lines">
+        		<span class="color-535353">“互联网＋”：中国发展的风口</span>
+        		<span  class="color-a2a3a4">陈永健- 《中学政治教学参考：中旬》 - 2015</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.33%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">36</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于gis技术的供应链管理模式研究</span>
+        		<span  class="color-a2a3a4">刘琦- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.33%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">37</td>
+        	<td class="two-lines">
+        		<span class="color-535353">城市管理监督电子政务系统的设计与实现</span>
+        		<span  class="color-a2a3a4">陶天明- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.33%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">38</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于C#和SQL的企业人事管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">杨剑光- 《中国优秀硕士学位论文全文数据库》 - 2015</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.33%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">39</td>
+        	<td class="two-lines">
+        		<span class="color-535353">浅谈如何利用科学的发展观提高后勤管理工作</span>
+        		<span  class="color-a2a3a4">刘广栓;- 《科技促进发展》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.32%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">40</td>
+        	<td class="two-lines">
+        		<span class="color-535353">简单介绍Struts2-玉水明沙-博客园</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.32%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">41</td>
+        	<td class="two-lines">
+        		<span class="color-535353">龙城在线购物系统的设计</span>
+        		<span  class="color-a2a3a4">林炯龙- 《中国电子商务》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.32%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">42</td>
+        	<td class="two-lines">
+        		<span class="color-535353">Web应用程序安全评估与客户端读写安全控制技术研究</span>
+        		<span  class="color-a2a3a4">张仁斌- 《中国优秀博硕士学位论文全文数据库 (硕士)》 - 2004</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.32%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">43</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于j2ee交互式学习系统的研究与设计</span>
+        		<span  class="color-a2a3a4">程玉昆- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.3%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">44</td>
+        	<td class="two-lines">
+        		<span class="color-535353">网络协议安全审计系统设计及其Web应用的实现</span>
+        		<span  class="color-a2a3a4">韦成府- 《中国优秀硕士学位论文全文数据库》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.29%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">45</td>
+        	<td class="two-lines">
+        		<span class="color-535353">电厂监督管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">国鹏- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.29%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">46</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于ASP的物业小区在线电影点播系统设计与实现</span>
+        		<span  class="color-a2a3a4">盛志昆- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.29%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">47</td>
+        	<td class="two-lines">
+        		<span class="color-535353">信息消费:3.2万亿元蛋糕怎么切</span>
+        		<span  class="color-a2a3a4">- 《领导决策信息》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.28%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">48</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于ASP技术的网上购物系统的设计与实现</span>
+        		<span  class="color-a2a3a4">唐辉;- 《新西部(下半月)》 - 2007</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.28%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">49</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于gml的便携式gps导航系统的设计与实现</span>
+        		<span  class="color-a2a3a4">王伟- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.28%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">50</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于web的网上花店系统的设计与实现</span>
+        		<span  class="color-a2a3a4">郝建妹- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">51</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于物联网的系统融合机制的研究与设计</span>
+        		<span  class="color-a2a3a4">朱继平- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">52</td>
+        	<td class="two-lines">
+        		<span class="color-535353">中国软件外包国际门户网站的建设</span>
+        		<span  class="color-a2a3a4">张悦- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">53</td>
+        	<td class="two-lines">
+        		<span class="color-535353">agilewapa：一种敏捷web应用架构研究与实现</span>
+        		<span  class="color-a2a3a4">张婧妍- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">54</td>
+        	<td class="two-lines">
+        		<span class="color-535353">泉州现代中学实验室信息管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">崔毅- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">55</td>
+        	<td class="two-lines">
+        		<span class="color-535353">山东省建设银行网上银行系统设计与实现</span>
+        		<span  class="color-a2a3a4">王庆利- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>2</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">56</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于orm的数据持久层研究与设计</span>
+        		<span  class="color-a2a3a4">张洪亮- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.27%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">57</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于MVC框架移动实习就业跟踪系统设计与实现</span>
+        		<span  class="color-a2a3a4">张秀杰 金忠伟- 《电脑编程技巧与维护》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.26%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">58</td>
+        	<td class="two-lines">
+        		<span class="color-535353">Web开发框架SSH简介-CSDN博客</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.26%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">59</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于虚拟仪器的某型飞机襟翼作动器性能测试系统</span>
+        		<span  class="color-a2a3a4">赵明- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.26%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">60</td>
+        	<td class="two-lines">
+        		<span class="color-535353">在线购物系统的设计与实现</span>
+        		<span  class="color-a2a3a4">曹伟- 《中国科技纵横》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.26%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">61</td>
+        	<td class="two-lines">
+        		<span class="color-535353">送变电建设公司送变电全面预算编制管理信息系统设计与实现</span>
+        		<span  class="color-a2a3a4">朱德彬- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.26%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">62</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于TSI框架的CRM系统的研究与实现</span>
+        		<span  class="color-a2a3a4">严丹- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.25%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">63</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于安卓手机位置服务的签出系统</span>
+        		<span  class="color-a2a3a4">郭余杰;- 《电子制作》 - 2015</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.25%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">64</td>
+        	<td class="two-lines">
+        		<span class="color-535353">农家乐网络订餐系统的设计与实现</span>
+        		<span  class="color-a2a3a4">陈雪凡- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.25%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">65</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于WEB的实验室管理信息系统设计与实现</span>
+        		<span  class="color-a2a3a4">秦勤- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.25%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">66</td>
+        	<td class="two-lines">
+        		<span class="color-535353">对当前我国社会主要矛盾的新认识和新表述</span>
+        		<span  class="color-a2a3a4">张荣华- 《石油大学学报(社会科学版)》 - 2005</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">67</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于spring、hibernate和jsf的企业应用集成研究</span>
+        		<span  class="color-a2a3a4">王松涛- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">68</td>
+        	<td class="two-lines">
+        		<span class="color-535353">Hibernate:入门及与JDBC优劣比较-CSDN博客</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">69</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于模糊理论的城市供水系统运行管理研究</span>
+        		<span  class="color-a2a3a4">刘洪波- 《中国优秀博硕士学位论文全文数据库 (博士)》 - 2006</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			
+           			中国博士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">70</td>
+        	<td class="two-lines">
+        		<span class="color-535353">广播电视中心系统应用软件及其测试方法</span>
+        		<span  class="color-a2a3a4">肖辉;- 《广播与电视技术》 - 2007</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">71</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于物联网技术的移动办公系统的设计与实现</span>
+        		<span  class="color-a2a3a4">李哲- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.23%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">72</td>
+        	<td class="two-lines">
+        		<span class="color-535353">契税征管系统中报表与价格统计功能的设计与应用</span>
+        		<span  class="color-a2a3a4">吕春江- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.22%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">73</td>
+        	<td class="two-lines">
+        		<span class="color-535353">我国电子商务物流市场供给与需求分析</span>
+        		<span  class="color-a2a3a4">陶峥 张兰- 《物流工程与管理》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">74</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于C#.NET三层架构的韩师数码企业进销存管理系统</span>
+        		<span  class="color-a2a3a4">廖列营- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">75</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于MVC模式的仓储管理信息系统的研究与实现</span>
+        		<span  class="color-a2a3a4">王磊- 《中国优秀硕士学位论文全文数据库》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">76</td>
+        	<td class="two-lines">
+        		<span class="color-535353">毕业论文选题网的设计与实现毕业论文-豆丁网</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">77</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于Web的高校陶瓷名人艺术档案管理系统研究</span>
+        		<span  class="color-a2a3a4">谭小萍;吴本荣;邹金成;熊果果;- 《电脑与电信》 - 2015</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">78</td>
+        	<td class="two-lines">
+        		<span class="color-535353">Struts2的运行流程及其工作原理-CSDN博客</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.21%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">79</td>
+        	<td class="two-lines">
+        		<span class="color-535353">机动车驾驶员培训管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">李艳丽- 《中国优秀硕士学位论文全文数据库》 - 2007</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">80</td>
+        	<td class="two-lines">
+        		<span class="color-535353">煤矿班组全程化管理系统的井下功能设计与实现</span>
+        		<span  class="color-a2a3a4">李金美- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">81</td>
+        	<td class="two-lines">
+        		<span class="color-535353">网上购物系统的设计与实现</span>
+        		<span  class="color-a2a3a4">吕军- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">82</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于BS的自动排系统毕业设计论文.doc</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">83</td>
+        	<td class="two-lines">
+        		<span class="color-535353">企业人事管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">张佳楠- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">84</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于Web Services技术的e-HR系统的设计与实现</span>
+        		<span  class="color-a2a3a4">邓酩- 《中国优秀博硕士学位论文全文数据库 (硕士)》 - 2006</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">85</td>
+        	<td class="two-lines">
+        		<span class="color-535353">企业信贷担保系统的分析与设计</span>
+        		<span  class="color-a2a3a4">许可- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.19%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">86</td>
+        	<td class="two-lines">
+        		<span class="color-535353">J2EE环境下通用数据操作框架的研究</span>
+        		<span  class="color-a2a3a4">杨媛媛- 《中国优秀博硕士学位论文全文数据库 (硕士)》 - 2006</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.17%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">87</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于GIS的公交网络信息管理系统设计</span>
+        		<span  class="color-a2a3a4">尤莉娟;- 《辽宁经济管理干部学院(辽宁经济职业技术学院学报)》 - 2010</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.17%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">88</td>
+        	<td class="two-lines">
+        		<span class="color-535353">太供宾馆客房管理系统的设计与实现</span>
+        		<span  class="color-a2a3a4">药炜- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.17%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">89</td>
+        	<td class="two-lines">
+        		<span class="color-535353">康复医疗信息系统的设计和实现</span>
+        		<span  class="color-a2a3a4">黄蓓丽- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.17%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">90</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于J2EE的企业级项目管理系统的分析与设计_百度学术</span>
+        		<span  class="color-a2a3a4"></i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.16%</td>
+        	<td>
+           			
+           			
+           			互联网
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">91</td>
+        	<td class="two-lines">
+        		<span class="color-535353">加强党的执政能力建设研究</span>
+        		<span  class="color-a2a3a4">李磊- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.15%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">92</td>
+        	<td class="two-lines">
+        		<span class="color-535353">ASP.NET MVC模型绑定应用研究</span>
+        		<span  class="color-a2a3a4">王念桥- 《软件》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.15%</td>
+        	<td>
+           			中国学术期刊网络出版总库
+           			
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">93</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于uml的企业竞争情报系统的构建研究</span>
+        		<span  class="color-a2a3a4">张文咏- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.15%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">94</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于SSH和MVC模式的客服信息查询系统设计与实现</span>
+        		<span  class="color-a2a3a4">何益中- 《中国优秀硕士学位论文全文数据库》 - 2013</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.15%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">95</td>
+        	<td class="two-lines">
+        		<span class="color-535353">小区物业管理系统</span>
+        		<span  class="color-a2a3a4">王哲- 《中国优秀硕士学位论文全文数据库》 - 2012</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.13%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">96</td>
+        	<td class="two-lines">
+        		<span class="color-535353">抚顺市契税征管系统的设计与实现</span>
+        		<span  class="color-a2a3a4">于辉- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.13%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">97</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于ssh的智能家居控制系统的设计与实现</span>
+        		<span  class="color-a2a3a4">耿俊成- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.13%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">98</td>
+        	<td class="two-lines">
+        		<span class="color-535353">秦皇岛市农业科技信息平台的设计与实现</span>
+        		<span  class="color-a2a3a4">肖娟- 《》 - </i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.13%</td>
+        	<td>
+           			
+           			中国优秀博士硕士学术论文库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">99</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于ADAMS的门式启闭机动力学仿真分析</span>
+        		<span  class="color-a2a3a4">郭巍巍- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">100</td>
+        	<td class="two-lines">
+        		<span class="color-535353">典型零售企业电子商务解决方案及其实现技术</span>
+        		<span  class="color-a2a3a4">黄丹- 《中国优秀博硕士学位论文全文数据库 (硕士)》 - 2004</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">101</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于Ajar平台的手机软件架构研究与应用</span>
+        		<span  class="color-a2a3a4">刘乾发- 《中国优秀硕士学位论文全文数据库》 - 2007</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">102</td>
+        	<td class="two-lines">
+        		<span class="color-535353">盐城电信备件管理网站的设计和开发</span>
+        		<span  class="color-a2a3a4">蒋柏明- 《中国优秀硕士学位论文全文数据库》 - 2008</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">103</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于智能组卷的在线考试系统的设计与实现</span>
+        		<span  class="color-a2a3a4">吴静霞- 《中国优秀硕士学位论文全文数据库》 - 2009</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">104</td>
+        	<td class="two-lines">
+        		<span class="color-535353">基于空间信息服务的城市应急联动系统设计与实现</span>
+        		<span  class="color-a2a3a4">张万娇- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.11%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+           <tr>
+           	<td class="xuhao">105</td>
+        	<td class="two-lines">
+        		<span class="color-535353">北票市热力费用收缴系统的设计与实现</span>
+        		<span  class="color-a2a3a4">桑枭- 《中国优秀硕士学位论文全文数据库》 - 2014</i></span>
+        	</td>
+        	<td>1</td>
+        	<td>0.09%</td>
+        	<td>
+           			
+           			中国优秀硕士学位论文全文数据库
+           			
+           			
+           			
+           			
+           	</td>
+           </tr>
+    </table>
+      <dl class="zhibiao-shuoming">
+    	<dt>指标说明：</dt>
+    	<dd>1. 总字数：送检论文的总字符数，包括中文、阿拉伯数字、外文字符、标点符号等，制表符和图表不计入统计</dd>
+        <dd>2. 总相似比：送检论文与比对文献相似的部分（包括参考引用）占整个送检论文的比重，总相似比=复写率+引用率</dd>
+        <dd>3. 自写率：送检论文中剔除雷同片段和引用片段后占整个送检论文的比重</dd>
+        <dd>4. 复写率：送检论文中与检测范围所有文献相似的部分（不包括参考引用部分）占整个送检论文的比重</dd>
+        <dd>5. 引用率：送检论文中被系统识别为引用的部分占整个送检论文的比重（引用部分指正确标注的参考引用文献）</dd>
+    </dl>
+
+
+        <!--申明-->    
+    	<dl class="shengming">
+        	<dt>声明：报告编号系送检论文检测报告在本系统中的唯一编号。本报告为维知网论文检测系统算法自动生成，仅对您所选择比对资源范围内检验结果负责，仅供参考。</dt>
+            <dt> 客服邮箱：2689421372@qq.com</dt>
+            <dt>论文检测官方网址：<a href="http://www.guolem.com"  target="_blank">http://www.guolem.com</a></dt>
+        </dl>
+</div>
+</body>
+</html>

@@ -1,0 +1,922 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../css/public.css"/>
+<link type="text/css" rel="stylesheet" href="../css/reportStyle.css"/>
+<script type="text/javascript" src="../JS/jquery-1.8.1.min.js"></script>
+<title>详细报告</title>
+<style>
+/*详细报告*/
+/*简介报告*/
+.rj-jieguo-title{ color:#0193ef; font:bold 20px "微软雅黑"; border-bottom:solid 1px #f4f4f4; padding-bottom:6px; margin-bottom:10px;}
+.rj-jieguo-title span{ font-size:14px; }
+/*简洁报告 检测结果*/
+.rj-jieguo-table{ min-width:930px;}
+.rj-jieguo-table .xuhao{color:#000; font-weight:bold; text-align:center;}
+.rj-jieguo-table th{text-align:center; background-color:#f0f3f5; padding: 0 1em; color:#000;font-family:"微软雅黑"; line-height:32px;width:464px;}
+.rj-jieguo-table td{ color:#535353;line-height:22px; padding:1em 1em; font-family:"微软雅黑";}
+.rj-jieguo-table .color-red{color:#ee2650; font-weight:bold;}
+.rj-jieguo-table .bg-blue{background-color:#f0f3f5}
+/*嵌套table*/
+.rj-jieguo-table-son { width:100%;}
+.rj-jieguo-table-son td{ color:#535353; font-family:"微软雅黑"; line-height:22px; padding: 1em 1em; border-right:solid 1px #f0f3f5;}
+.rj-jieguo-table-son .jiance_jieguo{ float:left;}
+.rj-jieguo-table-son .jiance_jieguo .circle{ width:8px; height:8px;border-radius:50%; display:inline-block; margin-right:10px; }
+.rj-jieguo-table-son td img{ float:left;margin-left: 42%;}
+.rj-jieguo-table-son  .jiance_fanwei{ float:left; height:142px;}
+.rj-jieguo-table-son  .jiance_fanwei dt{}
+.rj-jieguo-table-son  .jiance_fanwei dd{ float:left; margin-right:20px;}
+
+/*指标说明*/
+.zhibiao-shuoming{ margin-top:20px; color:#a2a3a4; line-height:22px;}
+
+.huizong{ color:#000; font-family:"微软雅黑"; font-size:12px; font-weight:normal; margin-bottom:10px;}
+
+/*引用文献汇总*/
+.rj-jieguo-table-2 th{}
+.rj-jieguo-table-2 td{text-align:left;}
+
+/*相似文献汇总*/
+.rj-jieguo-table-3 th{}
+.rj-jieguo-table-3 td{text-align:center;}
+.rj-jieguo-table-3 .two-lines{text-align:left; }
+.rj-jieguo-table-3 .two-lines span{ display:block;}
+.rj-jieguo-table-3 .two-lines .color-535353{ color:#535353;}
+.rj-jieguo-table-3 .two-lines .color-a2a3a4{ color:#a2a3a4;}
+/*简洁报告增加内容*/
+/*相似片段详情表*/
+.rj-jieguo-table-4{ }
+.rj-jieguo-table-4 th{}
+.rj-jieguo-table-4 td{text-align:left;}
+.rj-jieguo-table-4 .have-color-ff2424{ display:block; font-weight:normal; color:#ff2424; line-height:20px;}
+.rj-jieguo-table-4 .color-ff2424{color:#ff2424;}
+
+/*申明*/
+.shengming{ background-color:#fafafa; padding:10px; margin-top:30px; color:#a2a3a4; line-height:24px;}
+.shengming a{ color:#0080ff;}
+.shengming a:hover{ text-decoration:underline;}
+</style>
+<script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>	
+<script type="text/javascript">
+</script>
+</head>
+<body>
+<div class="outSide_box">
+<div class="lunwen_biaoti" style="float:left;width:35%;padding:30px 0">
+		<h1><i class="icon icon_arrow1"></i>基于Servlet Jsp的网上商城设计与实现<i class="icon icon_arrow2"></i></h1>
+		<p>作者：刘阳</p>
+		<p>报告编号：1c21714211766720</p>
+		<p>检测时间：2018-04-29 21:35:09</p>
+	</div>
+	
+    <table class="rj-jieguo-table" border="1" bordercolor="#f0f3f5"  width="85%" style="position:relative;float:left;width:35%;margin-left:1%"  >
+    	<tr><td></td></tr>
+    	<tr class="bg-blue"><td >总相似比：<i class="color-red">33.49%</i><span style="margin-left:40px;">总字数：<i class="color-red">17,057</i></span></td></tr>
+        <tr><td style="padding:0">
+        	<!--嵌套-->
+        	<table  class="rj-jieguo-table-son"><tr>
+              <td style="width:136px;">自  写 率：66.51%</td><td style="width:136px; text-align:center;"> 复写率：33.20%</td><td style=" border:none;">引用率：0.29%</td>
+            </tr></table>
+        </td></tr>
+        <tr><td style="padding:0">
+        	<!--嵌套-->
+       		<table  class="rj-jieguo-table-son"><tr>
+              <td style="width:230px;">去除本人已发表文献复写率：33.49%</td><td style=" width:230px;text-align:center;">去除引用文献复制比：33.20%</td><td style=" border:none;">单篇最大文字复制比：1.83%</td>
+            </tr></table>
+        </td></tr>
+    </table>
+<!--相似片段详情-->   
+  		<h1 class="rj-jieguo-title" style="margin-top:30px;clear:both"><span>相似片段详情</span></h1>
+        <table   class="rj-jieguo-table rj-jieguo-table-4" border="1" bordercolor="#f0f3f5"  width="85%" >
+        	<tr>
+            	<th>序号（相似度）</th><th>送检片段</th><th>相似内容</th><th>相似内容来源</th>
+            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">1<span class="have-color-ff2424">（61.76%）</span></td>
+	            	<td class="color-ff2424">旨在开发一个高性能、可扩展性强、可维护性强以及安全可靠稳定的网上购物系统</td>
+	            	<td>变得愈发重要。
+总之，<font color=red>一个</font>好的CRM<font color=red>系统需要</font><font color=red>可维护性高、可扩展性强以及</font>技术
+实现简单等等与此同时</td>
+	            	<td>《基于TSI框架的CRM系统的研究与实现》<br/> 严丹<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">2<span class="have-color-ff2424">（62.5%）</span></td>
+	            	<td class="color-ff2424">设计主要包括前台和后台两大模块，前台包括登录注册、首页信息页面展示、网站广告新闻、特价推荐、商品展示等模块</td>
+	            	<td>其它子<font color=red>模块站尾</font><font color=red>信息新闻模块公告栏</font><font color=red>登录</font>控制区手风琴纵向导航区站尾<font color=red>信息</font>工作区图2<font color=red>前台首页</font>布局图图3<font color=red>后台</font>布局图3系统<font color=red>设计</font>3.1功能<font color=red>模块设计本</font><font color=red>网站系统</font><font color=red>主要包括</font>以下</td>
+	            	<td>《一个网站信息发布系统的设计与实现》<br/> 朱清;张芳;<br/>- 《科学咨询(科技·管理)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">3<span class="have-color-ff2424">（78.95%）</span></td>
+	            	<td class="color-ff2424">后台包括ADMIN管理、注册用户管理、广告管理、新闻管理、商品管理、商品订单等功能模块</td>
+	            	<td>、搜索<font color=red>商品;</font><font color=red>新用户注册功能、用户</font>个人信息<font color=red>管理功能、</font>网店的最新公<font color=red>告、网店</font><font color=red>新闻</font>浏览等几个<font color=red>模块。</font><font color=red>后台管理包括以下</font><font color=red>功能:</font><font color=red>商品管理</font>:对具体<font color=red>商品</font></td>
+	            	<td>《基于SSH的网上购物系统的设计与实现》<br/> 秦川;吴旻倩;<br/>- 《信息通信》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">4<span class="have-color-ff2424">（66.1%）</span></td>
+	            	<td class="color-ff2424">可见现在大众早已不再满足于了解最新信息、查找资料等一些传统的网络使用方式，而是如习近平总书记所说的：新时代我国社会的主要矛盾</td>
+	            	<td>人们已经<font color=red>不再满足于了解最新信息、查找资料等一些传统的网络使用方式,</font><font color=red>而是</font>过渡到...博客的出现集中体<font color=red>现了互联</font><font color=red>网时代</font>媒体界所体<font color=red>现的</font>商业化垄断与非商业化自由,<font color=red>大众</font>化...</td>
+	            	<td>《2016毕业(设计)论文排版格式模板-五星文库》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">5<span class="have-color-ff2424">（66.67%）</span></td>
+	            	<td class="color-ff2424">已经转化为人民日益增长的美好生活需要和不平衡不充分的发展之间的矛盾</td>
+	            	<td>各方面45利益。<font color=red>人民日益增长的政治</font><font color=red>需要</font>同我国政治<font color=red>发展</font>尚不能满足<font color=red>人民需要之间的矛盾已经</font>成为社会主<font color=red>要矛盾</font></td>
+	            	<td>《对当前我国社会主要矛盾的新认识和新表述》<br/> 张荣华<br/>- 《石油大学学报(社会科学版)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">6<span class="have-color-ff2424">（70.45%）</span></td>
+	            	<td class="color-ff2424">人民的日益增长的美好生活需要要求我们不断进取，去满足人民大众的切实需求，从群众中来，到群众中区</td>
+	            	<td><font color=red>不断的满足人民群众日益增长的</font>物质和文化<font color=red>的需要切实保障</font><font color=red>人民</font>是最根本的利益。其中保护<font color=red>人民的生</font>命安全和健康这是最基本<font color=red>的要求</font>。在以人为本的安全工作中</td>
+	            	<td>《浅谈如何利用科学的发展观提高后勤管理工作》<br/> 刘广栓;<br/>- 《科技促进发展》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">7<span class="have-color-ff2424">（61.9%）</span></td>
+	            	<td class="color-ff2424">了解人民日益增长的生活需求，让人民过上好日子</td>
+	            	<td>，是为<font color=red>了让人民都</font><font color=red>过上好日子</font>。让
+<font color=red>人民都</font><font color=red>过上好日子，</font>是共产党执政的最大</td>
+	            	<td>《加强党的执政能力建设研究》<br/> 李磊<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">8<span class="have-color-ff2424">（60.87%）</span></td>
+	            	<td class="color-ff2424">这些销售活动，都会严重受到地域、时间、环境等方面的影响，从而给企业、公司等的销售管理行为带来极大的不便</td>
+	            	<td><font color=red>影响，从而给
+</font><font color=red>企业、公司等的销售管理带来极大的不便</font>。而且信息的人工<font color=red>管理，</font>也存在诸多缺
+点。而网上<font color=red>销售</font>系统，正好能全面解决这样的问题。产品生产-<font color=red>销售</font></td>
+	            	<td>《成都立昌达商务公司网上销售系统设计与实现》<br/> 刘应武<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">9<span class="have-color-ff2424">（72.41%）</span></td>
+	            	<td class="color-ff2424">相比传统的手工资料管理product、客户信息维护等方式，使用计算机并且是专用的体统管理，具有传统管理模式所无法比拟的优点</td>
+	            	<td>如果仍然采用原有人<font color=red>工模式</font>一方面必将增加<font color=red>管理</font>者的劳动强度另一方面也将给图书<font color=red>资料信息的</font>查找、更新和<font color=red>维护</font>带来很多困难。图书<font color=red>管理是计算机应</font><font color=red>用的</font>一个分支<font color=red>相比传统的手工管理模式具有其</font><font color=red>无法比拟的优点</font></td>
+	            	<td>《基于Visual Basic 6.0及Access 2003数据库技术开发资料室图书管理系统》<br/> 宋晓英;李丹;<br/>- 《电子世界》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">10<span class="have-color-ff2424">（60.53%）</span></td>
+	            	<td class="color-ff2424">电子商务市场在互联网飞速发展的今天无疑仍是一个潜力巨大的市场，发展前景毫无疑问</td>
+	            	<td>，其<font color=red>巨大的潜力</font>被众多商界人士所看好【l】。<font color=red>电子商务是一个发展潜力巨大的市场，极具有</font><font color=red>发展前景。</font><font color=red>电子商务</font>双向信息沟通、灵活的交易</td>
+	            	<td>《基于web的网上花店系统的设计与实现》<br/> 郝建妹<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">11<span class="have-color-ff2424">（68.18%）</span></td>
+	            	<td class="color-ff2424">互联网的飞速发展、各类智能设备的普及以及我国国力不断强盛，国民经济水平大大提升，为网上购物的发展提供了更加强大的动力以及更加良好的发展环境</td>
+	            	<td>．2技术进步<font color=red>提供</font>支撑技术<font color=red>的飞速进步</font><font color=red>为不断</font>增长的信息化需求<font color=red>提供了</font>可能性。信息技术的快<font color=red>速发展和</font><font color=red>互联网的迅</font><font color=red>速普及，</font>使信息流动和先进技术扩散<font color=red>更加开放</font><font color=red>、更加便捷</font><font color=red>、更加快</font><font color=red>速，在</font><font color=red>经济全球化</font><font color=red>的大环境下</font><font color=red>，我国</font>引进和获取先进</td>
+	            	<td>《我国IT服务业市场结构分析》<br/> 叶森森<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">12<span class="have-color-ff2424">（68.09%）</span></td>
+	            	<td class="color-ff2424">如今的网络购物环境在不断得到改善，网上支付也变得更加安全，这些变化使得物流、银行等的结算变得更加高效</td>
+	            	<td><font color=red>，网银、</font>各类第三方公正<font color=red>支付</font>平台等各类系统<font color=red>使得网上</font>交易变
+<font color=red>得更加安全，这些变化使得物流、银行等的结算变得</font>畅通误报，市场运作的规范
+及对应的政策法规</td>
+	            	<td>《基于B/S模式网购系统的设计与实现》<br/> 郭庆林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">13<span class="have-color-ff2424">（88.89%）</span></td>
+	            	<td class="color-ff2424">更加畅通无阻，市场运作的规范及对应的政策法规的完善也使得网民对网上购物的信任度逐年上升，从之前的拒绝到现在的接受</td>
+	            	<td><font color=red>，市场运作的规范
+</font><font color=red>及对应的政策法规的完善也使得网民对网上购物的信任度逐年上升，从之前的拒
+</font><font color=red>绝到现在的接受，从怀疑</font><font color=red>到现在的信任，网络</font><font color=red>购物的</font>观念逐步深入人心，融入了</td>
+	            	<td>《基于B/S模式网购系统的设计与实现》<br/> 郭庆林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">14<span class="have-color-ff2424">（85%）</span></td>
+	            	<td class="color-ff2424">从怀疑到现在的信任，再由信任变为依赖，网络购物的观念逐步深入人心，融入了人们的生活当中</td>
+	            	<td>
+绝<font color=red>到现在的接受</font><font color=red>，从怀疑到现在的信任，网络购物的观念逐步深入人心，融入了
+</font><font color=red>人们的生活当中</font>。
+1
+1.3 <font color=red>网购</font>系统的</td>
+	            	<td>《基于B/S模式网购系统的设计与实现》<br/> 郭庆林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">15<span class="have-color-ff2424">（75.61%）</span></td>
+	            	<td class="color-ff2424">《2016年度中国网络零售市场数据监测报告》显示出了中国电子商务过去的发展状况良好</td>
+	            	<td>信息服务:<font color=red>网络零售市场</font>规模已超1.3万亿元<font color=red>中国电子商务</font>研究中心发布<font color=red>的《2012年度中国电子商务市场数据监测报告》显示</font>截止到</td>
+	            	<td>《信息消费:3.2万亿元蛋糕怎么切》<br/> <br/>- 《领导决策信息》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">16<span class="have-color-ff2424">（98.68%）</span></td>
+	            	<td class="color-ff2424">据中国电子商务研究中心(100EC.CN)监测数据显示，2016年中国网络零售市场交易规模达53288亿元，相比2015年的38285亿元，同比增长39.1%</td>
+	            	<td>背景概述<font color=red>201</font>4年上半年随着手机等移动<font color=red>电子</font>设备的普及越来越多的消费者将购物转移到线上。<font color=red>据中国电子商务研究中心(100EC.CN)监测数据显示201</font>4年上半<font color=red>年中国网络零售市场交易规模达10856亿元同比增长4</font><font color=red>3.9%中国网</font></td>
+	            	<td>《2014年中国电子商务用户体验与投诉监测报告》<br/> 莫岱青;<br/>- 《计算机与网络》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">17<span class="have-color-ff2424">（90.32%）</span></td>
+	            	<td class="color-ff2424">预计2017年全年中国网络零售市场交易规模有望达75693亿元</td>
+	            	<td>年上半年，国内<font color=red>网络零售市场交易规模达到</font><font color=red>7556亿元</font>，同比增长47．6％，<font color=red>预计2013年有望达</font>到</td>
+	            	<td>《我国电子商务物流市场供给与需求分析》<br/> 陶峥 张兰<br/>- 《物流工程与管理》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">18<span class="have-color-ff2424">（75%）</span></td>
+	            	<td class="color-ff2424">自十二届全国人大三次会议，李克强总理首次提出“互联网+”行动计划至今，我国万物互联的形式可谓形势大好</td>
+	            	<td>时势时话·热点回应编者按：在<font color=red>十二届全国人大三次会议上</font><font color=red>，李克强总理</font>作政府工作报告<font color=red>，首次提出“互联网+ </font><font color=red>”行动计划。随着</font><font color=red>互联网的</font>推广普及，信息技术</td>
+	            	<td>《“互联网＋”：中国发展的风口》<br/> 陈永健<br/>- 《中学政治教学参考：中旬》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">19<span class="have-color-ff2424">（60%）</span></td>
+	            	<td class="color-ff2424">国外诸如亚马逊、ebay之类的电子商务网站发展较早，相关标准和法律完善较早</td>
+	            	<td>
+1.4 国内外研究现状
+<font color=red>国外电子商务网站应用</font><font color=red>发展较早，相关标准和法律</font>比较规范健全。特别是欧
+美等地更是走在</td>
+	            	<td>《基于B/S模式网购系统的设计与实现》<br/> 郭庆林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">20<span class="have-color-ff2424">（76.19%）</span></td>
+	            	<td class="color-ff2424">特别是欧美等地更是在之前走在我们的前列。当我们还在搜索购物的时候，国外的比较购物已经比较成熟了，国外的购物搜索社区发展也更加深入，未来还将衍生出另一个网络购物的新模式即分享购物</td>
+	            	<td>增加、3G 上<font color=red>网的</font>资费下调都是电子商务<font color=red>未来发展的</font>动力
+源泉。
+1.4 国内外研究现状
+<font color=red>国外</font>电子商务网站应用<font color=red>发展较</font>早，相关标准和法律<font color=red>比较</font>规范健全<font color=red>。特别是欧
+</font><font color=red>美等地更是走在我们的前列。当我们还在搜索购物的时候，国外的比较购物已经
+</font><font color=red>比较成熟了，国外</font></td>
+	            	<td>《基于B/S模式网购系统的设计与实现》<br/> 郭庆林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">21<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">1.3 课题的研究方法、技术路线</td>
+	            	<td><font color=red>.3 本</font><font color=red>课题的研究方法与</font><font color=red>技术路线
+</font><font color=red>1.</font></td>
+	            	<td>《基于ADAMS的门式启闭机动力学仿真分析》<br/> 郭巍巍<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">22<span class="have-color-ff2424">（77.03%）</span></td>
+	            	<td class="color-ff2424">系统主要分为前台和后台两大模块，前台包括登录、注册、首页展示、网站广告、商品推广、商品展示等模块；后台包括ADMIN管理、商户管理、公告管理、商品管理、订单管理等功能模块</td>
+	            	<td>等。(2)<font color=red>后台部分:</font><font color=red>主要</font>对商城内的一些基础数据进行有效<font color=red>管理包括商品管理、会员</font><font color=red>管理、订单管理、公告管理等。1.</font><font color=red>网站前台功能模块</font>描述(1)会员<font color=red>注册及</font><font color=red>登录模块</font>:为了确保交易信息的有效性<font color=red>和网站功能</font>拓展购物<font color=red>网站</font>需要以会员机制运作浏览者必需成为会员才能够在<font color=red>网站</font>中购物</td>
+	            	<td>《基于B/S模式的校内电子商务实训系统》<br/> 姚伟;刘舟荷;陈立;温且兵;肖文艳;<br/>- 《企业家天地(理论版)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">23<span class="have-color-ff2424">（86.67%）</span></td>
+	            	<td class="color-ff2424">本文主要分为六个章节，第一部分为前言，主要介绍了课题背景、研究意义、国内外研究现状、课题的研究方法、技术路线以及本文研究的主要内容等</td>
+	            	<td><font color=red>的背景意义、国内外研究现状、研究内容</font>
+和<font color=red>章节</font>结构。
+第二<font color=red>部分为</font>系统总体设计。<font color=red>主要介绍了课题的</font>总体结构设计<font color=red>、技术路线</font>和开发环
+境<font color=red>，以及</font>所应用的软件<font color=red>技术介绍。重点</font><font color=red>介绍了本文所</font><font color=red>研究的</font>港口岸线资源</td>
+	            	<td>《港口岸线资源管理系统设计与实现》<br/> 李学先<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">24<span class="have-color-ff2424">（70.45%）</span></td>
+	            	<td class="color-ff2424">第三部分为系统分析，主要介绍了项目规划、可行性分析、系统设计的特点、系统设计的总体规划、运行环境等</td>
+	            	<td>明确<font color=red>系统目</font>标和要求，进<font color=red>行系统</font>初步调查与<font color=red>可行性分析</font>。在立项之后进<font color=red>行的具</font><font color=red>体规划</font>则需要确定<font color=red>系统</font>开发策略并提出开发方案。下面分别<font color=red>介绍系统分析、系统设计、系统</font></td>
+	            	<td>《基于gis技术的供应链管理模式研究》<br/> 刘琦<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">25<span class="have-color-ff2424">（76.67%）</span></td>
+	            	<td class="color-ff2424">第四部分是系统设计，系统架构设计和功能模块设计是主要的设计内容</td>
+	            	<td><font color=red>主要包括</font><font color=red>系统数据库</font><font color=red>的设计，</font>删L分析<font color=red>设计系统的架构和系统的</font>基本配置。．‘5)<font color=red>系统功能模块</font>实现该章节</td>
+	            	<td>《基于C#.NET三层架构的韩师数码企业进销存管理系统》<br/> 廖列营<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">26<span class="have-color-ff2424">（76.92%）</span></td>
+	            	<td class="color-ff2424">第五部分是系统设计的细节，主要介绍了系统的详细设计过程</td>
+	            	<td>
+案。 
+<font color=red>系统详细设计部分主要介绍了系统模块</font><font color=red>的详细设计</font></td>
+	            	<td>《机动车驾驶员培训管理系统的设计与实现》<br/> 李艳丽<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">27<span class="have-color-ff2424">（65.38%）</span></td>
+	            	<td class="color-ff2424">第六部分为系统集成测试，对本系统进行了功能和界面的测试</td>
+	            	<td><font color=red>，对本系统主要</font><font color=red>进行了功能</font>性
+<font color=red>的测试和非</font><font color=red>功能性</font><font color=red>的测试</font>。
+6. 4. 1<font color=red>功能</font>性</td>
+	            	<td>《煤矿班组全程化管理系统的井下功能设计与实现》<br/> 李金美<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">28<span class="have-color-ff2424">（86.84%）</span></td>
+	            	<td class="color-ff2424">第七部分为总结与展望，主要对本文的研究工作进行了总结以及对进一步工作进行了展望</td>
+	            	<td>
+
+<font color=red>第七章,</font><font color=red>总结与展望。本章</font><font color=red>对本文的研究工作进行了总结,并</font><font color=red>对文</font>中的不足
+
+之处<font color=red>以及对下</font><font color=red>一步的工作进行了展望</font>。
+
+6</td>
+	            	<td>《基于物联网的系统融合机制的研究与设计》<br/> 朱继平<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">29<span class="have-color-ff2424">（76.39%）</span></td>
+	            	<td class="color-ff2424">在软件项目中，通过使用数据库来操作数据，可以保证数据的独立性、一致性和安全性，为系统提供专业有效地访问数据的方式，可以是应用开发者专注于业务，而非工具的开发</td>
+	            	<td>2. 3<font color=red>数据库</font>存储平台的选择
+2. 3.1 SQL Server2005 简介
+<font color=red>在软件项目中，通过使用数据库来操作数据，可以保证数据的独立性、一致
+</font><font color=red>性和安全性，为系统提供有效地访问数据的方式，</font>同时为程序员减少了<font color=red>应用</font>程序</td>
+	            	<td>《疫苗接种管理系统的设计与实现》<br/> 陈宇斌<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">30<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">Struts2虽然是Struts1的基础上发展起来的，但是实质上是以WebWork框架为核心，为传统的Struts1注入了WebWork的设计理念</td>
+	            	<td>。<font color=red>Struts </font><font color=red>2虽然是在</font><font color=red>Struts l</font><font color=red>的基础上发展起来的，但实质上是以WebWork为核心，Struts </font><font color=red>2为传统Struts </font><font color=red>1注入了WebWork的设计理念，统一</font><font color=red>了Struts 1和</font><font color=red>WebWork两个</font><font color=red>框架，允许</font><font color=red>Struts</font></td>
+	            	<td>《基于SPC的质量管理系统的设计与实现》<br/> 岳洋<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">31<span class="have-color-ff2424">（95.65%）</span></td>
+	            	<td class="color-ff2424">统一了Struts1和WebWork两个框架，可以说是一个不同于Struts1的一个全新的框架</td>
+	            	<td>起来的,但是实质上<font color=red>是以WebWork框架</font>为核心,为传<font color=red>统的Struts1注入</font><font color=red>了WebWork的</font>设计理念,<font color=red>统一了Struts1和WebWork两个框架,</font><font color=red>可以说是一个不同于Struts1的一个</font>...</td>
+	            	<td>《简单介绍Struts2-玉水明沙-博客园》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">32<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">Struts2和WebWork一样，使用拦截器作为处理，以用户的业务逻辑控制器为目标，创建一个控制器代理</td>
+	            	<td><font color=red>Struts2</font> 框架。
+<font color=red>Struts2 和 </font><font color=red>WebWork</font> 相差不大，同<font color=red>样使用拦截器作为处理，以用户的业务逻
+</font><font color=red>辑控制器为目标，创建一个控制器代理。</font><font color=red>控制器代理</font>将</td>
+	            	<td>《基于电信CRM的数据维护管理系统的设计与实现》<br/> 石磊<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">33<span class="have-color-ff2424">（77.78%）</span></td>
+	            	<td class="color-ff2424">MVC模式的三个关注点：模型，视图，控制器</td>
+	            	<td>方<font color=red>式模型．</font><font color=red>视图．</font><font color=red>控制器(</font><font color=red>MVC)</font><font color=red>模式</font>是一个框架级的指导，该<font color=red>模式</font>将</td>
+	            	<td>《ASP.NET MVC模型绑定应用研究》<br/> 王念桥<br/>- 《软件》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">34<span class="have-color-ff2424">（73.58%）</span></td>
+	            	<td class="color-ff2424">模型是由数据模型和业务逻辑组成的。一个动作就是将业务逻辑封装到一个独立的工作单元中，而且动作也是数据传输的场所</td>
+	            	<td><font color=red>和业务逻辑</font>24。主要作用<font color=red>是将业务逻辑封装到一个独立的业务单元中</font>
+去<font color=red>和传输数据。</font>控制器接收到请求之后，通过映射来决定哪<font color=red>一个动作</font>来处理这个
+请求<font color=red>，一</font>旦找到了这个</td>
+	            	<td>《湖南省人口计生信息通报管理系统的设计与实现》<br/> 郭星<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">35<span class="have-color-ff2424">（63.89%）</span></td>
+	            	<td class="color-ff2424">控制器根据映射的url找到动作，然后处理完数据和业务逻辑后，返回结果到视图中</td>
+	            	<td>进行<font color=red>业务逻辑处理，处理完后返回</font>状态更新的请求并将XML格式<font color=red>的数据结果给</font><font color=red>控制器；</font><font color=red>控制器根据结果</font>选择相应<font color=red>视图</font>模板并合成</td>
+	            	<td>《基于MVC框架移动实习就业跟踪系统设计与实现》<br/> 张秀杰 金忠伟<br/>- 《电脑编程技巧与维护》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">36<span class="have-color-ff2424">（63.33%）</span></td>
+	            	<td class="color-ff2424">视图的作用就是把程序的状态转换成用户可以与之交互的可视化表示</td>
+	            	<td>
+为一种<font color=red>用户可以与之交互的可视化的表示。</font><font color=red>视图</font>层能够实现数据有目<font color=red>的的</font>显示
+（理论上</td>
+	            	<td>《基于MVC模式的仓储管理信息系统的研究与实现》<br/> 王磊<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">37<span class="have-color-ff2424">（73.33%）</span></td>
+	            	<td class="color-ff2424">并提供了一种一致的管理业务对象的方式，并体现了依赖倒置、接口隔离等设计原则，实现面向接口编程，依赖接口的规范，而不是良好的编程习惯</td>
+	            	<td>。Spring<font color=red>提供了管理业务对象的一致方法</font><font color=red>，并且鼓励</font><font color=red>面向接口编程而不是</font>
+对目标<font color=red>实现类</font><font color=red>编程的良好习惯；釆用</font><font color=red>面向接口设计的设计</font>思想，可以减少类和
+类之间的“親合性"，在调用类中不直<font color=red>接实例化</font><font color=red>实现</font>类，同时</td>
+	            	<td>《基于SSH框架的员工管理系统》<br/> 王健合<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">38<span class="have-color-ff2424">（93.94%）</span></td>
+	            	<td class="color-ff2424">基于使用控制容器倒置的JavaBean属性是基于Spring的架构</td>
+	            	<td><font color=red>Spring的架构基础</font><font color=red>是基于使用JavaBean属性的</font>IOC(<font color=red>控制反转)</font><font color=red>容器</font>。lOC<font color=red>容器</font>提供一种</td>
+	            	<td>《基于spring、hibernate和jsf的企业应用集成研究》<br/> 王松涛<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">39<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">例如JTA或者JDBC事务提供一个一致的编程模型</td>
+	            	<td>
+术，<font color=red>例如JTA或者JDBC事务提供一个一致的编程模型</font>。</td>
+	            	<td>《J2EE环境下通用数据操作框架的研究》<br/> 杨媛媛<br/>- 《中国优秀博硕士学位论文全文数据库 (硕士)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">40<span class="have-color-ff2424">（95.92%）</span></td>
+	            	<td class="color-ff2424">Spring提供了用Java编写的AOP框架标准的通用语言，它给人的POJOs提供了声明式的事务管理</td>
+	            	<td>JDBC<font color=red>事务提供</font>一个一致<font color=red>的编</font>程模型。<font color=red>Spring提供了一个</font><font color=red>用标准Java语言编写的AOP框架，它给POJOs提供了声明式的事务管理</font>和其他企业<font color=red>事务，</font>如果需要</td>
+	            	<td>《基于STRUTS框架的电信详单查询系统的设计与实现》<br/> 姜禹<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">41<span class="have-color-ff2424">（92.68%）</span></td>
+	            	<td class="color-ff2424">这个框架足够强大，除了EJB的复杂性，使得EJB应用程序同时享受与传统的键相关联的服务</td>
+	            	<td><font color=red>这个框架足够强大，使得应用程序</font>能够抛开<font color=red>EJB的复杂性，同时享受</font>着
+和<font color=red>传统EJB相关的关键服务</font>。SPring还提供了</td>
+	            	<td>《网络协议安全审计系统设计及其Web应用的实现》<br/> 韦成府<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">42<span class="have-color-ff2424">（94.37%）</span></td>
+	            	<td class="color-ff2424">所谓的Hibernate开源的对象关系映射框架，对象可以是非常轻量级封装JDBC，Java程序员可以随心所欲，通过面向对象的编程思维来操纵数据库对象</td>
+	            	<td>和<font color=red>关系数据库之间</font><font color=red>的映射的</font>ORM中间件。<font color=red>Hibernate是</font>一个开放源代码<font color=red>的对象关系映射框架，它对巾</font><font color=red>BC进行了</font><font color=red>非常轻量级的对象封装，使得</font><font color=red>Java开发人</font><font color=red>员可以随心所欲的使用</font><font color=red>对象编程思维来操纵数据库</font>。简单的说就是：(1)<font color=red>封装了</font><font color=red>通过JDBC</font></td>
+	            	<td>《资产管理预防性维护子系统的设计与实现》<br/> 夏炳俐<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">43<span class="have-color-ff2424">（95.59%）</span></td>
+	            	<td class="color-ff2424">Hibernate可以在任何应用程序中使用JDBC，无论是在Java实用程序的客户端程序，也可以在Servlet的/ JSP的Web应用中使用</td>
+	            	<td><font color=red>的使用</font>对象编程思维来操纵数据库。<font color=red>Hibernate </font><font color=red>可以应用在任何使用JDBC的</font>场合，既<font color=red>可以在Java的客户端程序实用，也可以在Servlet／</font><font color=red>JSP的Web应用中使用，</font>最具革命意义<font color=red>的是，Hibernate</font></td>
+	            	<td>《计算机资源优化分析与实现》<br/> 张彦东<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">44<span class="have-color-ff2424">（94.12%）</span></td>
+	            	<td class="color-ff2424">SSH框架的组合模式，三者各自的作用</td>
+	            	<td><font color=red>的组合框架模式中</font><font color=red>，三者各自的作用</font>。
+Struts </td>
+	            	<td>《基于SSH的高校OA系统的设计与实现》<br/> 刘激韵<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">45<span class="have-color-ff2424">（89.19%）</span></td>
+	            	<td class="color-ff2424">Struts的MVC设计模式可以使我们很清楚的逻辑，让我们写一个结构化的程序</td>
+	            	<td><font color=red>Struts是</font><font color=red>一个很好</font><font color=red>的MVC</font>框架,主要技术是Servlet和Jsp。<font color=red>Struts的MVC设计模式可以使我们的逻辑变得</font><font color=red>很清晰,</font><font color=red>让我们写的程序</font>层次分明。官方地址:h<font color=red>tt</font>p://<font color=red>st</font>...</td>
+	            	<td>《Web开发框架SSH简介-CSDN博客》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">46<span class="have-color-ff2424">（70.27%）</span></td>
+	            	<td class="color-ff2424">Spring提供了一个一致的方式来管理业务对象，和依赖注入编程接口，而不是依靠良好编程习惯来完成对象的管理，强大的IOC和AOP使得程序更加便于管理和增强</td>
+	            	<td><font color=red>Spring </font><font color=red>提供了管理业务对象的一致方</font>法并鼓励<font color=red>注入对接口编码</font><font color=red>而不是对类</font><font color=red>编程的良好习惯。</font><font color=red>Spring的</font>框架基础是JavaBean属性<font color=red>的IoC(</font><font color=red>依赖注入</font>)容器。<font color=red>Spring提供了唯</font><font color=red>一的</font>数据访问抽<font color=red>象，</font>包括简单和有效率的JDBC框架</td>
+	            	<td>《基于j2ee的虚拟仪器实验室系统的研究与实现》<br/> 姚晓丽<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">47<span class="have-color-ff2424">（88.24%）</span></td>
+	            	<td class="color-ff2424">Hibernate的持久性数据是用来提供一个完全面向对象的数据库操作</td>
+	            	<td>      了<font color=red>数据</font>访问层繁琐的重复性...<font color=red>Hibernate是一个</font>基于jdbc的主流<font color=red>持久</font>化框架,<font color=red>是一个</font>...  5、<font color=red>Hibernate使</font><font color=red>数据库的操作完全面向对象</font>。...</td>
+	            	<td>《Hibernate:入门及与JDBC优劣比较-CSDN博客》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">48<span class="have-color-ff2424">（87.18%）</span></td>
+	            	<td class="color-ff2424">JDBC来Hibernate的一个非常轻量级封装，它使处理关系数据库变得非常容易</td>
+	            	<td><font color=red>Hibernate</font>API来操纵<font color=red>数据库。</font><font color=red>Hibernate是</font><font color=red>一个</font>开放源代码的对象<font color=red>关系</font>映射框架<font color=red>，它对</font><font color=red>JDBC进行了</font><font color=red>非常轻量级的对象</font><font color=red>封装，使得</font></td>
+	            	<td>《中国软件外包国际门户网站的建设》<br/> 张悦<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">49<span class="have-color-ff2424">（95.92%）</span></td>
+	            	<td class="color-ff2424">ActionFormBean接收网页中表单提交的数据，然后由此Action进行处理，再转发到对应的网页</td>
+	            	<td>等。从图2中可以看出S<font color=red>tr</font>uts作用在表示层。<font color=red>Ac-</font><font color=red>tionFormBean接收网页中表单提交的数据然后通过</font><font color=red>Action进行处理再转发到对应的网页</font></td>
+	            	<td>《基于SSH框架的社区管理信息系统设计》<br/> 杨钟鸣;<br/>- 《东华理工大学学报(自然科学版)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">50<span class="have-color-ff2424">（91.38%）</span></td>
+	            	<td class="color-ff2424">Hibernate有一组hbm.xml文件和POJO，是与数据库中的表相比对的结果，然后定义DAO，这些类是与数据库相关的</td>
+	            	<td><font color=red>有一组 </font><font color=red>hbm.xml
+</font><font color=red>文件和 </font><font color=red>PO，是与数据库中的表相对应</font><font color=red>的，然后定义 </font><font color=red>DAO，这些是与数据库</font>打交
+道<font color=red>的类</font>。
+在 S<font color=red>tr</font>uts+Sp<font color=red>ring+</font><font color=red>Hibernate</font> 系统中</td>
+	            	<td>《基于SSH的高校OA系统的设计与实现》<br/> 刘激韵<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">51<span class="have-color-ff2424">（71.43%）</span></td>
+	            	<td class="color-ff2424">（2）能够完整的完成信息的维护和管理，其中主要包括对站内新闻、广告、商品等信息的维护功能的实现</td>
+	            	<td><font color=red>其中</font>后台系统是针对系统<font color=red>管理员</font><font color=red>的，主要实现对网</font><font color=red>站信息的维护。</font><font color=red>其中包括新闻管理，商品管理，订单</font><font color=red>管理和系统</font><font color=red>管理等</font>部分。前台<font color=red>管理</font>是针对浏览者</td>
+	            	<td>《龙城在线购物系统的设计》<br/> 林炯龙<br/>- 《中国电子商务》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">52<span class="have-color-ff2424">（60.87%）</span></td>
+	            	<td class="color-ff2424">（4）系统管理员能够登录后台以完成对商城的有效管理</td>
+	            	<td>查询、乘车方案分析等较高级的功能;<font color=red>系统管理员在</font><font color=red>后台登录</font>通过身份验证后可以在</td>
+	            	<td>《基于GIS的公交网络信息管理系统设计》<br/> 尤莉娟;<br/>- 《辽宁经济管理干部学院(辽宁经济职业技术学院学报)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">53<span class="have-color-ff2424">（96%）</span></td>
+	            	<td class="color-ff2424">（5）系统具备良好的安全性，能够确保用户信息等信息不外泄</td>
+	            	<td>的有效管理。
+（6<font color=red>）系统具备良好的安全性，能够确保用户信息</font>以及商品<font color=red>信息等不外泄</font>。</td>
+	            	<td>《网上购物系统的设计与实现》<br/> 吕军<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">54<span class="have-color-ff2424">（61.54%）</span></td>
+	            	<td class="color-ff2424">本系统设计的登录界面简单和友好，采用使用常见输入窗口的登录界面，而本系统的开发则采用的是较常使用的JSP技术</td>
+	            	<td>示意图2.2.1<font color=red>界面设计本系统界面设计友好</font>方便操作<font color=red>简单</font>。用户在<font color=red>登录本系统后只要</font><font color=red>输入设</font>备齿轮的一些相关的信息即可得到<font color=red>本系统</font>推荐的润滑油的种类、粘度牌号和润滑方式还可以</td>
+	            	<td>《基于VB的工业闭式齿轮润滑油选择系统》<br/> 袁丽娟;吴晓铃;徐万里;<br/>- 《机械传动》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">55<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">所以目前普遍的个人计算机的配置而言，这是十分容易实现的</td>
+	            	<td><font color=red>以目前普遍的个人计算机的配置而言,</font><font color=red>这是十分容易实现的。</font><font color=red>所以</font>,本系统的研发在硬件的问题上是可行的。软件可行性分析Java语言提供的动态模型相似的理由...</td>
+	            	<td>《基于BS的自动排系统毕业设计论文.doc》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">56<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">因此，本系统的开发在硬件方面是可行的</td>
+	            	<td>
+由于<font color=red>本系统在软、</font><font color=red>硬件方面都</font><font color=red>是可行的，因此本系统的开发</font></td>
+	            	<td>《小区物业管理系统》<br/> 王哲<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">57<span class="have-color-ff2424">（96.67%）</span></td>
+	            	<td class="color-ff2424">Java语言提供了一个共同的机制类似的接口动态模型，设计更集中</td>
+	            	<td>软件可行性分析<font color=red>Java语言提供了一个共同的机制类似的借</font><font color=red>口动态模型,</font><font color=red>设计更集中</font>。...4.1<font color=red>设计</font>目标与原则系统的架构<font color=red>设计</font>,要能够反映出用户与整个系统模...</td>
+	            	<td>《毕业论文选题网的设计与实现毕业论文-豆丁网》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">58<span class="have-color-ff2424">（80.77%）</span></td>
+	            	<td class="color-ff2424">另外，在使用Java语言可以很容易实现模块化和存储信息</td>
+	            	<td>，设计较为集中。<font color=red>另外，</font>
+采用 <font color=red>Java </font><font color=red>语言可以很容易实现模块化以及</font><font color=red>信息</font>的隐藏</td>
+	            	<td>《企业人事管理系统的设计与实现》<br/> 张佳楠<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">59<span class="have-color-ff2424">（60.87%）</span></td>
+	            	<td class="color-ff2424">通过上述分析，该系统的设计实现在软件方面是可行的</td>
+	            	<td>前景<font color=red>的分析，</font>采用信息化技术<font color=red>的方法</font><font color=red>设计本</font><font color=red>系统</font>。
+<font color=red>通过本</font><font color=red>系统的实现，可</font>以</td>
+	            	<td>《太供宾馆客房管理系统的设计与实现》<br/> 药炜<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">60<span class="have-color-ff2424">（87.88%）</span></td>
+	            	<td class="color-ff2424">至此，我们进行了三个方面的可行性研究，可以看出，该系统的开发是没有问题的</td>
+	            	<td>必要条件等,而<font color=red>我们在</font><font color=red>开发系统之前就</font><font color=red>进行了三个方面的可行性研究</font>,并且得<font color=red>出开发该系统是没有任何</font><font color=red>问题的</font>。1.3应用的</td>
+	            	<td>《基于安卓手机位置服务的签出系统》<br/> 郭余杰;<br/>- 《电子制作》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">61<span class="have-color-ff2424">（70.21%）</span></td>
+	            	<td class="color-ff2424">系统主要分为前台和后台两大模块，前台包括登录和注册、首页展示、网站促销新闻、推销特价商品、全部商品等模块</td>
+	            	<td><font color=red>网站设计中</font><font color=red>，分为两个</font><font color=red>部分：</font><font color=red>商品促销网站前台部</font>
+<font color=red>分和商品促销网站后台部分。</font><font color=red>商品促销网站前台部分包括新闻热点</font><font color=red>模块、商品促</font>
+<font color=red>销模块、注册登录模块</font></td>
+	            	<td>《商品促销网站的设计与实现》<br/> 吴兰英<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">62<span class="have-color-ff2424">（86.49%）</span></td>
+	            	<td class="color-ff2424">后台包括管理员管理、注册用户管理、用户公告管理、商品上下架管理、订单管理等功能模块</td>
+	            	<td><font color=red>公告管理、商品管理、订单管理、投诉</font><font color=red>管理和</font><font color=red>用户管理等模块。</font><font color=red>后台管理各</font><font color=red>模块</font>分别具有如<font color=red>下功能:①</font><font color=red>公告管理包括:添加</font><font color=red>公告，</font><font color=red>公告</font>标题</td>
+	            	<td>《基于ASP技术的网上购物系统的设计与实现》<br/> 唐辉;<br/>- 《新西部(下半月)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">63<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">系统功能结构图如图3-1所示：</td>
+	            	<td>
+
+
+
+
+3.1.4　<font color=red>系统功能结构图(</font><font color=red>如图3-2</font><font color=red>所示</font>) </td>
+	            	<td>《典型零售企业电子商务解决方案及其实现技术》<br/> 黄丹<br/>- 《中国优秀博硕士学位论文全文数据库 (硕士)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">64<span class="have-color-ff2424">（81.82%）</span></td>
+	            	<td class="color-ff2424">系统的设计所依据的规则所有系统都要有。本系统也一样，它的主要设计规则有：</td>
+	            	<td>它自己<font color=red>的设计細</font><font color=red>则。该软件</font><font color=red>系统也一样，它的主要设计
+</font><font color=red>规则有：</font>
+简单性：在实现软件<font color=red>系统的</font>功能的同时，尽量</td>
+	            	<td>《农家乐网络订餐系统的设计与实现》<br/> 陈雪凡<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">65<span class="have-color-ff2424">（85.71%）</span></td>
+	            	<td class="color-ff2424">简单性：对于一个系统来说是非常重要的，使系统操作简单易懂的同时，也要让系统的功能尽量完善，具备一定的健壮性</td>
+	            	<td>。在实现<font color=red>系统的功能的同时，尽量让系统操作简单易懂，这</font><font color=red>对于一个
+</font><font color=red>系统来说是非常重要的</font>。
+(2)针<font color=red>对性。本</font><font color=red>系统</font>设计是根据公司文件管理的需求定向幵发设计<font color=red>，具</font>有很强</td>
+	            	<td>《六安精工公司文件管理系统的设计与实现》<br/> 杜云林<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">66<span class="have-color-ff2424">（60.47%）</span></td>
+	            	<td class="color-ff2424">实用性：本系统共分为前台和后台两大模块，前台包括登录和注册、首页展示、网站促销新闻、推销特价商品</td>
+	            	<td><font color=red>：商品促销网站前台</font>部
+<font color=red>分和商品促销网站后台部分。</font><font color=red>商品促销网站前台部</font><font color=red>分包括新闻热点</font><font color=red>模块、商品促</font>
+<font color=red>销模块、注册登录模块、</font>数码家电<font color=red>模块</font></td>
+	            	<td>《商品促销网站的设计与实现》<br/> 吴兰英<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">67<span class="have-color-ff2424">（84.09%）</span></td>
+	            	<td class="color-ff2424">全部商品等模块；后台包括管理员管理、注册用户管理、用户公告管理、商品上下架管理、订单管理等功能模块</td>
+	            	<td><font color=red>注册功能、用户</font>个人信息<font color=red>管理功能、</font>网店的最新<font color=red>公告、</font>网店新闻浏览等几个<font color=red>模块。</font><font color=red>后台管理包括以</font><font color=red>下功能:</font><font color=red>商品管理</font>:对具体<font color=red>商品的添加</font><font color=red>包括商品</font>的名称、厂家</td>
+	            	<td>《基于SSH的网上购物系统的设计与实现》<br/> 秦川;吴旻倩;<br/>- 《信息通信》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">68<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">软件架构设计要达到如下的目标：</td>
+	            	<td>，<font color=red>软件架构设计要达到如下的目标</font></td>
+	            	<td>《基于Ajar平台的手机软件架构研究与应用》<br/> 刘乾发<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">69<span class="have-color-ff2424">（81.63%）</span></td>
+	            	<td class="color-ff2424">2．高容错。系统的可靠性对于商业经营和管理来说，占有非常重要的分量，因此，软件系统的架构设计必须具备可靠性</td>
+	            	<td>地深入，这种局面正在逐步地改变。4<font color=red>．软件架构设计要</font>达到如下的目标：(1)<font color=red>可靠性：</font><font color=red>软件系统对于用户</font><font color=red>的商业经营和管理来说极为</font><font color=red>重要，因此软件系统必须非常可靠。</font>(2</td>
+	            	<td>《软件架构技术在工业控制设备hmi软件中的应用》<br/> 李飞<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">70<span class="have-color-ff2424">（72.73%）</span></td>
+	            	<td class="color-ff2424">3．安全行。由于数据库中存储了大量数据，这些数据具有重要价值，因此，系统的数据库的安全性非常重要</td>
+	            	<td>6<font color=red>．3数据库安全性数据库安全</font>在电子政务<font color=red>系统中非常重要，对</font><font color=red>于数据库安全性的考虑主</font><font color=red>要有</font>：(1)保护<font color=red>数据库中存储的数据</font>不被非法访问(包括越权访问</td>
+	            	<td>《城市管理监督电子政务系统的设计与实现》<br/> 陶天明<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">71<span class="have-color-ff2424">（84.21%）</span></td>
+	            	<td class="color-ff2424">4．高可用。在系统功能方面，后期可以根据客户群的不同需求和市场需求的变化进行调整</td>
+	            	<td><font color=red>，可以根据客户群的不同和高</font>考等考试中应用成<font color=red>功。市场需求的变化进行调整。在</font>新技术出现的时候．～个软件<font color=red>系统应</font><font color=red>系统</font>采用分层体系结构</td>
+	            	<td>《agilewapa：一种敏捷web应用架构研究与实现》<br/> 张婧妍<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">72<span class="have-color-ff2424">（83.33%）</span></td>
+	            	<td class="color-ff2424">5．可扩展性。在新的技术研发出来之后，可以进行新技术的导入，扩展系统现有的功能</td>
+	            	<td>
+同<font color=red>进行</font>调整； 
+（5）<font color=red>可扩展性：</font><font color=red>在新的技术出现的</font>时候，软件<font color=red>系统应当</font><font color=red>可以导入新的技术，</font>
+从而对<font color=red>现有的系统进行功能</font></td>
+	            	<td>《泉州现代中学实验室信息管理系统的设计与实现》<br/> 崔毅<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">73<span class="have-color-ff2424">（83.33%）</span></td>
+	            	<td class="color-ff2424">6．可维护性。系统的可维护性主要包含两个方面，一是可以快速排除现有的错误，二是可以快速将新的功能需求导入到系统中去</td>
+	            	<td>架构式的软件<font color=red>系统</font>体现了良好<font color=red>的维护性，主要有以下</font><font color=red>两个</font>
+<font color=red>方面：</font><font color=red>一是能高效地</font><font color=red>排除现有的错误，二是将新的软件</font><font color=red>需求快速在</font><font color=red>系统中体</font><font color=red>现。</font>
+这样<font color=red>可以有</font>效地降低<font color=red>维护</font>技术支持的费用</td>
+	            	<td>《基于架构式的高职院校人事管理系统研究和实现》<br/> 戴汉良<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">74<span class="have-color-ff2424">（75%）</span></td>
+	            	<td class="color-ff2424">下面我们将根据应用程序系统架构设计原则和目标来构建系统的架构模型</td>
+	            	<td>体系结<font color=red>构的架构。</font><font color=red>下面我们将根据架构设计原则和信息</font><font color=red>系统原</font>理，在前<font color=red>面用户需求</font><font color=red>和系统</font>分析的基础上，<font color=red>应用</font>BCE</td>
+	            	<td>《契税征管系统中报表与价格统计功能的设计与应用》<br/> 吕春江<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">75<span class="have-color-ff2424">（78.38%）</span></td>
+	            	<td class="color-ff2424">将系统中的对象进行分层，可分为三层，即控制层、业务层、数据访问层（如下图4-1所示），然后再把各层中的公共部分抽取出来：权限管理、异常处理，这样便得到包图，如图4-2所示：</td>
+	            	<td>
+4.2.<font color=red>1系统的包图</font>组成
+    将物流运输<font color=red>管理系统中较重要</font><font color=red>的对象</font>从其功能角度<font color=red>进行分层，可分为三层</font>:
+用户界面<font color=red>层、业务层、数据访问层。从</font><font color=red>包图的角度</font><font color=red>再把各层中的一些</font><font color=red>公共部分</font>提
+<font color=red>出来:</font><font color=red>权限管理、异常处理，这样就</font><font color=red>得到了</font><font color=red>系统的整体</font><font color=red>包图。</font><font color=red>系统</font>有以下</td>
+	            	<td>《基于GSM及GPS的物流运输管理系统的设计和实现》<br/> 王莉<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">76<span class="have-color-ff2424">（89.47%）</span></td>
+	            	<td class="color-ff2424">将包图展开，得到类图，它是系统架构的静态代码结构图，表达了各个类之间的静态层次关系</td>
+	            	<td><font color=red>类的结构和</font><font color=red>类之</font>问的相互<font color=red>关系，可以</font><font color=red>将包图展开，得到系统的类图。</font><font color=red>它是架构的静态结构图，表达了各个类之间的静态</font>联系：图4．26<font color=red>架构</font></td>
+	            	<td>《基于gml的便携式gps导航系统的设计与实现》<br/> 王伟<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">77<span class="have-color-ff2424">（68.18%）</span></td>
+	            	<td class="color-ff2424">由此得到网上商城系统架构类图如下图4-3所示</td>
+	            	<td>建设银行<font color=red>网上银行的</font><font color=red>系统架构类图如下图3-5</font><font color=red>所示</font>。
+数据库连接类	</td>
+	            	<td>《山东省建设银行网上银行系统设计与实现》<br/> 王庆利<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">78<span class="have-color-ff2424">（87.5%）</span></td>
+	            	<td class="color-ff2424">1、控制层对象在接收了用户的输入请求后，调用业务代理对象发送处理请求</td>
+	            	<td>是:
+<font color=red>1、用户界面</font><font color=red>对象在接收了用户的输入请求后向</font><font color=red>业务代理对象发送处理请求</font>。
+2<font color=red>、业务</font></td>
+	            	<td>《基于模糊理论的城市供水系统运行管理研究》<br/> 刘洪波<br/>- 《中国优秀博硕士学位论文全文数据库 (博士)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">79<span class="have-color-ff2424">（93.1%）</span></td>
+	            	<td class="color-ff2424">2、业务代理对象接收到请求后，调用权限管理对象发送验证权限请求</td>
+	            	<td>了用户的输入<font color=red>请求后,向</font><font color=red>业务代理对象发送处</font><font color=red>理请求;</font><font color=red>业务代理对象接收到请求后,向</font><font color=red>权限管理对象发送验证</font></td>
+	            	<td>《基于Web的高校陶瓷名人艺术档案管理系统研究》<br/> 谭小萍;吴本荣;邹金成;熊果果;<br/>- 《电脑与电信》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">80<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">3、权限管理对象验证权限后将验证结果返回给业务代理对象</td>
+	            	<td>
+3.  <font color=red>权限管理对象验证权限后将验证结果返回给业务代理对象</font>。 </td>
+	            	<td>《基于Web Services技术的e-HR系统的设计与实现》<br/> 邓酩<br/>- 《中国优秀博硕士学位论文全文数据库 (硕士)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">81<span class="have-color-ff2424">（93.85%）</span></td>
+	            	<td class="color-ff2424">4、业务代理对象根据验证得到的结果进行以下判断处理：对于权限验证不通过的请求则返回提示信息；对于权限验证通过的请求，则将请求转发给业务对象</td>
+	            	<td><font color=red>给业务代理对象。</font><font color=red>4、业务代理对象根据验证结果进行以下处理：对于不符合</font><font color=red>权限的请求则返回提示信息；对于符合</font><font color=red>权限的请求，则将请求转发给业务对象。5</font><font color=red>、业务对象进行业务处理。</font><font color=red>对于业务处理</font>中的数据持久化操作<font color=red>，通过</font>访问数据库</td>
+	            	<td>《基于uml的食堂管理系统的分析与设计》<br/> 叶华永<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">82<span class="have-color-ff2424">（93.55%）</span></td>
+	            	<td class="color-ff2424">5、业务对象进行业务处理。对于业务处理中的数据持久化操作，通过调用数据库访问对象进行数据操作，期间的任何异常都抛出给异常处理对象处理</td>
+	            	<td><font color=red>处理。对于业务处理中的数据持久化操作，通过访问数据库访问对象进行操作，期间的任何异常都交</font><font color=red>给异常处理对象处理。</font>最后返回<font color=red>处理</font>结果信息<font color=red>给业务代</font><font color=red>理对象。6</font><font color=red>、业务代</font><font color=red>理对象将</font><font color=red>处理</font>结果信息返回<font color=red>给用</font>户界面。4．2．2</td>
+	            	<td>《基于uml的食堂管理系统的分析与设计》<br/> 叶华永<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">83<span class="have-color-ff2424">（94.74%）</span></td>
+	            	<td class="color-ff2424">最后将处理结果返回给信息给业务代理对象</td>
+	            	<td>异常<font color=red>处理对象处理。</font><font color=red>最后返回处理结果信息给业务代理对象</font>。(6</td>
+	            	<td>《抚顺市契税征管系统的设计与实现》<br/> 于辉<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">84<span class="have-color-ff2424">（100%）</span></td>
+	            	<td class="color-ff2424">6、业务代理对象将处理结果信息返回给用户界面</td>
+	            	<td><font color=red>对象</font>。(6)<font color=red>业务代理对象将处理结果信息返回给用户界面</font>。匣厘照请求<font color=red>业务</font></td>
+	            	<td>《基于uml的企业竞争情报系统的构建研究》<br/> 张文咏<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">85<span class="have-color-ff2424">（87.5%）</span></td>
+	            	<td class="color-ff2424">系统架构类的交互图如图4-4所示：</td>
+	            	<td>返回到用户界面。
+<font color=red>系统架构类的交互图如图</font>3-14</td>
+	            	<td>《山东省建设银行网上银行系统设计与实现》<br/> 王庆利<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">86<span class="have-color-ff2424">（76.92%）</span></td>
+	            	<td class="color-ff2424">图4-4  系统架构类的交互图</td>
+	            	<td><font color=red>架构类交互图
+</font><font color=red>系统架构类的交互图</font></td>
+	            	<td>《北票市热力费用收缴系统的设计与实现》<br/> 桑枭<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">87<span class="have-color-ff2424">（72.5%）</span></td>
+	            	<td class="color-ff2424">因为本系统是一个面向对象的系统设计，所以，数据库的设计，也是根据应用场景的抽象进行设计</td>
+	            	<td>是从<font color=red>对象</font>模型出发<font color=red>的，</font>属于实体主导型<font color=red>设计。为适</font><font color=red>应系统面向对象的系统设计思想</font><font color=red>，本系统的数据库设计也采</font><font color=red>用面向对象的方法。</font><font color=red>面向对象的数据库</font></td>
+	            	<td>《电厂监督管理系统的设计与实现》<br/> 国鹏<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">88<span class="have-color-ff2424">（60.53%）</span></td>
+	            	<td class="color-ff2424">现在应该怎么考虑对类进行持久性操作，即对象类是怎样映射到关系数据库的二维表中的</td>
+	            	<td>无法直接描述<font color=red>对象模型</font><font color=red>的对象继承</font><font color=red>关系，因此当</font><font color=red>在关系数据库中表示继承</font><font color=red>关系时</font><font color=red>，应该考虑怎样为己</font><font color=red>映射到关系数据库上</font><font color=red>的对象中的</font></td>
+	            	<td>《基于orm的数据持久层研究与设计》<br/> 张洪亮<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">89<span class="have-color-ff2424">（80%）</span></td>
+	            	<td class="color-ff2424">图4-5用户实体属性E-R分图</td>
+	            	<td><font color=red>实体属性E一</font><font color=red>R分图</font>
+4)<font color=red>用户实体</font></td>
+	            	<td>《盐城电信备件管理网站的设计和开发》<br/> 蒋柏明<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">90<span class="have-color-ff2424">（95.83%）</span></td>
+	            	<td class="color-ff2424">字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</td>
+	            	<td>Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 </td>
+	            	<td>《北京地区重点学科信息平台的设计与实现》<br/> 于涵<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">91<span class="have-color-ff2424">（95.83%）</span></td>
+	            	<td class="color-ff2424">字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</td>
+	            	<td>Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 </td>
+	            	<td>《北京地区重点学科信息平台的设计与实现》<br/> 于涵<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">92<span class="have-color-ff2424">（95.83%）</span></td>
+	            	<td class="color-ff2424">字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</td>
+	            	<td>Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 </td>
+	            	<td>《北京地区重点学科信息平台的设计与实现》<br/> 于涵<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">93<span class="have-color-ff2424">（95.83%）</span></td>
+	            	<td class="color-ff2424">字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</td>
+	            	<td>Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 </td>
+	            	<td>《北京地区重点学科信息平台的设计与实现》<br/> 于涵<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">94<span class="have-color-ff2424">（95.83%）</span></td>
+	            	<td class="color-ff2424">字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</td>
+	            	<td>Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 </td>
+	            	<td>《北京地区重点学科信息平台的设计与实现》<br/> 于涵<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">95<span class="have-color-ff2424">（68.18%）</span></td>
+	            	<td class="color-ff2424">系统采用目前流行的Struts2框架进行开发</td>
+	            	<td><font color=red>框架</font>。因此，本文选择使<font color=red>用目前较</font><font color=red>流行的 </font><font color=red>SS</font>H 架构<font color=red>进行系统的开发</font></td>
+	            	<td>《基于SSH和MVC模式的客服信息查询系统设计与实现》<br/> 何益中<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">96<span class="have-color-ff2424">（86.67%）</span></td>
+	            	<td class="color-ff2424">由这个过滤器进行转发相应的请求，进入Struts2的工作流程中</td>
+	            	<td><font color=red>工程的</font>web.xml,在web.xml<font color=red>中进行</font>匹配,但发现,<font color=red>由struts2这个过滤器来</font><font color=red>进行</font>处理(...对<font color=red>应Struts2的</font>架构图如下4.这时FilterDispatcher会将<font color=red>请求转发</font>给Action...</td>
+	            	<td>《Struts2的运行流程及其工作原理-CSDN博客》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">97<span class="have-color-ff2424">（86.11%）</span></td>
+	            	<td class="color-ff2424">系统登录模块实现用户登录系统实现管理的功能，用户需要输入用户名、密码进行登录</td>
+	            	<td><font color=red>需要</font>注意的是<font color=red>用户密码的输入</font>控件，为了保证<font color=red>密码的保密性</font><font color=red>，密码的</font>显示必须以“水’’代替。该<font color=red>用户登录系统模块的功能实现</font>是由</td>
+	            	<td>《基于虚拟仪器的某型飞机襟翼作动器性能测试系统》<br/> 赵明<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">98<span class="have-color-ff2424">（80%）</span></td>
+	            	<td class="color-ff2424">系统登录实现界面如图5-1所示</td>
+	            	<td>
+<font color=red>系统的</font><font color=red>登录界面，</font><font color=red>如图 4</font><font color=red>-11 </font><font color=red>所示。该</font><font color=red>登录</font></td>
+	            	<td>《基于智能组卷的在线考试系统的设计与实现》<br/> 吴静霞<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">99<span class="have-color-ff2424">（76.47%）</span></td>
+	            	<td class="color-ff2424">注册用户管理模块主要实现管理员对注册用户信息的查询、删除、修改、添加等功能</td>
+	            	<td><font color=red>管理员对管理员信息进行</font><font color=red>管理</font>，包括增<font color=red>加、删除、修改、查询与检索</font><font color=red>管理员信息等功能：</font><font color=red>管理员对学生</font><font color=red>用户进行</font><font color=red>注册</font>(增加</td>
+	            	<td>《基于WEB的实验室管理信息系统设计与实现》<br/> 秦勤<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">100<span class="have-color-ff2424">（84.21%）</span></td>
+	            	<td class="color-ff2424">注册用户管理模块实现界面如图5-3 所示</td>
+	            	<td><font color=red>管理模块的</font><font color=red>用户注册界面如图5-20</font><font color=red>所示</font>：暧a固口<font color=red>图5</font>—20</td>
+	            	<td>《基于ssh的智能家居控制系统的设计与实现》<br/> 耿俊成<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">101<span class="have-color-ff2424">（71.79%）</span></td>
+	            	<td class="color-ff2424">公告信息管理模块主要实现了系统管理员对公告信息的维护操作(查询、删除、修改、添加等)</td>
+	            	<td><font color=red>管理模块由</font><font color=red>公告添加、公告删除以及</font><font color=red>公告修改等</font>三部分组成，其<font color=red>主要</font>用
+于发布相关<font color=red>公告信息</font>，以便居民查看，如<font color=red>系统升级</font><font color=red>维护公告等</font></td>
+	            	<td>《基于ASP的物业小区在线电影点播系统设计与实现》<br/> 盛志昆<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">102<span class="have-color-ff2424">（66%）</span></td>
+	            	<td class="color-ff2424">商品信息管理模块主要实现系统管理员对商品信息、商品类别的各种维护操作，商品信息管理模块UI如图5-5所示</td>
+	            	<td>采购部<font color=red>主管主要进行</font><font color=red>商品进货</font><font color=red>信息管理模块操作，维护系统的进货</font><font color=red>信息，</font>进货处理。仓储部<font color=red>主管主要</font>进行库存<font color=red>信息管理模块的操作，</font>查询入库及出库<font color=red>商品以及</font><font color=red>维护系统</font></td>
+	            	<td>《基于SPRING+HIBERNATE框架的进销存管理软件的开发与设计》<br/> 李进非<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">103<span class="have-color-ff2424">（64%）</span></td>
+	            	<td class="color-ff2424">订单信息管理模块主要实现系统管理员对订单信息进行查看、发货、删除等操作，订单信息管理模块UI如图5-6所示</td>
+	            	<td><font color=red>模块的</font><font color=red>主要</font>功能包括<font color=red>订单查询</font><font color=red>、查看订单信息、删除订单信息</font>。
+在<font color=red>订单查看时</font><font color=red>，管理员可以</font><font color=red>对订单的状态</font><font color=red>进行</font>修改。同时也<font color=red>对订单信息进行</font>打印，
+在<font color=red>进行</font></td>
+	            	<td>《B2C电子商务网站规划与设计在教学中的实践研究》<br/> 任雪莲<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">104<span class="have-color-ff2424">（69.57%）</span></td>
+	            	<td class="color-ff2424">系统测试是程序设计的最后一步工作，也是软件设计的最后一道工序，一个成熟的系统在开发的最后总会花费大量时间和人工在测试阶段，可见测试的作用不可忽视</td>
+	            	<td>
+进行<font color=red>测试的</font>话，难度<font color=red>会大</font>幅度的增加，这无形中不但增加了<font color=red>人工成</font>本也增加了财务成本，
+所以每次对每个模块的认真<font color=red>测试都是必</font><font color=red>不可省</font><font color=red>的一道工序和必备</font><font color=red>的软件开发</font>条件。
+4.1 <font color=red>测试的</font>意义
+<font color=red>系统在最后开发完</font><font color=red>成后，在软件开发</font></td>
+	            	<td>《城市公交查询与反馈系统的设计与实现》<br/> 李添源<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">105<span class="have-color-ff2424">（61.54%）</span></td>
+	            	<td class="color-ff2424">而测试又包含单元测试、功能模块测试以及最后的集成测试等</td>
+	            	<td><font color=red>单元测试、功能测试、集成测试、验收</font><font color=red>测试。</font><font color=red>测试的</font>内容包括界面<font color=red>测试、操作</font><font color=red>测试、结果</font><font color=red>测试</font></td>
+	            	<td>《企业信贷担保系统的分析与设计》<br/> 许可<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">106<span class="have-color-ff2424">（78.57%）</span></td>
+	            	<td class="color-ff2424">功能测试主要包括五项内容：适用性、准确性、可操作性、依从性、安全性</td>
+	            	<td>应用软件的<font color=red>功能测试</font>方法可进一步细分<font color=red>主要包括适合</font><font color=red>性测试、准确性测试、互</font><font color=red>操作性测试和</font><font color=red>依从性测试等具体</font><font color=red>测试</font>方法</td>
+	            	<td>《广播电视中心系统应用软件及其测试方法》<br/> 肖辉;<br/>- 《广播与电视技术》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">107<span class="have-color-ff2424">（71.43%）</span></td>
+	            	<td class="color-ff2424">本系统功能测试如表6-1所示：</td>
+	            	<td><font color=red>所示：</font>
+表4-4 <font color=red>系统测试功能测试表</font></td>
+	            	<td>《基于空间信息服务的城市应急联动系统设计与实现》<br/> 张万娇<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">108<span class="have-color-ff2424">（77.27%）</span></td>
+	            	<td class="color-ff2424">由于篇幅的原因，本节给出系统维护功能的测试用例</td>
+	            	<td>端支持以及报表打印<font color=red>功能</font>,最后介绍如何实现数据<font color=red>维护</font>。...然后我们介绍了<font color=red>本系统性</font><font color=red>能测试的测试用例和</font><font color=red>测试</font>环境...我们在本文的最后做了简单的总结与展望,<font color=red>由于文章</font><font color=red>篇幅</font>...</td>
+	            	<td>《基于J2EE的企业级项目管理系统的分析与设计_百度学术》<br/> <br/></td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">109<span class="have-color-ff2424">（77.78%）</span></td>
+	            	<td class="color-ff2424">序号	用例名称	用例操作	预期结果	测试结果</td>
+	            	<td><font color=red>用例名称测试点</font><font color=red>预期结果测试结果</font>系统管理员<font color=red>用例</font>输入</td>
+	            	<td>《秦皇岛市农业科技信息平台的设计与实现》<br/> 肖娟<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">110<span class="have-color-ff2424">（85.11%）</span></td>
+	            	<td class="color-ff2424">1	用户登录	输入用户名、密码	输入正确用户名和密码进入系统主界面，输入错误用户名或密码给出提示	符合预期</td>
+	            	<td>是否成功<font color=red>登录</font>。结果显<font color=red>示用户</font>
+. <font color=red>输入错误的</font><font color=red>用户名和密码时</font><font color=red>提示“</font><font color=red>用户名或密码错误”。当</font><font color=red>用户输入正确的</font><font color=red>用户
+</font><font color=red>名和密码</font>时，顺利<font color=red>进入系统主界面</font>。因此，本次</td>
+	            	<td>《基于C#和SQL的企业人事管理系统的设计与实现》<br/> 杨剑光<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">111<span class="have-color-ff2424">（67.57%）</span></td>
+	            	<td class="color-ff2424">2	添加商品信息	在页面内输入商品信息，点击“添加”按钮	正确存储商品信息	符合预期</td>
+	            	<td><font color=red>点击</font>Add new Good<font color=red>按钮，载</font><font color=red>入添加新</font><font color=red>商品页面，输入新</font><font color=red>商品的</font><font color=red>信息，点击</font>Save<font color=red>按钮</font>保存并向数据库表</td>
+	            	<td>《在线购物系统的设计与实现》<br/> 曹伟<br/>- 《中国科技纵横》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">112<span class="have-color-ff2424">（73.47%）</span></td>
+	            	<td class="color-ff2424">3	查看商品信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看商品信息	正确显示商品信息	符合预期</td>
+	            	<td>
+6 <font color=red>查看收料单</font><font color=red>列表</font> 仓管员 <font color=red>查看列表，按照查询条件，筛选符合需要
+</font><font color=red>的信息，进一步详细查看收料单</font><font color=red>信息</font>
+7 添加收料单<font color=red>信息</font> 仓管员 在界面内输入</td>
+	            	<td>《仓库管理系统的设计与实现》<br/> 金煜琦<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">113<span class="have-color-ff2424">（78.38%）</span></td>
+	            	<td class="color-ff2424">4	添加用户信息	在页面内输入用户信息，点击“添加”按钮	正确存储用户信息	符合预期</td>
+	            	<td> 4-1 所示。
+4 <font color=red>点击“添加用户”按钮，进</font><font color=red>入添加用户界</font><font color=red>面，输入用户信息</font>
+后<font color=red>，点击添加按钮，页面能</font><font color=red>正确</font></td>
+	            	<td>《送变电建设公司送变电全面预算编制管理信息系统设计与实现》<br/> 朱德彬<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">114<span class="have-color-ff2424">（73.47%）</span></td>
+	            	<td class="color-ff2424">5	查看用户信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看用户信息	正确显示用户信息	符合预期</td>
+	            	<td>Services中的方法进行模糊<font color=red>查询把</font><font color=red>符合查询条件的信息显示在</font><font color=red>列表</font>中。对于查出的景点<font color=red>信息用户可以</font><font color=red>查看它</font><font color=red>的详细信息</font>在地图上<font color=red>查看</font>它的地理位置对于自己比较满意的景点<font color=red>信息用户</font>可以</td>
+	            	<td>《基于Web Service 3G手机的设计与实现——G3乐游系统》<br/> 张令春;郑文艳;<br/>- 《电脑知识与技术》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">115<span class="have-color-ff2424">（65.62%）</span></td>
+	            	<td class="color-ff2424">经过对上述测试结果分析，本系统符合网上商城系统的客户要求和用户需求</td>
+	            	<td>（2）<font color=red>测试结果</font>
+<font color=red>经过对系统的系统测试，本系统已</font><font color=red>符合用户需求，测试</font> Bug 已经修改完</td>
+	            	<td>《基于物联网技术的移动办公系统的设计与实现》<br/> 李哲<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">116<span class="have-color-ff2424">（86.05%）</span></td>
+	            	<td class="color-ff2424">本文主要阐述了如何利用SSH框架开发一个性能优化、可扩展性强和系统安全可靠的网上商城系统</td>
+	            	<td><font color=red>主要阐述了如何利用</font>基-于J2EE<font color=red>的S</font>truts<font color=red>框架开发一个性能优化、可扩展性强、</font>算法强大<font color=red>和安全可靠的系统</font>。论文介绍了J2EE和MVC</td>
+	            	<td>《基于j2ee交互式学习系统的研究与设计》<br/> 程玉昆<br/>- 《》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">117<span class="have-color-ff2424">（77.03%）</span></td>
+	            	<td class="color-ff2424">系统主要分为前台和后台两大模块，前台包括登录、注册、首页展示、网站广告、商品推广、商品展示等模块；后台包括ADMIN管理、商户管理、公告管理、商品管理、订单管理等功能模块</td>
+	            	<td>等。(2)<font color=red>后台部分:</font><font color=red>主要</font>对商城内的一些基础数据进行有效<font color=red>管理包括商品管理、会员</font><font color=red>管理、订单管理、公告管理等。1.</font><font color=red>网站前台功能模块</font>描述(1)会员<font color=red>注册及</font><font color=red>登录模块</font>:为了确保交易信息的有效性<font color=red>和网站功能</font>拓展购物<font color=red>网站</font>需要以会员机制运作浏览者必需成为会员才能够在<font color=red>网站</font>中购物</td>
+	            	<td>《基于B/S模式的校内电子商务实训系统》<br/> 姚伟;刘舟荷;陈立;温且兵;肖文艳;<br/>- 《企业家天地(理论版)》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">118<span class="have-color-ff2424">（82.61%）</span></td>
+	            	<td class="color-ff2424">接着进行需求分析的描述。接着是概要设计和详细设计</td>
+	            	<td>康复治疗报告。
+★根据<font color=red>需求分析接着进行概要设计和详细设计概要设计</font>中对本</td>
+	            	<td>《康复医疗信息系统的设计和实现》<br/> 黄蓓丽<br/>- 《中国优秀硕士学位论文全文数据库》</td>
+	            </tr>
+          	 	<tr>
+	            	<td class="xuhao" style="width:10%">119<span class="have-color-ff2424">（74.42%）</span></td>
+	            	<td class="color-ff2424">2、系统的用户权限进行划分，不同用户具有不同的操作权限，这不仅方便了用户，也保证了系统的安全性</td>
+	            	<td>，直接影响认<font color=red>证的有效性和</font><font color=red>系统的安全性</font>。
+    本<font color=red>系统中</font><font color=red>，不同的用户，具有不同的权限，</font>从而可以<font color=red>进行不同的业务</font><font color=red>操作</font></td>
+	            	<td>《Web应用程序安全评估与客户端读写安全控制技术研究》<br/> 张仁斌<br/>- 《中国优秀博硕士学位论文全文数据库 (硕士)》</td>
+	            </tr>
+        </table>
+        <!--申明-->    
+    	<dl class="shengming">
+        	<dt>声明：报告编号系送检论文检测报告在本系统中的唯一编号。本报告为维知网论文检测系统算法自动生成，仅对您所选择比对资源范围内检验结果负责，仅供参考。</dt>
+            <dt>客服邮箱：2689421372@qq.com</dt>
+            <dt>论文检测官方网址：<a href="http://www.guolem.com"  target="_blank">http://www.guolem.com</a></dt>
+        </dl>
+</div>
+</body>
+</html>
