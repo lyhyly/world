@@ -1,0 +1,2091 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="../css/public.css"/>
+<link type="text/css" rel="stylesheet" href="../css/reportStyle.css"/>
+<script type="text/javascript" src="../JS/jquery-1.8.1.min.js"></script>
+<title>比对报告</title>
+<script type="text/javascript">
+  var oldId = 0;
+	function showDiv(DIVid){
+		$(".right_part_msg").hide();
+		$("#head_"+DIVid).show();
+		$("#part_"+DIVid).show();
+	}
+  </script>
+    <script>
+function zishiying(){
+	var h = $(window).height();
+	h=h-50;
+	$(".Rbidui-con-left").height(h);
+		
+	$(".Rbidui-con-rightBox").height(h);
+}
+$(function(){
+	/*自适应*/
+	zishiying();
+	$(window).resize(function(){
+		zishiying();
+	});
+});
+</script>
+<style>
+/*选项*/
+.db_repetbox{ width:56px; height:18px;position:relative; border:solid 1px #ff4b4b;margin: 0 auto;}
+.db_red_block{ background-color:#ff4b4b; position:absolute; left:0px; bottom:0px; width:20%; height:18px;}
+.db_percent{color: #760202;font-family: 'Microsoft YaHei'; line-height:18px; text-align:center; position:absolute; left:50%; top:50%; margin-top:-9px;margin-left: -28px;width: 56px; display:block;}
+.db_xuanxiang{ overflow:hidden; background:url(../images/xuanxiang_bg.png) repeat-x;}
+.xs_page{ margin-bottom:6px; font-family:'微软雅黑'}
+.xs_page span{ color:#ff4b4b;}
+.db_xuanxiang li{  padding:10px 0px; float:left; width: 20%;text-align: center;}
+.db_xuanxiang .xuanxiang_cur{ background-color:#fff;}
+/*对比报告*/
+html,body{ height:100%; padding:0;}
+.rj-Rbidui-title{ color:#0193ef; font:bold 20px "微软雅黑"; border-bottom:solid 1px #f4f4f4; padding-bottom:6px;}
+.rj-Rbidui-title .xiangsi{font-size:12px; color:#535353; font-weight:normal; margin-left:14px;}
+.rj-Rbidui-title .red-ee2650{ color:#ee2650;}
+.rj-Rbidui-title .marRight15{ margin-right:15px;}
+.rj-Rbidui-title .tishi{ color:#a2a3a4; font-size:12px; font-weight:normal; padding-left:16px; background:url(../images/icon_ding.png) no-repeat; margin-left:20px;}
+/*内容*/
+.Rbidui-con{ overflow:hidden;}
+/*左边内容*/
+.Rbidui-con-left{ width:70%;box-shadow: inset -10px 0px 7px 0px rgba(211, 222, 229, 0.12);  box-sizing:border-box; float:left;overflow-y:auto;}
+.Rbidui-con-left p{ line-height:26px; color:#535353;padding:10px 20px 0;}
+.Rbidui-con-left .red-ff2424{ color:#ff2424;}
+/*申明*/
+.shengming{ background-color:#fafafa; padding:10px; margin-top:30px; color:#a2a3a4; line-height:24px;}
+.shengming a{ color:#0080ff;}
+.shengming a:hover{ text-decoration:underline;}
+/*右边内容*/
+.Rbidui-con-rightBox {float:left; width:30%;overflow-y:auto;}
+.Rbidui-con-right{ float:left; width:100%;}
+.Rbidui-con-right .pianduan-xiangsi{ color:#000; font-size:20px; font-family:"微软雅黑"; padding:20px; border-bottom:solid 1px #f4f4f4; background:url(../images/icon_xiangsi.png) 20px center no-repeat; padding-left:40px;}
+.Rbidui-con-right .red-e31515{ color:#e31515;}
+.Rbidui-con-right .songjian{ padding:20px 20px 0px;}
+.Rbidui-con-right .songjian h4{ font-size:14px;font-family:"微软雅黑"; line-height:26px;  background:url(../images/icon_blue.png) left center no-repeat; padding-left:15px; }
+.Rbidui-con-right .songjian p{font-size:14px;font-family:"微软雅黑"; line-height:26px;border-bottom: dotted 1px #dcdcdc; padding-bottom:10px;}
+.Rbidui-con-right .songjian2{ padding:10px 20px 0px;border-bottom:solid 1px #f4f4f4;}
+.Rbidui-con-right .songjian2 p{ border:none;}
+.Rbidui-con-right .songjian2 h4{ background:url(../images/icon_red.png) left center no-repeat; }
+.Rbidui-con .liebiao{ padding:10px 20px; color:#000; line-height:26px;border-bottom:solid 1px #f4f4f4;}
+.Rbidui-con .liebiao dd{ color:#696969;}
+.Rbidui-con .squre{ width:8px; height:8px; display:inline-block; margin-right:10px;}
+
+/*同义词  翻译*/
+.Rbidui-con .tongyici,.Rbidui-con .fanyi{ /*padding:20px; */color:#000; line-height:26px;border-bottom: dotted 1px #dcdcdc; padding-bottom:10px;margin-bottom:10px;}
+
+.tongyici li{float: left; width: 33.3%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;}
+.fanyi h4,.tongyici h4 { font-size: 14px;font-family: "微软雅黑"; line-height: 26px;
+}
+.tongyici h4{background: url(../images/icon_tong.png) left center no-repeat;padding-left: 15px;}
+.fanyi h4{background: url(../images/icon_fan.png) left center no-repeat;padding-left: 15px;}
+/*弹出框*/
+.alert_kuang{position:absolute; z-index:100000;width:310px;border:solid 1px #000;background:#fff;   box-shadow: 0px 5px 16px 0px rgba(14, 5, 10, 0.21);
+
+-moz-box-shadow:0px 5px 16px 0px rgba(14, 5, 10, 0.21); cursor:pointer;}
+.alert_kuang .list{ background-color:#fff;}
+.alert_kuang .list li{ color:#3c3c3c; font-family:'Microsoft YaHei'; padding:10px 10px; text-align:left; position:relative; overflow:hidden;}
+.alert_kuang .list li p a{ color:#3c3c3c; font-family:'Microsoft YaHei'; float:left; width:70%; padding-left:30%;}
+.alert_kuang .list li:hover{background-color:#f5f5f5;transition: all 1s;
+-moz-transition: all 1s;	
+-webkit-transition: all 1s;	
+-o-transition: all 1s;}
+.btn_close{height:34px; background-color:#687177; width:100%;}
+.btn_close img { float:right; margin-top:8px; margin-right:10px;}
+
+.repetbox{ width:56px; height:20px; background-color:#e6e6e6; position:absolute; left:6%; top:50%; margin-top:-10px;}
+.red_block{ background-color:#ff1616; position:absolute; left:0px; bottom:0px; width:20px; height:20px;}
+.percent{color: #000;font-family: 'Microsoft YaHei'; line-height:20px; text-align:center; position:absolute; left:50%; top:50%; margin-top:-10px; margin-left:-20px; display:block;}
+a{cursor: pointer;}
+</style>
+<script type="text/javascript">  
+
+var nowId = "";
+var oldId =0;	
+//弹出框
+var x=0;
+var y=0;
+var topscroll=0
+$(document).ready(function(){
+  $(document).mousemove(function(e){ 
+	  x=e.pageX;
+	  y=e.pageY;
+  });
+//滚动条  
+$(".layout_left").scroll(function() {
+   	topscroll+=1;	
+	if(topscroll>0){var tooltip=document.getElementById("nowId");
+   	tooltip.style.display="none";}
+  });
+});
+//显示隐藏
+function ShowToolTip(topDivId,DIVid){
+	if(nowId != "")
+	{
+		document.getElementById(nowId).style.display="none";
+	}
+   var tooltip=document.getElementById(topDivId);
+   tooltip.style.display="";
+   tooltip.style.left=parseInt(x)+"px" ;
+   tooltip.style.top=parseInt(y)+"px" ;
+   nowId = topDivId;
+
+$(".db_xuanxiang li").removeClass("xuanxiang_cur");
+   $(tooltip).find("ul>li").first().addClass("xuanxiang_cur");
+document.getElementById(oldId).style.display='none';
+		document.getElementById(DIVid).style.display='';
+		oldId = DIVid
+$('#'+nowId).mousedown( 
+function (event) { 
+var isMove = true; 
+var abs_x = event.pageX - $('#'+nowId).offset().left; 
+var abs_y = event.pageY - $('#'+nowId).offset().top; 
+$(document).mousemove(function (event) { 
+if (isMove) { 
+var obj = $('#'+nowId); 
+obj.css({'left':event.pageX - abs_x, 'top':event.pageY - abs_y}); 
+} 
+} 
+).mouseup( 
+function () { 
+isMove = false; 
+} 
+); 
+} 
+); 
+  }
+function HideToolTip(topDivId){
+	var tooltip=document.getElementById(topDivId);
+   	tooltip.style.display="none";
+	//$('.alert_kuang clearfix').hide();
+  }
+//拖曳
+$(document).ready( 
+function () { 
+$('#nowId').mousedown( 
+function (event) { 
+var isMove = true; 
+var abs_x = event.pageX - $('#nowId').offset().left; 
+var abs_y = event.pageY - $('#nowId').offset().top; 
+$(document).mousemove(function (event) { 
+if (isMove) { 
+var obj = $('#nowId'); 
+obj.css({'left':event.pageX - abs_x, 'top':event.pageY - abs_y}); 
+} 
+} 
+).mouseup( 
+function () { 
+isMove = false; 
+} 
+); 
+} 
+); 
+} 
+); 
+
+$(function(){
+	$(".db_xuanxiang li").click(function(){
+		$(".db_xuanxiang li").removeClass("xuanxiang_cur");
+		$(this).addClass("xuanxiang_cur");
+		});
+});
+
+function translate_sentence(obj_id,keywords){
+$("#fanyic"+obj_id).html('正在翻译,请稍后...'); 
+$("#fanyic"+obj_id).removeAttr('onclick');
+	var url = "http://116.62.31.36:8080/wpcheck/translate.html?jsonp=callbackfunction&souce="+keywords+"&id="+obj_id;  
+	var script = document.createElement('script'); 
+	script.setAttribute('src', url); 
+	document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+function callbackfunction(data){
+	var html=JSON.stringify(data.result);
+	var id = JSON.stringify(data.id);
+	$("#fanyic"+id).html(html); 
+} 
+</script>
+</head>
+<body>
+
+<div class="outSide_box" style="overflow:hidden; padding-bottom:0px; padding-right:0px;">
+<!--标题-->
+	<h1 class="rj-Rbidui-title">详细报告/<span class="xiangsi">总相似比：<span class="red-ee2650 marRight15">9.38%</span>引用率：<span class="red-ee2650 marRight15">1.08%</span>相似片段数：<span class="red-ee2650">35</span></span><span class="tishi">点击红色文字查看相似片段详情</span></h1>   
+<!--内容-->
+    <div class="Rbidui-con">
+    	<div class="Rbidui-con-left">
+    		<p><p>基于Servlet+Jsp的网上商城设计与实现</p><p>刘  阳</p><p>（安阳师范学院 软件学院, 河南 安阳 455002）</p><p></p><p>摘  要：二十一世纪以来，互联网逐步在人们的生活中慢慢普及开来，从最初的网上冲浪、炒股，到网络游戏、搜索引擎，再到现在的聊天工具、网上购物。网络购物现如今几乎是我国互联网行业的支柱产业，独占了我国互联网行业的半边天，网络购物是我国商品经济与现代科技相结合的产物，是当前互联网+的大时代背景下必然结果。</p><p>本文主要通过全民电商的大时代背景，与学过的面向对象的命令式编程语言相结合，以及前辈们的工作经验，并且综合实际应用前景，开发设计的系统。本系统以IntelliJ IDEA作为开发工具，以MySQL作为DBMS，系统UI设计简洁工整，以时尚简约为主格调，没有杂乱繁琐的UI设计，以简单易用为宗旨。</p><p>本设计采用当下社会中使用广泛、社区活跃度极高的SSH(即Struts2、Spring、Hibernate)作为基础框架，旨在开发一个性能强大、易于拓展、运维简单并且安全可靠稳定的网上购物系统。设计包含fore-ground和back-ground，fore-ground主要有sign up和sign in、market Index、information、sale、product List等模块；back-ground包含root manage、user manage、information manage、sale manage、product content manage、order manage等功能模块。</p><p></p><p>关键词：网络购物；互联网+；SSH；MySQL；</p><p></p><p>Abstract</p><p>The 21st century, the Internet gradually spreading slowly in the life of people, from the initial web surfing, fry, to the network game, search engine, chat, online shopping now.Internet shopping these days is a pillar industry of the Internet industry in our country, almost monopolized the China's Internet industry up half the sky, online shopping is the combination of the commodity economy and modern science and technology in our country, is currently under the background of the great age of the Internet + result.</p><p>This paper, through a big electric business background, and studied the imperative programming language, the combination of object-oriented and the experience of predecessors, and comprehensive application prospect, development and design of the system.This system USES IntelliJ IDEA as the development tool, with MySQL as the DBMS, the system UI design is simple and neat, and the style is simple and simple, without messy and complicated UI design, with simple and easy to use as the purpose.</p><p>This design USES the present widely used in the society, community activity of SSH (struts 2, Spring, Hibernate) as the basic framework, to develop a high performance, strong extensibility, maintainability is strong and stable online shopping system safe and reliable.The design mainly includes two major modules: the front desk and the backstage. The front desk includes the login registration, the homepage information page display, the website advertisement news, the special price recommendation, the commodity display and other modules;The background includes functional modules including ADMIN management, registered user management, advertising management, news management, commodity management, and commodity order.</p><p></p><p>Keywords: Online shopping；Internet+；SSH；MySQL； </p><p>1 引言</p><p>1.1 课题目的和意义</p><p>在万物互联、网络盛行的今天，网络已经是人们生活中的必需品了，从传统的C/S架构，到现在的”apps必死，H5永生”，可见基于B/S架构的的WEB应用已经成为未来必然盛行的一种网络应用。结合现在各种盛行的互联网+行业，诸如滴滴打车、美团外卖、各类O2O金融软件、天猫、京东以及各类线上下相结合的各类APPs，可见现在大众早已不再满足于获取信息、网络社交等一些基本的网络使用方式，就像如习近平总书记所说的那样，社会的根本矛盾已经发生了变化。人民的生活水平越来越高，对非物质需求的要求也越来越高，作为新时代的大学生、共产党员，要努力跟上群众步伐，走在人民的前列，先天下之忧而忧。<a onclick="showDiv('0')" class=red target='right'>人民有需要，我们有行动。我们已经进入到了万物联网的时代</a>。网上购物，成了当今广大群众不可或缺的获取商品的方式。而如今要经营商品，没有网店是几乎是不可能的事情，充分利用起网络的低成本、高效性来宣传企业形象和销售商品。因此，我们顺应时代，响应时代，应用新技术，来为社会做出自己的一份贡献。</p><p>在商品经济时代，绝大部分的商业活动都是面对面的，如：门面销售、茶话会、上门 等。这些经营活动，都会严重受到地域、时间、环境等方面的影响，从而给商业活动的管理行为带来极大的不便。而且各类信息的人工维护，也存在诸多缺点。而通过网络，正好能全面解决这样的问题。从产品的生产到销售再到客户订单直到交易完成。这一整个过程，商品管理系统为商家、客户以及运送人员等的信息管理带来了极大的方便。这种集商品管理、销售于一体的系统可以为用户提供可靠的信息管理以及方便快捷的信息处理方案。相比传统的人工资料管理product、客户信息维护等方式，使用网络并且是专用的网络应用管理，具有传统管理方式所无法比拟的优点。因此，这样的系统具有广泛的应用前景以及客户群，它能够为企业用户、个体用户提供购买、销售、管理等的一站式解决方案，	用结构化的思维方式去处理商品从生产到使用这一整个过程的所有信息。</p><p>1.2 国内外的研究现状</p><p><a onclick="showDiv('1')" class=red target='right'>网络购物市场在互联网如此发达的今天无疑仍是一个发展空间巨大的市场，发展空间毫无疑问</a>。电子商务的一站式购物体验对传统购物方式造成巨大挑战，顺势而为，跟随时代发展的脚步。互联网的发展、各类智能设备的平民化以及我国国力的不断昌盛，国民经济水平大大提升，为网上购物的发展提供了更加强大的动力以及更加良好的发展空间。如今的通过网络进行在线交易的安全度越来越高，网上在线交易也更加令人放心，这也让物流通勤、银行结算等的变得更加高效、更加畅通无阻，市场规范的健全及相关法律政策的逐步完善也使得群众对网络购物的信任逐年上升。</p><p><a onclick="showDiv('2')" class=yellow target='right'>《2016年度中国网络零售市场数据监测报告》显示出了中国电子商务过去的发展状况良好[5]</a>。<a onclick="showDiv('3')" class=yellow target='right'>据中国电子商务研究中心(100EC.CN)监测数据显示，2016年中国网络零售市场交易规模达53288亿元，相比2015年的38285亿元，同比增长39.1%[5]</a>。<a onclick="showDiv('4')" class=yellow target='right'>预计2017年全年中国网络零售市场交易规模有望达75693亿元[5]</a>。自 “互联网+”计划启动至今，我国互联网行业的形式可谓形势大好，“大众创业，万众创新”以及今年的两会，都显示出了互联网经济在我国一片大好的发展形势。</p><p>国外诸如亚马逊、ebay之类的电子网络商务网站起步较早，相关行业准则和法律完善较早。特别是老牌发达国家更是在之前走在我们的前面。但我国近几年电商规模不断增大，电商销售占比不断增高，相关法律法规不断完善，已和国外相差无几，甚至有过之无不及。从此可以看出，国内的电商市场一片大好，前景广阔。</p><p>1.3 课题研究方式、技术选型</p><p>(1)研究方式：</p><p>系统通过搭建IntelliJ IDEA + MySQL DBMS来开发本系统。并结合使用navicat、chrome、git、npp等工具辅助开发。</p><p>(2)技术选型：</p><p>本系统采用B/S(Browser/server，浏览器/服务器)体系结构，代码采用MVC+三层架构的架构模式开发，这种模式采用HTTP标准协议和SERVLET+JSP技术，因为使用JAVA开发，Write Once,Run Anywhere，一次编译到处运行的特性，可以使得程序能够在任何硬件平台和软件环境下良好的运行。本系统采用当今社会采用极为广泛的SSH（即Struts2、Spring、Hibernate）框架技术开发一个性能可靠、扩展性强、可维护和安全的网上商城系统。</p><p>1.4 本文研究内容</p><p><a onclick="showDiv('5')" class=red target='right'>本文主要分为六个部分进行阐述，第一部分为前言，主要介绍说明了课题研究社会现状、时代意义、课题的研究方式、技术选型以及本文研究的主要内容等</a>。</p><p>第二部分是相关技术的介绍，主要介绍了JSP、IntelliJ IDEA、Tomcat、Struts2、 Hibernate框架和MySQL数据库。</p><p><a onclick="showDiv('6')" class=red target='right'>第三部分是系统分析，对本设计的选题、功能、应用场景等进行浅要分析</a>。</p><p><a onclick="showDiv('7')" class=red target='right'>第四部分是系统设计，针对系统分析所得具体功能模块进行设计、包含系统的架构设计以及数据库设计等</a>。</p><p>第五部分是系统设计的细节，针对系统一些主要模块及其实现做出简要说明。</p><p>第六部分是系统测试，对系统的最后测试使用的测试方法以及测试用例做出罗列。</p><p>第七部分是最终总结，针对本系统开发期间遇到的问题以及系统的优缺点进行总结，以期提高。</p><p>?</p><p>2 相关技术简介</p><p>2.1 Jsp技术介绍</p><p>JSP是一种历史悠久的Java模板语言，可以将Java代码嵌入HTML页面中，在用户请求服务器时动态生成HTML标签。可以极大减少HTML页面编写的工作量。也可以更加灵活的处理后台数据，搭配Jsp自带的标签库，更是可以更加便捷的渲染后台数据。</p><p>2.2 IntelliJ IDEA简介</p><p>IntelliJ IDEA是JetBrains公司开发的集代码提示、重构、J2EE、各类版本控制工具、代码分析等功能与一体的强大的开发工具，本身并不免费，但对高校学生免费，非常的好用。</p><p>IntelliJ IDEA是近几年新兴的IDE，他自己还开发了一种JVM语言——Kotlin，优美的语法以及很好的支持函数式编程吸引了一大批开发者的使用。</p><p>2.3 Tomcat简介</p><p>Tomcat是一款轻量级容器，开源、免费，隶属于Apache基金会，支持HTML、JMX等协议，并且在不用特殊配置的情况下支持大约500左右的并发量，可以说是小型WEB服务的服务器不二之选。</p><p>2.4 MySQL数据库</p><p>在软件项目中，经过了文件存储、内存存储，最终到了现在的数据库存储，SQL经过了时间的考验，可见他是安全可靠的。由于DBMS有专门的DBMS厂商来维护，可以提供专业的数据库访问方式，可以使应用开发者专注于业务，而非工具的开发。</p><p>一般的DBMS厂商所维护的数据库应用都会支持多线程，社区维护的MySQL也不例外，在Oracle收购MySQL之前，一直都是社区维护的MySQL在并发以及连接协议等方面一点不输IBM、Oracle等厂商的DBMS。在千万级左右的数据量下，MySQL可以完全胜任。鉴于其开源、社区活跃，所以在技术选型上MySQL是不二之选。</p><p>2.5 SSH架构技术</p><p>SSH是Struts2 + Spring + Hibernate的简写，是众多开源Web框架中使用较为广泛的开源Java Web应用框架的一个综合框架。 </p><p>Struts2虽然名字看起来是Struts1的二代产品，但其核心思想是不同的，Struts2是以WebWork为基础，借鉴Struts1的思想，进而整合而成的。Struts2与Struts一样，同样通过Filter来实现框架的可插拔应用，通过Filter拦截请求，在框架内部进行处理，不再放行给服务器匹配Servlet。</p><p>Struts2是一个基于MVC架构的Web层可插拔式框架。</p><p>Struts2的MVC模式：</p><p>MVC模式分为三个部分：Model，View，Controller。在Struts中通过动作（action），结果（result），过滤分配器（FilterDispatcher）实现。</p><p>1.	控制器Controller</p><p>这是一个Filter，为JavaWeb三大组件之一。它检查每一个传入请求，决定由那个动作处理。可以通过注解方式或xml文件方式来映射请求的url具体到哪一个动作执行。</p><p>2.	模型--- Model</p><p><a onclick="showDiv('8')" class=red target='right'>模型就是用来对数据进行控制，包括数据的存储、接受、传递</a>。View和Controller之间的数据传递就是通过Model来实现。</p><p>3.	视图---- View</p><p>视图是MVC模式的视图组件，用于页面的展示，所有的处理结果最终都会发到View层，由View层对数据进行处理，然后生成页面，返回前台。 一般由jsp页面，Velocity模板等template技术实现。</p><p>Spring</p><p>Spring是一个JavaEE开发的一个完整的生态体系，Spring家族有许多JavaEE开发可用的开源框架。本系统采用Spring3.0版本进行开发。Sping的两大核心思想就是IOC(控制反转),AOP(面向切面编程)。通过这两个思想，Spring框架使各个模块间的耦合度大大降低，使得代码的可维护性变得更高。基于使用控制容器依赖倒置的JavaBean属性便Spring框架IOC思想。Spring提供了统一的对象管理，实现了类的抽象，包括JDBC框架，方便，高效地，让开发者专注于应用的开发。这样可以提高效率，减少出错的可能性。使用Spring对Web层的Action、数据访问层的dao等对象统一管理，在同一地方创建和维护。Spring不仅有对象管理的功能，还有其他许多框架，现在spring已经形成了JavaWeb开发的一整套工具或者说是规范，除了spring，还有springBoot、springCloud及SpringMVC等等一些JavaWeb框架。SpringMVC框架是一个强大的、轻量级的Web层框架，提供了一个强大而灵活的Web集成，架构进行数据访问Spring，Hibernate和绘图解决方案整合的O / R Spring也提供了一个唯一的事务管理抽象，它可以在各种管理技术的基本交易。</p><p>Hibernate </p><p><a onclick="showDiv('9')" class=red target='right'>Hibernate是开源的DAO层ORM框架，非常轻量级的封装了JDBC，由于是ORM框架，所以程序员在开发应用时，碰到需要操作数据库的操作时，可以使用面向对象的思想进行编程</a>。 Hibernate可以在任何可以使用JDBC的地方使用，最具革命性的是，Hibernate可以取代CMP EJB的J2EE应用程序体系结构来解决数据持久化的重任[3]。最最重要的是使用hibernate可以自动生成SQL，可以弥补初级程序员SQL的短板。 </p><p>SSH框架的结合，每个框架的特点 </p><p>Struts是一个很好的MVC框架，关键技术是Servlet和JSP。 Struts的MVC设计模式可以让业务逻辑变得便于理解，使得程序更加有条理，使程序结构化。 </p><p>Sping的两大核心思想就是IOC(控制反转),AOP(面向切面编程)。通过这两个思想，Spring框架使各个模块间的耦合度大大降低，使得代码的可维护性变得更高。强大的IOC和AOP使得程序更加便于管理和增强。</p><p>Hibernate的持久化数据方式，通过对象关系映射，可以自动生成SQL，可以弥补初级程序员SQL的短板，并且通过它的缓存机制以及延迟加载的机制也可以大大降低数据库的压力。</p><p>以下是SSH架构图：</p><p> </p><p>图2-2  SSH架构图</p><p>SSH架构图</p><p>Struts负责Web层：</p><p>DataDTO接收网页提交数据，然后由此Action进行相对应操作，再将请求转发到对应JSP页面，在Struts-config.xml中定义了Action的映射，ActionServlet会自动的加载进来。</p><p>Spring主要负责业务层管理，即Service：</p><p>Service为Action提供统一的业务层接口调用，封装持久层的DAO，并集成了Hibernate，Spring通过Aop编程还可对事物进行统一管理。</p><p>Hibernate负责持久层，完成对数据库的CRUD操作：</p><p>Hibernate有一组XML配置文件和POJO类，这些文件与数据库中的表一一映射，然后编写DAO，这些类是与数据库相关的。</p><p>在Struts2、Spring、Hibernate系统中，对象之间的调用关系如下：</p><p>Struts——&gt;Spring——&gt;Hibernate</p><p>JSP——&gt;Action——&gt;Service——&gt;DAO——&gt;Hibernate</p><p> </p><p>图2-3  SSH框架中对象之间调用流程图</p><p></p><p>?</p><p></p><p>3 系统分析</p><p>3.1 系统设计目标</p><p>网上商城系统的具体开发目标为：</p><p>（1）能够提供全天候、方便快捷的网上商城管理服务。用户可以通过该平台搜索自己喜欢的商品，然后用通过网站完成一整个购物过程，并可监控过程。</p><p>（2）能够完整的轻松的实现对整个商业活动的数据把控，形成数据闭环，其中主要包括对站内新闻、广告、商品等信息的维护功能的实现。</p><p>（3）具备相对高效的信息数据管理方案，可以高效的完成信息的修改与存储等。</p><p>（4）系统管理员可以实现登录操作后台数据，以完成对商城的有效管理。</p><p><a onclick="showDiv('10')" class=red target='right'>（5）系统安全可靠，在大数据时代保证商家与消费者的信息安全</a>。</p><p>3.2 系统可行性分析</p><p>1、操作的可行性分析</p><p>本系统设计的登录UI简单和方便，采用使用常见FORM表单的登录界面，而本商城的开发则采用的是较常使用的JSP技术。这些选择使得用户在不需要读专门的用户手册的前提下，不需要很长的时间就能够快速熟悉系统，并掌握系统的操作以及使用。此外，为了方便系统管理维护人员，用户登录系统后会给出了一些提示，使得整个系统更加友好，用户操作更方便友好。</p><p>2、可行性分析</p><p>企业要长期生存，必须先有一个良好的企业文化，其次需要有一个完善、完整的管理解决方案，再采用科学、有效的方法实现可持续发展，最后还要有与时俱进，不断改革的觉悟，使企业的网站的时间去适应社会的变化。最重要的还是要确保科学、有效的管理方案，这是企业获得长远发展的竞争力提高的唯一途径。</p><p>3、技术可行性分析</p><p>（1）硬件可行性分析</p><p>本系统对硬件要求CPU单核心即可，内存1G，40G硬盘，只需要在普通的硬件配置就能够轻松的实现，只是需要确保系统的正常工作即可，以及拥有较高的效率。由于JAVA虚拟机的实现，对计算机本身的要求并不高，虚拟机对native的适配做了较多优化。所以就目前的个人计算机的配置而言，非常容易满足的。</p><p>（2）软件可行性分析</p><p>Java语言提供了一个共同的动态接口模型，设计更集中。此外，Java的社区及其活跃，遇到问题可以很好的解决，所以技术选型的一个重要因素决定了本次设计选用Java语言。因此，考虑到系统的实际情况，选择JAVA作为本系统开发语言的。并且使用tomcat作为服务器，可以满足大约500的并发量，足以满足企业初期的需求。</p><p>至此，通过对软件、硬件、应用场景、技术等的可行性分析，可以发现此应用的开发是有意义、可行的。</p><p>3.3 系统功能需求概述</p><p>系统设计包含fore-ground和back-ground，fore-ground主要有sign up和sign in、market Index、information、sale、product List等模块；back-ground包含root manage、user manage、information manage、sale manage、product content manage、order manage等功能模块。</p><p>模块结构如图3-1所示：</p><p> </p><p>图3-1模块结构图</p><p></p><p>3.4 系统设计规则</p><p>系统的设计所依据的设计原则所有系统都应该遵守。本系统也不例外，它的主要设计规则有：</p><p><a onclick="showDiv('11')" class=red target='right'>简单性：简单易用对于一个系统，特别是商业系统来说是非常重要的，使系统操作简单易懂的同时，也要让系统的功能尽量完善，具备一定的健壮性</a>。</p><p>针对性：该系统设计的定向开发设计是关于网络购物的，专业性和针对性很强。</p><p>实用性：本系统设计包含fore-ground和back-ground，fore-ground主要有sign up和sign in、market Index、information、sale、product List等模块；back-ground包含root manage、user manage、information manage、sale manage、product content manage、order manage等功能模块，基本满足了一个商城的所有需求，因此具有良好的实用性。</p><p>3.5 运行环境</p><p>本系统是一个web版的应用程序，需要在服务器上部署中间件Tomcat、MySQL数据库，其他的客户端通过网络进行访问该服务器即可。</p><p>（1）开发硬件平台：</p><p>CPU：酷睿双核 3.2GHZ</p><p>内存：4G以上</p><p>硬盘：320GB</p><p>（2）服务器端硬件平台：</p><p>Web服务器参考配置：Intel64 Family 6 Model 92 Stepping 9 GenuineIntel ~1101 Mhz, 1x4GB DDR4-1066MHz, 2.5in HS 146GB SAS,HS  675W PSU, ServeRAID MR10i(RAID 5), 2*Giga Ethernet,Light Path, CD-RW/DVD Combo, 1U,3 Years Onsite Next Business Day. 146GB 10K 6Gbps SAS 2.5" SFF Slim-HS HDD x3550M2/x3650M2/HS22</p><p> (3) 开发软件平台：</p><p>操作系统：Windows 7 x64</p><p>数据库：MySQL</p><p></p><p>?</p><p>4 系统设计</p><p>4.1 系统架构设计目标</p><p>软件整体架构设计目标：</p><p>1．可行性。架构的设计是整个系统的开发的基础。</p><p>2．高容错。一个商业系统的受众非常之多，系统负荷也是非常之高，所以容错的必要性可想而知，不能一个地方出错，整个系统崩溃。</p><p>3．安全性。通过架构、来合理规避数据的泄露风险，例如敏感数据不提供访问接口等等。</p><p><a onclick="showDiv('12')" class=red target='right'>4．高可用。在功能结构方面，降低各个模块间的相互依赖，尽可能避免“牵一发而动全身”的情况出现</a>。</p><p>5．可扩展性。在架构方面，留出拓展空间，让系统支持后期的横向拓展。</p><p>6．可维护性。系统的可维护性主要体现在两个方面，一是在BUG出现时可以快速排查修复，二是在添加新功能时不会对原有功能造成过多影响。合理的维护系统可以减少运营成本。</p><p>7．可升级性。软件必须能够在用户数量增多的情况下，升级服务器，保持合理的性能。只有这样，才可以具备可持续运营。</p><p>8．易用性。系统操作必须简单、易于使用。</p><p>4.2 系统架构设计</p><p><a onclick="showDiv('13')" class=red target='right'>依据架构的设计目标，我们将系统中的对象进行分层，可分为三层，即控制层、业务层、数据访问层（如下图4-1所示）</a>，然后将模块间公共的类进行分类整合，这样便得到packageView，如图4-2所示：</p><p> </p><p>图4-1  系统体系架构图</p><p></p><p> </p><p>图4-2  packageView</p><p>4.3 系统架构类图</p><p>在由各个包的具体功能，创建出各个类，便得到下图(图4-3)。</p><p> </p><p>图4-3 系统架构类图</p><p></p><p>4.4 系统架构类交互图</p><p>系统架构类的工作流程：</p><p>1、Web层Action对象在接收了用户的请求数据后，调用Service对象发送请求数据。</p><p>2、Service对象，执行对应业务逻辑，调用UserService对象发送用户权限信息。</p><p>3、UserService对象校验后将校验结果返回给Service对象。</p><p>4、Service对象根据校验结果进行判断：若权限校验不通过，则返回提示权限校验不通过的信息；若权限校验通过的请求，则调用对应Service对象执行业务逻辑。</p><p><a onclick="showDiv('14')" class=red target='right'>5、Service进行业务处理。对于业务处理中的数据持久化操作，通过调用数据库访问对象进行数据操作，发生所有异常都直接抛给调用者</a>。然后将处理结果返回给调用者。 </p><p>6、Service对象将处理结果返回web层，在有web层转发JSP生成页面，返回。</p><p>各个模块代码交互关系如图4-4所示：</p><p> 图4-4  代码交互关系图</p><p></p><p>4.5 数据库结构设计</p><p>4.5.1 E-R图</p><p>数据库的从上世纪70年代至今发展了近半个世纪，已经形成了较为完整且完整的体系，现今应用的最广泛的数据库是由IBM公司的教授提出的关系型数据库。因为本系统使用Java语言开发，所以，数据库的设计，也是根据应用场景进行抽象，得到对应实体，再由通过Hibernate框架映射到对应的数据库表中。本文利用微软的Visio进行E-R图的绘制，展示如下：</p><p></p><p> </p><p>图4-5用户信息实体E-R分图</p><p> </p><p>图4-6公告实体属性E-R分图</p><p> </p><p>图4-7 商品信息实体属性E-R分图</p><p> </p><p>图4-8 订单信息实体属性E-R分图</p><p></p><p></p><p>4.5.2 数据表字段设计</p><p>由于论文的篇幅有限，这里引用的表只是设计的一部分。</p><p>（1）admin表。</p><p>表4-1 admin表</p><p><a onclick="showDiv('15')" class=red target='right'><a onclick="showDiv('16')" class=red target='right'><a onclick="showDiv('17')" class=red target='right'><a onclick="showDiv('18')" class=red target='right'><a onclick="showDiv('19')" class=red target='right'>字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</a></a></a></a></a></p><p>adminid	编号	int	4	是	否</p><p>username	用户名	varchar	40	否	否</p><p>password	密码	varchar	40	否	否</p><p>realname	姓名	varchar	40	否	否</p><p>contact	联系方式	varchar	40	否	否</p><p>（2）article表。</p><p>表4-2 article表</p><p><a onclick="showDiv('15')" class=red target='right'><a onclick="showDiv('16')" class=red target='right'><a onclick="showDiv('17')" class=red target='right'><a onclick="showDiv('18')" class=red target='right'><a onclick="showDiv('19')" class=red target='right'>字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</a></a></a></a></a></p><p>articleid	编号	int	4	是	否</p><p>title	标题	varchar	40	否	否</p><p>image	图片	varchar	40	否	否</p><p>contents	内容	varchar	40	否	否</p><p>addtime	发布日期	varchar	40	否	否</p><p>hits	点击数	varchar	40	否	否</p><p>（3）bcate表。</p><p>表4-3 bcate表</p><p><a onclick="showDiv('15')" class=red target='right'><a onclick="showDiv('16')" class=red target='right'><a onclick="showDiv('17')" class=red target='right'><a onclick="showDiv('18')" class=red target='right'><a onclick="showDiv('19')" class=red target='right'>字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</a></a></a></a></a></p><p>bcateid	编号	int	4	是	否</p><p>bcatename	大类名称	varchar	40	否	否</p><p>（4）cart表。</p><p>表4-4 cart表</p><p><a onclick="showDiv('15')" class=red target='right'><a onclick="showDiv('16')" class=red target='right'><a onclick="showDiv('17')" class=red target='right'><a onclick="showDiv('18')" class=red target='right'><a onclick="showDiv('19')" class=red target='right'>字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</a></a></a></a></a></p><p>cartid	编号	int	4	是	否</p><p>usersid	用户	varchar	40	否	否</p><p>goodsid	商品	varchar	40	否	否</p><p>num	数量	varchar	40	否	否</p><p>price	价格	varchar	40	否	否</p><p>addtime	加入日期	varchar	40	否	否</p><p>（5）details表。</p><p>表4-5 details表</p><p><a onclick="showDiv('15')" class=red target='right'><a onclick="showDiv('16')" class=red target='right'><a onclick="showDiv('17')" class=red target='right'><a onclick="showDiv('18')" class=red target='right'><a onclick="showDiv('19')" class=red target='right'>字段名称	字段意义	字段类型	字段长度	是否主键	能否为空</a></a></a></a></a></p><p>detailsid	编号	int	4	是	否</p><p>ordercode	订单号	varchar	40	否	否</p><p>goodsid	商品	varchar	40	否	否</p><p>num	数量	varchar	40	否	否</p><p>price	单价	varchar	40	否	否</p><p> </p><p>5 详细设计</p><p>5.1 系统配置</p><p>5.1.1 应用层配置</p><p>本系统Web采用Struts2框架进行开发。<a onclick="showDiv('20')" class=red target='right'>先来看看Struts2框架是如何配置到应用程序中的</a>。</p><p>在WEB-INF/web.xml文件的配置代码如下：</p><p>&lt;filter&gt;</p><p>    &lt;filter-name&gt;struts&lt;/filter-name&gt;</p><p>    &lt;filter-class&gt;</p><p>			org.apache.struts2.dispatcher.FilterDispatcher</p><p>		&lt;/filter-class&gt;</p><p>  &lt;/filter&gt;</p><p>  &lt;filter-mapping&gt;</p><p>    &lt;filter-name&gt;struts&lt;/filter-name&gt;</p><p>    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</p><p>  &lt;/filter-mapping&gt;</p><p>  &lt;filter&gt;</p><p>    &lt;filter-name&gt;struts-cleanup&lt;/filter-name&gt;</p><p>    &lt;filter-class&gt;</p><p>			org.apache.struts2.dispatcher.ActionContextCleanUp</p><p>		&lt;/filter-class&gt;</p><p>  &lt;/filter&gt;</p><p>  &lt;filter-mapping&gt;</p><p>    &lt;filter-name&gt;struts-cleanup&lt;/filter-name&gt;</p><p>    &lt;url-pattern&gt;/*&lt;/url-pattern&gt;</p><p>  &lt;/filter-mapping&gt;</p><p>当加入这个配置到web.xml文件之后，在浏览器中敲入的访系统的所有请求路径都会经过openSessionInViewFilter这个filter进行过滤。由这个过滤器进行请求拦截，框架解析请求Url，通过配置，对应到各个Action的各方法中去，进入Struts2的工作流程中。这就是算是把Struts2框架配置到程序中了。</p><p>5.1.2 数据库连接配置</p><p>服务器端程序采用spring框架来访问数据库：以下是spring连接数据库的配置文件，该配置是针对dataSource的连接数据库的配置：</p><p>&lt;bean id="dataSource"</p><p>		class="org.apache.commons.dbcp.BasicDataSource"&gt;</p><p>		&lt;property name="driverClassName"</p><p>			value="com.microsoft.jdbc.sqlserver.SQLServerDriver"&gt;</p><p>		&lt;/property&gt;</p><p>		&lt;property name="url"</p><p>			value="jdbc:sqlserver://localhost:1433;databaseName=training_db;user=sa"&gt;</p><p>		&lt;/property&gt;</p><p>		&lt;property name="username" value="sa"&gt;&lt;/property&gt;</p><p>		&lt;property name="password" value="1234"&gt;&lt;/property&gt;</p><p>	&lt;/bean&gt;</p><p>5.1.3 SessionFactory模式的配置</p><p>&lt;bean id="sessionFactory"</p><p>		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"&gt;</p><p>		&lt;property name="dataSource"&gt;</p><p>			&lt;ref bean="dataSource" /&gt;</p><p>		&lt;/property&gt;</p><p>		&lt;property name="hibernateProperties"&gt;</p><p>			&lt;props&gt;</p><p>				&lt;prop key="hibernate.dialect"&gt;</p><p>					org.hibernate.dialect.MySQLDialect</p><p>				&lt;/prop&gt;</p><p>				&lt;prop key="hibernate.show_sql"&gt;true&lt;/prop&gt;</p><p>				&lt;prop key="hibernate.hbm2ddl.auto"&gt;update&lt;/prop&gt;</p><p>			&lt;/props&gt;</p><p>		&lt;/property&gt;</p><p>		&lt;property name="mappingResources"&gt;</p><p>			&lt;list&gt;</p><p>				&lt;value&gt;com/model/Sysuser.hbm.xml&lt;/value&gt;</p><p>				&lt;value&gt;com/model/Course.hbm.xml&lt;/value&gt;</p><p>				&lt;value&gt;com/model/Check.hbm.xml&lt;/value&gt;</p><p>				&lt;value&gt;com/model/Result.hbm.xml&lt;/value&gt;</p><p>				&lt;value&gt;com/model/Job.hbm.xml&lt;/value&gt;</p><p>			&lt;/list&gt;</p><p>		&lt;/property&gt;</p><p>	&lt;/bean&gt;</p><p>5.2 功能模块实现</p><p>5.2.1 系统登录实现</p><p><a onclick="showDiv('21')" class=red target='right'>系统的登录通过请求路径进行区分用户类别，进而进行权限的控制</a>。系统登录UI如图5-1所示。</p><p> </p><p>图5-1  系统登录实现界面</p><p>实现代码如下：</p><p>&lt;script type="text/javascript"&gt;</p><p>			function checkLogin(){</p><p>				var username  = document.myform.username.value;</p><p>				var password = document.myform.password.value;</p><p>				if(username==''){</p><p>					alert('请输入用户名');</p><p>					document.myform.username.focus();</p><p>					return false;</p><p>				}</p><p>				if(password==''){</p><p>					alert('请输入密码');</p><p>					document.myform.password.focus();</p><p>					return false;</p><p>				}</p><p>			}</p><p>		&lt;/script&gt;</p><p>																							</p><p>5.2.2 添加管理员模块</p><p><a onclick="showDiv('22')" class=red target='right'>添加管理员模块UI如图5-2 所示</a>。</p><p> </p><p>图5-2  添加管理员模块实现界面</p><p>5.2.3 注册用户管理模块</p><p>UserManager模块功能是系统Admin用户对注册用户信息进行CRUD操作。此模块UI如图5-3 所示。</p><p> </p><p>图5-3  注册用户管理模块实现界面</p><p>5.2.4 公告信息管理模块</p><p><a onclick="showDiv('23')" class=red target='right'>Information Manage模块主要功能为系统管理员对公告信息进行管理</a>。此模块UI如图5-4 所示。</p><p> </p><p>图5-4  添加公告实现界面</p><p>5.2.5 商品信息管理模块</p><p>Product Manage模块主要为商品信息维护操作，操作者为管理员，此模块UI如图5-5所示。</p><p> </p><p>图5-5  商品信息管理实现界面</p><p>5.2.6 订单信息管理模块</p><p>Order Manage模块主要是订单的分页以及订单更新等功能，此模块UI如图5-6所示。</p><p> </p><p>图5-6  订单信息管理实现界面</p><p> </p><p>6 系统测试</p><p>软件程序测试是程序设计的最后一步工作，也是软件设计交付的重要步骤，一个成熟的系统在开发阶段结束以后，总会花费大量时间和人工在测试阶段，可见测试的作用不可忽视。测试计划采用一套成熟的、规范的测试方案，将大大提高软件的可用性、合规性、可靠性等，同时也降低了软件的出错率，降低用户操作系统时的风险系数。</p><p>6.1 功能测试</p><p><a onclick="showDiv('24')" class=red target='right'>此类测试主要包括五项内容：适用性、合规性、可操作性、简便性、安全性</a>。</p><p>测试结果如下表6-1所示：</p><p>表6-1  系统功能测试</p><p>测试内容	测试结果</p><p>适用性	好</p><p>合规性	好</p><p>可操作性	好</p><p>简便性	好</p><p>安全性	好</p><p>6.2 用例测试</p><p>由于篇幅所限，以下列出本分测试用例。具体测试方面如表6-2所示。</p><p>表6-2  系统用例测试</p><p><a onclick="showDiv('25')" class=red target='right'>序号	用例名称	执行操作	预期结果	实际结果</a></p><p><a onclick="showDiv('26')" class=red target='right'>1	用户登录	输入用户名、密码	输入正确用户名和密码进入系统主界面，输入错误用户名或密码给出提示	符合预期</a></p><p><a onclick="showDiv('27')" class=red target='right'>2	添加商品信息	在页面内输入商品信息，点击“添加”按钮	正确存储商品信息	符合预期</a></p><p><a onclick="showDiv('28')" class=red target='right'>3	查看商品信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看商品信息	正确显示商品信息	符合预期</a></p><p><a onclick="showDiv('29')" class=red target='right'>4	添加用户信息	在页面内输入用户信息，点击“添加”按钮	正确存储用户信息	符合预期</a></p><p><a onclick="showDiv('30')" class=red target='right'>5	查看用户信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看用户信息	正确显示用户信息	符合预期</a></p><p>6	翻页功能	点击“上一页”“下一页”“首页”“尾页”	跳转到正确页	符合预期</p><p></p><p>6.3 测试结果分析</p><p><a onclick="showDiv('31')" class=red target='right'>通过实施所有的测试用例，得到的结果符合系统设计预期与商用要求</a>。一个商城系统该有的功能均具备，且运行良好。故此设计符合预期，值得推广。</p><p>?</p><p>7 总结与展望</p><p></p><p>本文主要阐述了怎样使用Struts2、Spring、Hibernate作为基础框架开发一个性能良好、架构良好和功能实用的网上商城系统。系统设计包含fore-ground和back-ground，fore-ground主要有sign up和sign in、market Index、information、sale、product List等模块；back-ground包含root manage、user manage、information manage、sale manage、product content manage、order manage等功能模块。然后再通过对这些功能进行分析设计，对所用到的Struts2、Spring、Hibernate等现今成熟先进的JavaWeb开发框架进行简要的介绍。<a onclick="showDiv('32')" class=red target='right'>接下来是对需求进行分析与描述。最后是系统的架构设计和具体的代码结构设计与数据库设计等</a>。描述这个系统的部分功能的具体实施方案及过程。</p><p>本设计所实现的是一个网上购物商城系统，主要使用了JSP、Struts2、Hibernate等技术。系统按照总体架构设计、技术选型、数据库设计、各个模块设计和代码设计，网上商城系统的基本功能都已得到实现。由于本人所学有限，该系统还有许多地方需要改进，例如模板页面技术可以采用现今更加现今的React，并且使用前后端分离的开发计划，使得后台代码的可复用性更加强。并且还有许多自己未实现的功能，本人会在以后的学习过程中进一步加强和完善。</p><p>本系统具有以下优点：</p><p>1、该系统可以运行在多个操作系统平台，数据库采用MySQL，开发环境选择myeclipse，可移植性好。</p><p><a onclick="showDiv('33')" class=red target='right'>2、系统的用户分级划分，不同用户具有不同类别的权限，这不仅方便了用户，也保证了系统信息的安全</a>。</p><p>3、该系统界面简单，操作方便。</p><p>但也存在以下缺点需要改进：</p><p><a onclick="showDiv('34')" class=red target='right'>1、界面跳转复杂，接口不能被刷新，可以改进</a>。</p><p>2、功能比较简单，没有进一步提高一些选修的程序等，不能更好的为用户服务。</p><p>3、数据库设计有冗余，需要进一步优化。</p><p>参考文献</p><p></p><p>[1] 李兴华,王月清.名师讲坛:Java Web开发实战经典基础篇(JSP、Servlet、Struts、Ajax) [平装][M].清华大学出版社,2010.</p><p>[2] 李刚.轻量级Java EE企业应用实战(第3版):Struts 2+Spring 3+Hibernate整合开发[M].电子工业出版社,2012.</p><p>[3] 孙卫琴：《精通Hibernate：Java对象持久化技术详解》[M].电子工业出版社出版,2010.</p><p>[4] Budi Kurniawan (作者),崔毅 (译者),俞哲皆 (译者),俞黎敏 (译者).Servlet和JSP学习指南[M].机械工业出版社,2013.</p><p>[5] 中国电子商务研究中心. 《2012年度中国网络零售市场数据监测报告》 2013.1.29.</p><p>[6]孙奇. 基于MVC模式的Web开发框架Ruby on Rails的研究[D]. 北京交通大学, 2016.</p><p>[7]冯彦. 基于JSP和Struts框架的动态Web开发技术研究以及实践[D]. 吉林大学, 2015.</p><p>[8]杨洁. 基于ASP.NET Ajax的Web开发研究及应用[D]. 武汉理工大学, 2014.</p><p>[9]贾广宇. MVC设计模式下Web开发框架的研究与应用[D]. 大连海事大学, 2016.</p><p>[10]李浩. 基于J2EE的WEB开发框架的研究与应用[D]. 汕头大学, 2014.</p><p>[11]Kelley L A, Al. E. The Phyre2 web portal for protein modeling, prediction and analysis.[J]. Nature Protocol, 2015, 10(6):845-58.</p><p>[12]Ferrel P J, Kawai K, Everhart D, et al. Distributing web applications across a pre-existing web: US, US8943035[P]. 2015.</p><p>[13]郭克华. Java ME移动开发实例精讲[J]. 2016.</p><p>[14]陈佳, 李树强. web开发实践 : 慕课版[M]. 人民邮电出版社, 2016.</p><p>[15]田家旗. Java开发语言的开发平台与J2EE编程技术问题研究[J]. 信息技术与信息化, 2016(4):112-113.</p><p>[16]赵姝菊. 高职特色Java开发实训课程实践教学研究[J]. 科技视界, 2016(25):112-112.</p><p>[17]蓝厚国. 浅析Java开发平台结合oracle数据库在社保系统中的实际应用[J]. 科技展望, 2016, 26(1).</p><p>[18]王循. Java Web快速开发框架中部分关键技术初步研究[D]. 吉林大学, 2015.</p><p>[19]Farcic V, Garcia A. Test-Driven Java Development[M]. Packt Publishing, 2015.</p><p>[20]Roumeliotis-Curator R. Learning Path: Enterprise Java Development[M]. O'Reilly Media, Inc. 2015.</p><p>[21]Jackson W. Setting Up a Java 8 Game Development Environment[M]// Beginning Java 8 Games Development. Apress, 2014:1-17.</p><p>[22]徐明华, 邱加永, 纪希禹. Java基础与案例开发详解[M]. 清华大学出版社, 2016.</p><p>[23]柴群, 梁剑波. 《Java编程基础》课程教学的思考[J]. 通讯世界, 2015(3):173-174.</p><p>?</p><p>致 谢</p><p></p><p>大学四年的学习生活将要在这个季节结束，但是我的学习之路不会停止，我将面对的旅程是一个全新的世界。四年的求学生涯，我遇到了许多困难和困惑，但所幸有家人和老师的帮助，我走了过来，这困难只是暂时的、短暂的，如果没有现在的经历，在将来所遇到的困难我将如何克服？如果没有这四年的成长我将无法想象。 </p><p>首先我想向在论文写作中给了我很大的帮助的老师贾伟峰，他对我论文的严格要求，使我获得了很大的收获。以及深厚的理论知识，实践经验，严谨的治学态度和扎实的研究方法的影响和激励着我，让我受益良多。在这方面，我谨表示衷心的感谢和由衷的感激。</p><p>其次，我要感谢专业课的所有老师们，是他们在我的专业课的学习过程中无私的教授给我专业知识和技能，使我能够在大学四年中收获一门技能，可以用它去为我国的互联网事业做出自己的一份贡献。同时还要感谢所有给予我关怀的同学和朋友们，是他们在学习之余对我提供了大量的关心和照顾，这让我深受感动。在这里，我要对他们的关怀和照顾致以崇高的敬意。在今后的人生道路上，我一定谨遵恩师的教诲，不忘初心、砥砺前行，投身于祖国的建设事业中去，献身共产主义事业，为共产主义事业奉献终身。</p><p>最后，对阅读和评审本论文的各位老师表示衷心的感谢!</p></p>
+        <dl class="shengming">
+        	<dt>声明：报告编号系送检论文检测报告在本系统中的唯一编号。本报告为维知网论文检测系统算法自动生成，仅对您所选择比对资源范围内检验结果负责，仅供参考。</dt>
+            <dt> 客服邮箱：2689421372@qq.com</dt>
+            <dt>论文检测官方网址：<a href="http://www.guolem.com" target="_blank">http://www.guolem.com</a></dt>
+        </dl>
+        </div>
+		<div class="Rbidui-con-rightBox" >
+			<div id="head_0" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">76%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_0" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">76%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>人民</font><font class=black>有需要</font>，<font class=blue>我们有行</font><font class=black>动</font>。<font class=blue>我们已经进入</font><font class=black>到</font><font class=blue>了万物联网的时代</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...随着互<font color=red>联网的</font>高速发展,<font color=red>我们已经进入了万物联网的时代。互</font><font color=red>联网影响着</font><font color=red>我们的</font>衣食住行,例如<font color=red>我们</font>手中的智能手机、还有近年来发布的互<font color=red>联网</font>汽车等等,给<font color=red>我们</font>......</p>
+				</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic0" style="cursor: pointer;" onclick="translate_sentence('0','人民有需要，我们有行动。我们已经进入到了万物联网的时代')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：互联网</li>
+								<li>篇名：万物联网的时代下,传统自动售货机大势已去_搜狐社会_搜狐网</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_1" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">65%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_1" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">65%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>网络购物</font><font class=blue>市场</font><font class=black>在</font><font class=blue>互联网</font><font class=black>如此</font><font class=black>发达</font><font class=black>的今天</font><font class=blue>无疑</font><font class=black>仍</font><font class=black>是一个</font><font class=blue>发展空间巨大的市场</font>，<font class=blue>发展空间</font><font class=black>毫</font><font class=blue>无疑</font><font class=black>问</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...。但我国<font color=red>的互联网市场无疑是巨大的，发展空间也</font><font color=red>是巨大的。</font><font color=red>互联网的发展是</font>与国家政策、<font color=red>市场</font>需求息息相关的。我们可以根据现阶段网民的不同...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...量。当然，与世界互联网发达国家相比，我们仍很落后；7．2％的互联网用户普及率还没有达到全球的平均水平<font style=color:red>。但我国的互联网市场无疑是巨大的，发展空间也是巨大的。互联网的发展是与国家政策、市场需求息息相关的。我们可以根据现阶段网民的不同</font>特征和上网行为规律采取针对性措施，通过提高自身的网络技术水平，扩大网络服务范围，丰富网上服务内容，提...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic1" style="cursor: pointer;" onclick="translate_sentence('1','网络购物市场在互联网如此发达的今天无疑仍是一个发展空间巨大的市场，发展空间毫无疑问')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：中国网民构成与行为分析</li>
+								<li>作者：王恩海[1</li>
+								<li>出处：《统计研究》 2005， ():-</li>
+								<li>年份：2005</li>
+								<li>机构：[1]中国科学院计算技术研究所博士研究生 [2]中国科学院计</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_2" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">70.45%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_2" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">70.45%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>《201</font><font class=black>6</font><font class=blue>年度中国网络零售市场数据监测报告》显示</font><font class=black>出</font><font class=blue>了中国电子商务</font><font class=black>过去的</font><font class=black>发展状况良好[5]</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>据中国电子商务</font>研究中心发布<font color=red>《2012年度中国网络零售市场数据监测报告》显示截止</font><font color=red>2012年中国网络零售市场</font>交易规模已经占到了当年...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...零售总额的6.23%比2011年提高近2个百分点1。中国电子商务研究中心发表的数据也基本反映这一事实<font style=color:red>据中国电子商务研究中心发布《2012年度中国网络零售市场数据监测报告》显示截止2012年中国网络零售市场交易规模已经占到了当年</font>社会消费品零售总额的6.3%(2011年该比例数据为4.4%)同比增长64.7%。2012年中国网购...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic2" style="cursor: pointer;" onclick="translate_sentence('2','《2016年度中国网络零售市场数据监测报告》显示出了中国电子商务过去的发展状况良好[5]')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：浅谈OTO商业模式下传统企业营销策略创新</li>
+								<li>作者：王燕妮;</li>
+								<li>出处：《大连大学学报》 2014， (02):20-24</li>
+								<li>年份：2014</li>
+								<li>机构：大连大学经济管理学院;</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_3" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">96.2%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_3" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">96.2%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>据中国电子商务研究中心(100EC</font>.<font class=blue>CN)监测数据显示</font>，<font class=blue>2016年中国网络零售市场交易规模达53288亿元</font>，<font class=black>相</font><font class=blue>比2015年的38285亿元</font>，<font class=blue>同比增长39</font>.<font class=blue>1%</font><font class=black>[</font><font class=black>5]</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...背景概述<font color=red>201</font>4年上半年随着手机等移动<font color=red>电子</font>设备的普及越来越多的消费者将购物转移到线上。<font color=red>据中国电子商务研究中心(100EC.CN)监测数据显示201</font>4年上半<font color=red>年中国网络零售市场交易规模达10856亿元同比增长4</font><font color=red>3.9%中国网</font>购...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>... <font style=color:red>背景概述2014年上半年随着手机等移动电子设备的普及越来越多的消费者将购物转移到线上。据中国电子商务研究中心(100EC.CN)监测数据显示2014年上半年中国网络零售市场交易规模达10856亿元同比增长43.9%中国网购</font>用户规模达3.5亿人同比增长26.4%较2013年年底增加约3800万人。然而交易额以及用户规模快速...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic3" style="cursor: pointer;" onclick="translate_sentence('3','据中国电子商务研究中心(100EC.CN)监测数据显示，2016年中国网络零售市场交易规模达53288亿元，相比2015年的38285亿元，同比增长39.1%[5]')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：2014年中国电子商务用户体验与投诉监测报告</li>
+								<li>作者：莫岱青;</li>
+								<li>出处：《计算机与网络》 2014， (16):12-13</li>
+								<li>年份：2014</li>
+								<li>机构：计算机与网络</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_4" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">85.29%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_4" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">85.29%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>预计2017年</font><font class=black>全</font><font class=blue>年中国网络零售市场交易规模有望达75</font><font class=black>69</font><font class=blue>3亿元</font><font class=black>[</font><font class=black>5]</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>754</font><font color=red>2亿元</font>同比增长47.3%<font color=red>预计2013年有望达到</font><font color=red>174</font><font color=red>12亿元。</font><font color=red>中国网络零售市场交易规模</font>占到...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...了吗?我们看下面数据:据中国电子商务研究中心监测数据显示截止2013年6月中国网络零售市场交易规模达<font style=color:red>7542亿元同比增长47.3%预计2013年有望达到17412亿元。中国网络零售市场交易规模占到</font>社会消费品零售总额的6.8%。个人网店数量达1246万家同比减少27.8%。中国网购的用户规模达2....</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic4" style="cursor: pointer;" onclick="translate_sentence('4','预计2017年全年中国网络零售市场交易规模有望达75693亿元[5]')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：中职电子商务人才培养问题探讨</li>
+								<li>作者：陈晓松;</li>
+								<li>出处：《电子制作》 2014， (06):222-223</li>
+								<li>年份：2014</li>
+								<li>机构：安徽蚌埠职业教育中心;</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_5" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">73.02%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_5" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">73.02%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>本文主要分为六个部分进行阐述</font>，<font class=blue>第一部分为前言</font>，<font class=blue>主要介绍</font><font class=black>说明了</font><font class=blue>课题研究</font><font class=black>社会现状</font>、<font class=black>时代</font><font class=blue>意义</font>、<font class=blue>课题的研究方</font><font class=black>式</font>、<font class=black>技术</font><font class=black>选型以及</font><font class=blue>本文研究的主要内</font><font class=black>容等</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...。
+    <font color=red>本文共</font><font color=red>分为六个部分来</font><font color=red>进行阐述</font>和分析。<font color=red>第一部分是</font><font color=red>前言，主要介绍本课题</font>
+<font color=red>选题的依据和</font><font color=red>意义</font>;国内外<font color=red>研究文</font>献综述;<font color=red>本课题的研究方法和</font><font color=red>研究</font>框架。第二
+<font color=red>部分</font>是政府领导力...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...题，并与构建和谐社会的形势和要求相结合，探寻社会主义和谐社会构建中政府领导力提升的途径<font style=color:red>。    本文共分为六个部分来进行阐述和分析。第一部分是前言，主要介绍本课题选题的依据和意义;国内外研究文献综述;本课题的研究方法和研究框架。第二部分是政府领导力</font>的一般理论分析，试图阐释政府领导力的涵义及其本质;分析影响政府领导力的因素;及政府领导...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic5" style="cursor: pointer;" onclick="translate_sentence('5','本文主要分为六个部分进行阐述，第一部分为前言，主要介绍说明了课题研究社会现状、时代意义、课题的研究方式、技术选型以及本文研究的主要内容等')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：论和谐社会构建中的政府领导力</li>
+								<li>作者：李凌</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2007， (06):-</li>
+								<li>年份：2007</li>
+								<li>机构：中南大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_6" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">62.07%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_6" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">62.07%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>第三</font><font class=black>部</font><font class=blue>分是系统分析</font>，<font class=blue>对本设计的</font><font class=black>选题</font>、<font class=black>功能</font>、<font class=black>应用场景等</font><font class=blue>进行</font><font class=black>浅</font><font class=blue>要分析</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...。同时<font color=red>对本</font>形同要求的各项技
+术也<font color=red>进行了简</font><font color=red>要的分析</font>。 
+<font color=red>第三章</font><font color=red>是系统设计。</font><font color=red>分析了</font><font color=red>系统</font>...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...再通过大量调研的情况下，对系统的功能性 4 需求进行了分析，具体了给出了本系统实现的功能<font style=color:red>。同时对本形同要求的各项技术也进行了简要的分析。 第三章是系统设计。分析了系统</font>总体目标，然后分别实现系统的各项功能 第四章是系统实现。对设计的软件进行实现与测试。 第五章...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic6" style="cursor: pointer;" onclick="translate_sentence('6','第三部分是系统分析，对本设计的选题、功能、应用场景等进行浅要分析')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：人事档案数字管理系统设计与实现</li>
+								<li>作者：刘慧婷</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2012， (02):-</li>
+								<li>年份：2012</li>
+								<li>机构：电子科技大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_7" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">75%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_7" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">75%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>第四部分</font><font class=blue>是系统设计</font>，<font class=blue>针对系统</font><font class=black>分析所得具</font><font class=blue>体功能模块进行设计</font>、<font class=black>包含</font><font class=blue>系统的架构设计以及数据库设计</font><font class=black>等</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...总<font color=red>体设计
+</font><font color=red>系统的系统的总</font><font color=red>体设计是针对软件</font><font color=red>系统的架构进行设计，</font>主要包括<font color=red>系统的</font>配
+置<font color=red>设计、系统的功能模块的设计，以及数据库的设计、代码</font><font color=red>设计、</font>文件...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...能配置上符合银行体系的客户管理需求，并进行可行性计划分析，以求达到用户的具体工作的使用效果。4.2 <font style=color:red>总体设计系统的系统的总体设计是针对软件系统的架构进行设计，主要包括系统的配置设计、系统的功能模块的设计，以及数据库的设计、代码设计、文件</font>板块的设计，还有系统的安全性设计与内部控制设计等。304.2.1 系统逻辑架构设计根据前几章系统的需...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic7" style="cursor: pointer;" onclick="translate_sentence('7','第四部分是系统设计，针对系统分析所得具体功能模块进行设计、包含系统的架构设计以及数据库设计等')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于.Net技术和多层架构客户管理系统的设计与实现</li>
+								<li>作者：潘镜欢</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2015， (05):-</li>
+								<li>年份：2015</li>
+								<li>机构：天津大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_8" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">66.67%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_8" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">66.67%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>模型就是用</font><font class=blue>来对数据进行控制</font>，<font class=black>包括</font><font class=blue>数据的</font><font class=black>存储</font>、<font class=blue>接受</font>、<font class=blue>传递</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...程序由主程序实现主体<font color=red>控制，其首先</font><font color=red>接受</font>通信模块<font color=red>传递过</font><font color=red>来的数据，对数据进行</font>解析，得到...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...l。}．学位论文·Ic卡读写模块：通过89C51芯片，控制IC卡的读写操作。圈3．2卡内程序结构卡内<font style=color:red>程序由主程序实现主体控制，其首先接受通信模块传递过来的数据，对数据进行解析，得到</font>命令码之后并根据命令码调用相应的模块，最终将所得到的数据通过通信模块返回给驱动程序。其余各个模块之间...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic8" style="cursor: pointer;" onclick="translate_sentence('8','模型就是用来对数据进行控制，包括数据的存储、接受、传递')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：基于USB接口的加密卡的实现</li>
+								<li>作者：李金花</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：山东大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_9" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">87.8%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_9" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">87.8%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>Hibernate是开源的D</font><font class=black>A</font><font class=black>O层</font><font class=blue>ORM框架</font>，<font class=blue>非常轻量级的封装了JDBC</font>，<font class=black>由于</font><font class=blue>是ORM框架</font>，<font class=black>所</font><font class=blue>以程序员在开发应用时</font>，<font class=black>碰到需要</font><font class=blue>操作数据库的操作时</font>，<font class=blue>可以使用面向对象的思</font><font class=black>想</font><font class=blue>进行编程</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...这个问题。    在企业<font color=red>级应用开发的环境中</font><font color=red>，ORM</font>设计是一件<font color=red>非常耗</font><font color=red>时的工作。</font><font color=red>Hibernate是目前</font><font color=red>开发</font>人员普遍推崇的一个<font color=red>ORM开源框架，它</font><font color=red>对JDBC进行了轻量级的对象封装，使得</font><font color=red>Jav</font><font color=red>a程序员可以使用面向对象编程思维来</font><font color=red>操作关系</font><font color=red>数据库n们。</font><font color=red>Hibernate</font>拥有一种...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...象关系映射(Object Rel at i on Mappi ng，ORM)技术的出现，很好的解决了<font style=color:red>这个问题。    在企业级应用开发的环境中，ORM设计是一件非常耗时的工作。Hibernate是目前开发人员普遍推崇的一个ORM开源框架，它对JDBC进行了轻量级的对象封装，使得Java程序员可以使用面向对象编程思维来操作关系数据库n们。Hibernate拥有一种</font>功能非常强大的查询语言(HQL。Hi bernate Query Language)，这种语言与SQ...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic9" style="cursor: pointer;" onclick="translate_sentence('9','Hibernate是开源的DAO层ORM框架，非常轻量级的封装了JDBC，由于是ORM框架，所以程序员在开发应用时，碰到需要操作数据库的操作时，可以使用面向对象的思想进行编程')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：基于j2ee的企业管理信息系统框架研究</li>
+								<li>作者：于文江</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：广东工业大学;广东工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_10" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">61.54%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_10" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">61.54%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...（<font class=black>5</font>）<font class=blue>系统安全</font><font class=black>可靠</font>，<font class=black>在</font><font class=blue>大数据时代保证</font><font class=black>商家与消费者</font><font class=blue>的信息安全</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>信息安全系统</font>进行监控，为了能够有效<font color=red>的保证大数据时代下</font><font color=red>的信息安全</font>问题，我们应当不断发展...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...的数据困境会带来更大的数据信息安全隐患。对于计算数据安全的管理也不再是建立在单个数据上，而需要对整个<font style=color:red>信息安全系统进行监控，为了能够有效的保证大数据时代下的信息安全问题，我们应当不断发展</font>信息安全技术。首先，要建立完善的信息安全体系，并对相关技术人员进行专门的培训，从根本上确保建立的信息...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic10" style="cursor: pointer;" onclick="translate_sentence('10','（5）系统安全可靠，在大数据时代保证商家与消费者的信息安全')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：“大数据”时代的计算机信息处理技术探讨</li>
+								<li>作者：张轲</li>
+								<li>出处：《计算机光盘软件与应用》 2015， ():-</li>
+								<li>年份：2015</li>
+								<li>机构：丹东边防检查站</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_11" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">81.67%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_11" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">81.67%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>简单性</font><font class=black>：</font><font class=blue>简单易用对于一个系统</font>，<font class=black>特别</font><font class=black>是商业</font><font class=blue>系统来说是非常重要的</font>，<font class=black>使</font><font class=blue>系统操作简单易懂的同时</font>，<font class=black>也</font><font class=blue>要让系统的功能尽量</font><font class=black>完善</font>，<font class=black>具备</font><font class=blue>一定的</font><font class=black>健壮</font><font class=black>性</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>系统的功能的同时尽量让系统操作简单易懂这</font><font color=red>对于一个系统来说是非常重要的。针</font><font color=red>对性:本</font><font color=red>系统</font>设计是针对医院预约挂号的需求定向开发设计所以具有很强的针<font color=red>对性。实</font><font color=red>用性</font>:要求本<font color=red>系统能</font>够满足专家、管理员及用户的需要...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...现和后期维护的方便以及系统用户使用的便利所以必须采取一定的设计原则。其主要设计原则有:简单性:在实现<font style=color:red>系统的功能的同时尽量让系统操作简单易懂这对于一个系统来说是非常重要的。针对性:本系统设计是针对医院预约挂号的需求定向开发设计所以具有很强的针对性。实用性:要求本系统能够满足专家、管理员及用户的需要</font>因此具有良好的实用性。一致性:页面整体设计风格以及命名规则的一致性:整体页面布局和用图用色风格及变量...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic11" style="cursor: pointer;" onclick="translate_sentence('11','简单性：简单易用对于一个系统，特别是商业系统来说是非常重要的，使系统操作简单易懂的同时，也要让系统的功能尽量完善，具备一定的健壮性')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：医院预约挂号平台管理系统设计</li>
+								<li>作者：牟向宇;杜霞;</li>
+								<li>出处：《电脑知识与技术》 2013， (05):110-111</li>
+								<li>年份：2013</li>
+								<li>机构：重庆电子工程职业技术学院计算机学院;西南大学校医院信息科;</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_12" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">60.47%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_12" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">60.47%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>4．高</font><font class=blue>可用</font>。<font class=black>在</font><font class=blue>功能结构</font><font class=black>方面</font>，<font class=black>降低各</font><font class=blue>个模块间的</font><font class=black>相互依赖</font>，<font class=black>尽</font><font class=blue>可能避免</font><font class=black>“</font><font class=blue>牵一发而动全</font><font class=black>身”</font><font class=blue>的情况出现</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...几<font color=red>个模块中</font><font color=red>，避免牵一发而动全局</font><font color=red>的情况出现。</font>2)具有可理解性。要求<font color=red>模块</font>原理正确<font color=red>，结构清晰</font><font color=red>，功能明确</font><font color=red>，模块间的</font>接口关系清楚，便于用户理解和使用...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...。模块独立性设计应满足以下要求：1)具有可维护性。在仪器的改进和维护过程中，能把问题限制在一个或少数<font style=color:red>几个模块中，避免牵一发而动全局的情况出现。2)具有可理解性。要求模块原理正确，结构清晰，功能明确，模块间的接口关系清楚，便于用户理解和使用</font>。3)具有可验证性。能对模块的功能进行独立的验证。模块的耦合性指模块之间的联系程度。耦合有紧密耦合、...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic12" style="cursor: pointer;" onclick="translate_sentence('12','4．高可用。在功能结构方面，降低各个模块间的相互依赖，尽可能避免“牵一发而动全身”的情况出现')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：我国岩心分析仪器发展面临的问题</li>
+								<li>作者：赵仕俊[1] 蒙传幼[2] 等</li>
+								<li>出处：《石油仪器》 2002， ():-</li>
+								<li>年份：2002</li>
+								<li>机构：[1]成都理工大学257061 [2]石油勘探开发科学研究院</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_13" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">72.34%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_13" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">72.34%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>依</font><font class=blue>据架构的</font><font class=black>设计目标</font>，<font class=black>我们</font><font class=blue>将系统中的对象进行分层</font>，<font class=blue>可分为三层</font>，<font class=black>即控制</font><font class=black>层</font>、<font class=blue>业务层</font>、<font class=blue>数据访问层</font>（<font class=blue>如下图</font><font class=black>4-1</font><font class=blue>所示</font>）...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>系统技术</font><font color=red>架构</font>
+    将绩效考核<font color=red>系统中</font>比较关心<font color=red>的对象分层，可分为三层</font>:用户界面<font color=red>层、业务层、</font>
+<font color=red>数据访问层(</font><font color=red>如下图3一2</font><font color=red>所示</font>)，因为严格按照<font color=red>三层模式</font><font color=red>进行</font>开发...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...以正常连接到应用服务器既可以通过Microsoft的IE浏览器进行系统的正常使用。3.2.3<font style=color:red>系统技术架构    将绩效考核系统中比较关心的对象分层，可分为三层:用户界面层、业务层、数据访问层(如下图3一2所示)，因为严格按照三层模式进行开发</font>所以每一个asPx页面下都存在一个es文件即业务逻辑层，这样得到包图如图3一2一1所示:AS...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic13" style="cursor: pointer;" onclick="translate_sentence('13','依据架构的设计目标，我们将系统中的对象进行分层，可分为三层，即控制层、业务层、数据访问层（如下图4-1所示）')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：阳光保险综合绩效考核系统设计与实现</li>
+								<li>作者：王川</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2012， (07):-</li>
+								<li>年份：2012</li>
+								<li>机构：山东大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_14" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">70%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_14" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">70%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>5</font>、<font class=black>Service</font><font class=blue>进行业务处理</font>。<font class=blue>对于业务处理中的数据持久化操作</font>，<font class=blue>通过</font><font class=black>调用</font><font class=blue>数据库访问对象进行数据操作</font>，<font class=black>发生所有</font><font class=blue>异常都</font><font class=black>直接抛</font><font class=black>给调用者</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...转<font color=red>发给业务对象。5、业务对象进行业务处理。对于业务处理中的数据持久化操作，通过访问数据库访问对象进行操作，</font>期间的任何<font color=red>异常都交</font><font color=red>给异常处理对象处理。</font>最后返回<font color=red>处理</font>结果信息<font color=red>给业务代</font><font color=red>理对象。6</font><font color=red>、业务</font>代理...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...务代理对象根据验证结果进行以下处理：对于不符合权限的请求则返回提示信息；对于符合权限的请求，则将请求<font style=color:red>转发给业务对象。5、业务对象进行业务处理。对于业务处理中的数据持久化操作，通过访问数据库访问对象进行操作，期间的任何异常都交给异常处理对象处理。最后返回处理结果信息给业务代理对象。6、业务代理</font>对象将处理结果信息返回给用户界面。4．2．2系统物理配置方案设计在进行总体设计时，还要进行计算机物理...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic14" style="cursor: pointer;" onclick="translate_sentence('14','5、Service进行业务处理。对于业务处理中的数据持久化操作，通过调用数据库访问对象进行数据操作，发生所有异常都直接抛给调用者')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：基于uml的食堂管理系统的分析与设计</li>
+								<li>作者：叶华永</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：同济大学软件学院</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_15" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">95.83%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_15" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">95.83%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>字段名称字段意义字段类型字段长度是否主键</font><font class=black>能</font><font class=blue>否为空</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 ...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...表tb——code——unit——location 表3．12时间代码表Tab．3．12 Time <font style=color:red>Code仉lble 编号字段意义字段名称字段类型字段长度是否主键是否为空1</font> 时间段代码code char l 是否2 时间段名称n锄e varchar 12 否否3 申请／批...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic15" style="cursor: pointer;" onclick="translate_sentence('15','字段名称	字段意义	字段类型	字段长度	是否主键	能否为空')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：北京地区重点学科信息平台的设计与实现</li>
+								<li>作者：于涵</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：北京工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_16" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">95.83%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_16" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">95.83%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>字段名称字段意义字段类型字段长度是否主键</font><font class=black>能</font><font class=blue>否为空</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 ...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...表tb——code——unit——location 表3．12时间代码表Tab．3．12 Time <font style=color:red>Code仉lble 编号字段意义字段名称字段类型字段长度是否主键是否为空1</font> 时间段代码code char l 是否2 时间段名称n锄e varchar 12 否否3 申请／批...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic16" style="cursor: pointer;" onclick="translate_sentence('16','字段名称	字段意义	字段类型	字段长度	是否主键	能否为空')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：北京地区重点学科信息平台的设计与实现</li>
+								<li>作者：于涵</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：北京工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_17" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">95.83%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_17" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">95.83%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>字段名称字段意义字段类型字段长度是否主键</font><font class=black>能</font><font class=blue>否为空</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 ...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...表tb——code——unit——location 表3．12时间代码表Tab．3．12 Time <font style=color:red>Code仉lble 编号字段意义字段名称字段类型字段长度是否主键是否为空1</font> 时间段代码code char l 是否2 时间段名称n锄e varchar 12 否否3 申请／批...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic17" style="cursor: pointer;" onclick="translate_sentence('17','字段名称	字段意义	字段类型	字段长度	是否主键	能否为空')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：北京地区重点学科信息平台的设计与实现</li>
+								<li>作者：于涵</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：北京工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_18" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">95.83%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_18" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">95.83%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>字段名称字段意义字段类型字段长度是否主键</font><font class=black>能</font><font class=blue>否为空</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 ...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...表tb——code——unit——location 表3．12时间代码表Tab．3．12 Time <font style=color:red>Code仉lble 编号字段意义字段名称字段类型字段长度是否主键是否为空1</font> 时间段代码code char l 是否2 时间段名称n锄e varchar 12 否否3 申请／批...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic18" style="cursor: pointer;" onclick="translate_sentence('18','字段名称	字段意义	字段类型	字段长度	是否主键	能否为空')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：北京地区重点学科信息平台的设计与实现</li>
+								<li>作者：于涵</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：北京工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_19" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">95.83%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_19" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">95.83%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>字段名称字段意义字段类型字段长度是否主键</font><font class=black>能</font><font class=blue>否为空</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Code仉lble 编号<font color=red>字段意义字段名称字段类型字段长度是否主键是否为空</font>1 ...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...表tb——code——unit——location 表3．12时间代码表Tab．3．12 Time <font style=color:red>Code仉lble 编号字段意义字段名称字段类型字段长度是否主键是否为空1</font> 时间段代码code char l 是否2 时间段名称n锄e varchar 12 否否3 申请／批...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic19" style="cursor: pointer;" onclick="translate_sentence('19','字段名称	字段意义	字段类型	字段长度	是否主键	能否为空')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：北京地区重点学科信息平台的设计与实现</li>
+								<li>作者：于涵</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：北京工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_20" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">88%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_20" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">88%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>先来看看Struts2框架是如何配置到应用</font><font class=black>程序中</font><font class=black>的</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Use<font color=red>rt</font>able表第五章详细设计5.1系统<font color=red>配置</font>5.1.1<font color=red>应用层</font><font color=red>配置</font>本机械工艺图纸管理系统采用目前流行<font color=red>的Struts2框架</font>进行开发。<font color=red>先来看看Struts2框架是如何配置到</font>......</p>
+				</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic20" style="cursor: pointer;" onclick="translate_sentence('20','先来看看Struts2框架是如何配置到应用程序中的')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：互联网</li>
+								<li>篇名：机械工艺图纸管理系统的设计与实现毕业论文.doc</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_21" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">60.71%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_21" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">60.71%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>系统的登录通过</font><font class=black>请求路径</font><font class=black>进行区分</font><font class=blue>用户</font><font class=black>类别</font>，<font class=black>进而</font><font class=black>进行</font><font class=blue>权限的控制</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...只要是<font color=red>控制用户对</font><font color=red>系统的登录，若</font><font color=red>登录权</font>
+  限验证<font color=red>通过，</font>则可以进入<font color=red>系统</font>...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...级和系统管理级。登录级权限只能进人系统，不能对系统的  功能进行操作。登录级权限<font style=color:red>只要是控制用户对系统的登录，若登录权  限验证通过，则可以进入系统</font>。文档级权限不仅拥有登录级权限，而  且可以进行文档管理中的相关操作，比如新建文...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic21" style="cursor: pointer;" onclick="translate_sentence('21','系统的登录通过请求路径进行区分用户类别，进而进行权限的控制')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：面向中小型企业的产品数据管理（PDM）系统的研究</li>
+								<li>作者：金玉虹</li>
+								<li>出处：《中国优秀博硕士学位论文全文数据库 (硕士)》 2003， (03):-</li>
+								<li>年份：2003</li>
+								<li>机构：合肥工业大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_22" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">75%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_22" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">75%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>添加管理员模块</font><font class=black>UI</font><font class=blue>如图</font><font class=black>5</font><font class=black>-2</font><font class=blue>所示</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...用户<font color=red>模块，</font><font color=red>如图</font> 4-9 <font color=red>所示。</font><font color=red>管理员添加</font>用户...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...可登录，否则系统将会提示登录失败。24图 4-8 登录模块用例图4.3.2 添加用户模块添加<font style=color:red>用户模块，如图 4-9 所示。管理员添加用户</font>模块的用例，其中老师、学生的账户由管理员添加。本模块的体现形式主要有 2 种：一种是老师有权限操作...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic22" style="cursor: pointer;" onclick="translate_sentence('22','添加管理员模块UI如图5-2 所示')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于JavaEE技术网上在线考试系统</li>
+								<li>作者：邱崇志</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2014， (05):-</li>
+								<li>年份：2014</li>
+								<li>机构：电子科技大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_23" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">92.11%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_23" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">92.11%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>I</font><font class=blue>nformation</font><font class=black>M</font><font class=blue>anage模块主要功能</font><font class=black>为</font><font class=blue>系统管理员对公告信息进行管理</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>信息的会议</font><font color=red>管理模块、用作</font><font color=red>系统管理员对公告进行管理...</font><font color=red>manageth</font><font color=red>einformationw</font><font color=red>ork</font><font color=red>ers</font><font color=red>tradeu</font><font color=red>nion</font>...业务流程图如下:图<font color=red>系统的</font><font color=red>主要功能</font>概述如下:(1......</p>
+				</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic23" style="cursor: pointer;" onclick="translate_sentence('23','Information Manage模块主要功能为系统管理员对公告信息进行管理')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：互联网</li>
+								<li>篇名：毕业论文基于web的办公自动化系统.doc全文免费..._文档投稿赚钱网</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_24" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">60.71%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_24" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">60.71%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>此类测试</font><font class=blue>主要包括五项内容：适用性</font>、<font class=black>合</font><font class=blue>规性</font>、<font class=black>可操作</font><font class=black>性</font>、<font class=black>简</font><font class=blue>便性</font>、<font class=black>安全</font><font class=black>性</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>主要包括：方</font><font color=red>便性、耐</font><font color=red>用性、</font>耐寒、耐热、耐油<font color=red>五项内容。</font><font color=red>适用性好坏</font><font color=red>主要</font>由大量的实践所决定。规定：以上<font color=red>五项</font>指标...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...说明舒适性越差。3)适用性的评价决定了在国内个行业中能否推广使用。在符合国家有关标准的前提下，适用性<font style=color:red>主要包括：方便性、耐用性、耐寒、耐热、耐油五项内容。适用性好坏主要由大量的实践所决定。规定：以上五项指标</font>均为4分。由于三种耳罩均未说明以上五种内容，未进行比较。4)经济性评价是考核护耳器的第四个指标，要物...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic24" style="cursor: pointer;" onclick="translate_sentence('24','此类测试主要包括五项内容：适用性、合规性、可操作性、简便性、安全性')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀博士硕士学术论文库</li>
+								<li>篇名：国内外护耳器降噪功能声学特点比较</li>
+								<li>作者：李劲松</li>
+								<li>出处：《》 ， ():-</li>
+								<li>年份：</li>
+								<li>机构：四川大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_25" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">77.78%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_25" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">77.78%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>序</font><font class=blue>号用例</font><font class=black>名称执</font><font class=blue>行操作预期结果实际结果</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...		
+<font color=red>用例编号	</font><font color=red>操作	</font><font color=red>预期结果	</font><font color=red>实际结果</font>
+获得该行李...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...测试测试方法手:E测试人员谢志朋测试日期2013-12-26测试对象 测试中转行李是否正常接收<font style=color:red>用例编号操作预期结果实际结果获得该行李</font>的进港、出发01输入正确的行李号与预期结果一致地、出港和目的地信息输入正确的行李号，02接收...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic25" style="cursor: pointer;" onclick="translate_sentence('25','序号	用例名称	执行操作	预期结果	实际结果')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于Android的航班行李PDA应用系统的设计与实现</li>
+								<li>作者：胡永津</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2014， (08):-</li>
+								<li>年份：2014</li>
+								<li>机构：厦门大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_26" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">85.11%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_26" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">85.11%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>1</font><font class=blue>用户登录输入用户名</font>、<font class=blue>密码输入正确用户名和密码进入系统主界面</font>，<font class=blue>输入错误用户名或密码</font><font class=black>给出</font><font class=blue>提示</font><font class=black>符合预期</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...是否成功<font color=red>登录</font>。结果显<font color=red>示用户</font>
+. <font color=red>输入错误的</font><font color=red>用户名和密码时</font><font color=red>提示“</font><font color=red>用户名或密码错误”。当</font><font color=red>用户输入正确的</font><font color=red>用户
+</font><font color=red>名和密码</font>时，顺利<font color=red>进入系统主界面</font>。因此，本次...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...前台界面，首先输入错误的用户名、密码，验证是否提示错误并且不能登录，然后输入正确的用户名和密码，验证<font style=color:red>是否成功登录。结果显示用户. 输入错误的用户名和密码时提示“用户名或密码错误”。当用户输入正确的用户名和密码时，顺利进入系统主界面。因此，本次</font>测试的测试结果为成功。测试用例如表(6.2)所示。表6.2用户登录功能测试用例操作描述数据预期结果不...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic26" style="cursor: pointer;" onclick="translate_sentence('26','1	用户登录	输入用户名、密码	输入正确用户名和密码进入系统主界面，输入错误用户名或密码给出提示	符合预期')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于C#和SQL的企业人事管理系统的设计与实现</li>
+								<li>作者：杨剑光</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2015， (06):-</li>
+								<li>年份：2015</li>
+								<li>机构：西安电子科技大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_27" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">67.57%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_27" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">67.57%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>2</font><font class=blue>添加商品信息</font><font class=black>在</font><font class=blue>页面</font><font class=black>内</font><font class=blue>输入商品信息</font>，<font class=blue>点击</font><font class=black>“</font><font class=blue>添加</font><font class=black>”</font><font class=blue>按钮</font><font class=black>正确</font><font class=black>存储</font><font class=blue>商品信息</font><font class=black>符合预期</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>点击</font>Add new Good<font color=red>按钮，载</font><font color=red>入添加新</font><font color=red>商品页面，输入新</font><font color=red>商品的</font><font color=red>信息，点击</font>Save<font color=red>按钮</font>保存并向数据库表...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...商品名称、库存量、描述、图片路径等信息．以及删除商品(只能删除没有被使用或与其他页面无关联的商品)。<font style=color:red>点击Add new Good按钮，载入添加新商品页面，输入新商品的信息，点击Save按钮保存并向数据库表</font>GoodsT中添加记录。如果输入的商品编号已经被使用重新添加否则提示添加成功。／／修改商品类别btn...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic27" style="cursor: pointer;" onclick="translate_sentence('27','2	添加商品信息	在页面内输入商品信息，点击“添加”按钮	正确存储商品信息	符合预期')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：在线购物系统的设计与实现</li>
+								<li>作者：曹伟</li>
+								<li>出处：《中国科技纵横》 2010， ():-</li>
+								<li>年份：2010</li>
+								<li>机构：江阴职业技术学院</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_28" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">73.47%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_28" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">73.47%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>3</font><font class=blue>查看</font><font class=black>商品</font><font class=blue>信息查看列表</font>，<font class=blue>按照查询条件</font>，<font class=blue>筛选符合需要的信息</font>，<font class=blue>进一步详细查看</font><font class=black>商品</font><font class=blue>信息</font><font class=black>正确显示商品</font><font class=blue>信息符合</font><font class=black>预期</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...
+6 <font color=red>查看收料单</font><font color=red>列表</font> 仓管员 <font color=red>查看列表，按照查询条件，筛选符合需要
+</font><font color=red>的信息，进一步详细查看收料单</font><font color=red>信息</font>
+7 添加收料单<font color=red>信息</font> 仓管员 在界面内输入...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...角色权限 管理员 以选择的方式，为角色匹配使用权限5 添加物料信息 管理员 在界面内输入物料信息<font style=color:red>6 查看收料单列表 仓管员 查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看收料单信息7 添加收料单信息 仓管员 在界面内输入</font>收料单的信息8 查看货币列表 管理员 查看列表，按照查询条件，筛选符合需要的信息，进一步查看货币...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic28" style="cursor: pointer;" onclick="translate_sentence('28','3	查看商品信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看商品信息	正确显示商品信息	符合预期')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：仓库管理系统的设计与实现</li>
+								<li>作者：金煜琦</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2014， (05):-</li>
+								<li>年份：2014</li>
+								<li>机构：电子科技大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_29" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">78.38%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_29" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">78.38%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>4添加用户信息</font><font class=black>在</font><font class=blue>页面</font><font class=black>内</font><font class=blue>输入用户信息</font>，<font class=blue>点击“添加”按钮正确</font><font class=black>存储</font><font class=blue>用户信息</font><font class=black>符合预期</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>... 4-1 所示。
+4 <font color=red>点击“添加用户”按钮，进</font><font color=red>入添加用户界</font><font color=red>面，输入用户信息</font>
+后<font color=red>，点击添加按钮，页面能</font><font color=red>正确</font>...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...据用户权限进入相应功能页面。3 用户管理进入在用户管理页面内，列出所有的用户信息。测试结果如图 <font style=color:red>4-1 所示。4 点击“添加用户”按钮，进入添加用户界面，输入用户信息后，点击添加按钮，页面能正确</font>显示新添加的用户。测试结果如图 4-2 所示。6点击“修改用户信息”，进入修改用户界面，编辑用户...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic29" style="cursor: pointer;" onclick="translate_sentence('29','4	添加用户信息	在页面内输入用户信息，点击“添加”按钮	正确存储用户信息	符合预期')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：送变电建设公司送变电全面预算编制管理信息系统设计与实现</li>
+								<li>作者：朱德彬</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2013， (02):-</li>
+								<li>年份：2013</li>
+								<li>机构：电子科技大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_30" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">73.47%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_30" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">73.47%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>5</font><font class=blue>查看用户信息查看列表</font>，<font class=black>按照</font><font class=blue>查询条件</font>，<font class=black>筛选</font><font class=blue>符合</font><font class=black>需要</font><font class=blue>的信息</font>，<font class=black>进一步</font><font class=blue>详细查看用户信息</font><font class=black>正确</font><font class=blue>显示用户信息符合</font><font class=black>预期</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Services中的方法进行模糊<font color=red>查询把</font><font color=red>符合查询条件的信息显示在</font><font color=red>列表</font>中。对于查出的景点<font color=red>信息用户可以</font><font color=red>查看它</font><font color=red>的详细信息</font>在地图上<font color=red>查看</font>它的地理位置对于自己比较满意的景点<font color=red>信息用户</font>可以...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...行计划等。2)景点信息管理模块中系统可以根据用户输入的条件比如输入景点名称或者是景点地址调用Web <font style=color:red>Services中的方法进行模糊查询把符合查询条件的信息显示在列表中。对于查出的景点信息用户可以查看它的详细信息在地图上查看它的地理位置对于自己比较满意的景点信息用户可以</font>加入到自己的旅行计划中以方便管理。3)天气服务模块中系统可以根据用户选择的查询条件比如选择省后选择所...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic30" style="cursor: pointer;" onclick="translate_sentence('30','5	查看用户信息	查看列表，按照查询条件，筛选符合需要的信息，进一步详细查看用户信息	正确显示用户信息	符合预期')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国学术期刊网络出版总库</li>
+								<li>篇名：基于Web Service 3G手机的设计与实现——G3乐游系统</li>
+								<li>作者：张令春;郑文艳;</li>
+								<li>出处：《电脑知识与技术》 2013， (23):162-165</li>
+								<li>年份：2013</li>
+								<li>机构：德州学院信息管理学院;</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_31" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">65.52%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_31" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">65.52%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>通过实施</font><font class=blue>所有的测试用例</font>，<font class=black>得到</font><font class=blue>的结果符合系统</font><font class=black>设计</font><font class=blue>预期</font><font class=black>与商</font><font class=blue>用要求</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...<font color=red>符合预期</font>
+以上这些就是本<font color=red>系统单元</font><font color=red>测试的所有的测试用例，和</font><font color=red>测试结果。</font><font color=red>所有结</font>论都
+<font color=red>符合要求</font>...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...对应内容，如果进行标理想输出注后能即时S示奖励信息，点击奖励信息后，册1除奖励信息，不再提示测试结果<font style=color:red>符合预期以上这些就是本系统单元测试的所有的测试用例，和测试结果。所有结论都符合要求</font>。当所有模块都开发完毕后还要把他们整合起来进行集成测试。由于本系统是网站的系统，集成后的具体测试用例...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic31" style="cursor: pointer;" onclick="translate_sentence('31','通过实施所有的测试用例，得到的结果符合系统设计预期与商用要求')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于众包的数据标注系统</li>
+								<li>作者：聂震云</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2015， (03):-</li>
+								<li>年份：2015</li>
+								<li>机构：北京交通大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_32" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">65.85%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_32" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">65.85%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=blue>接下来是对</font><font class=black>需求</font><font class=blue>进行</font><font class=black>分析与描述</font>。<font class=black>最后</font><font class=blue>是系统的架构设计和具体的</font><font class=black>代码结</font><font class=blue>构设计</font><font class=black>与</font><font class=blue>数据库设计</font><font class=black>等</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...得到了<font color=red>系统的</font>总体
+<font color=red>架构和具体的数据库设计，</font><font color=red>接下来</font>就是选择合适的编程语言和高效安全的开发工具
+<font color=red>对系统的</font>各项功能<font color=red>进行</font>实现和完成...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...和设计，以及对系统的总体结构进行设计。5. 本文的系统实现部分，通过前文对系统的分析和设计，我们已经<font style=color:red>得到了系统的总体架构和具体的数据库设计，接下来就是选择合适的编程语言和高效安全的开发工具对系统的各项功能进行实现和完成</font>，在这一部分里，我们会将系统的实现结果以图文相结合的方式进行展示和阐述，并且结合一部分操作代码的公开...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic32" style="cursor: pointer;" onclick="translate_sentence('32','接下来是对需求进行分析与描述。最后是系统的架构设计和具体的代码结构设计与数据库设计等')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于JSP的职称外语考试系统的设计与开发</li>
+								<li>作者：姜廷波</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2015， (03):-</li>
+								<li>年份：2015</li>
+								<li>机构：吉林大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_33" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">71.43%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_33" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">71.43%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>2</font>、<font class=blue>系统的用户分</font><font class=black>级划</font><font class=black>分</font>，<font class=blue>不同用户</font><font class=black>具有</font><font class=blue>不同类别的权限</font>，<font class=black>这</font><font class=black>不仅方便</font><font class=blue>了用户</font>，<font class=black>也</font><font class=blue>保证了系统</font><font class=black>信息</font><font class=blue>的安全</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...关心的功能<font color=red>不同，系统对</font><font color=red>不同类型</font><font color=red>的用户分别提供</font><font color=red>了不同的</font>功能操作<font color=red>权限</font>控制，
+只允许各<font color=red>用户</font>操纵所授予<font color=red>权限的</font>功能。进一步<font color=red>保证了数据</font><font color=red>的安全</font>性...</p>
+				</div>
+					<div class="songjian songjian2">
+						<h4>相似句子原文：</h4>
+						<p>...作量。    系统涉及到地市、区县各科室业务经办人员等诸多不同类型的用户，各类用户<font style=color:red>关心的功能不同，系统对不同类型的用户分别提供了不同的功能操作权限控制，只允许各用户操纵所授予权限的功能。进一步保证了数据的安全性</font>和有效性。5.7.10全面的日志管理以及统一的系统安全体系    (l)针对医保业务经办...</p>
+					</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic33" style="cursor: pointer;" onclick="translate_sentence('33','2、系统的用户分级划分，不同用户具有不同类别的权限，这不仅方便了用户，也保证了系统信息的安全')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：中国优秀硕士学位论文全文数据库</li>
+								<li>篇名：基于中心城市的城镇居民医疗保险管理信息系统</li>
+								<li>作者：欧育民</li>
+								<li>出处：《中国优秀硕士学位论文全文数据库》 2009， (05):-</li>
+								<li>年份：2009</li>
+								<li>机构：山东大学</li>
+					</ul> 
+				</div>
+			</div>
+	</div><div id="head_34" class="right_part_msg" style="left: 912px; top: 491px;display:none; ">
+<ul class="db_xuanxiang">
+			<li class="xuanxiang_cur">
+				<a> 
+					<div class="xs_page">相似片段<span>1</span></div>
+					<div class="db_repetbox">
+						<div class="db_red_block" style="width:34px;"></div>
+						<span class="db_percent">88.89%</span>
+					</div>
+				</a>
+			</li>
+</ul>
+</div>
+<div id="part_34" class="right_part_msg" style="height: auto; display: none;">
+			<div class="Rbidui-con-right" ">
+				<div class="pianduan-xiangsi" style="position:relative;">
+					该片段相似度：<span class="red-e31515">88.89%</span>
+					<img style=" position:absolute; bottom:-9px; left:20px;" src="../images/icon_duibi_xiangsi.png">
+				</div>
+				<div class="songjian"> 
+					<h4>送检句子：</h4>
+					<p>...<font class=black>1</font>、<font class=blue>界面跳转复杂</font>，<font class=blue>接口不能</font><font class=black>被</font><font class=blue>刷新</font>，<font class=blue>可以</font><font class=black>改</font><font class=black>进</font>...</p>
+				</div>
+				<div class="songjian songjian2">
+					<h4>相似句子：</h4>
+					<p>...Java应用编程<font color=red>接口</font>为Java应用提供了一个独立于操作系统的标准<font color=red>接口</font>,可...但是也存在以下不足之处:<font color=red>1、界面跳转复杂,</font><font color=red>不能对</font><font color=red>界面进行</font><font color=red>刷新</font>,这一点......</p>
+				</div>
+				<ul class="liebiao">
+					
+				</ul>
+				<div class="fanyi">
+					<h4 style="margin-left:15px;">翻译句子：</h4>
+					<ul class="liebiao">
+						<li id="fanyic0" class="green">
+							<a id="fanyic34" style="cursor: pointer;" onclick="translate_sentence('34','1、界面跳转复杂，接口不能被刷新，可以改进')">点我翻译</a>
+						</li>
+					</ul> 
+				</div>
+				<div class="fanyi">
+					<ul class="liebiao">
+								<li>来源：互联网</li>
+								<li>篇名：基于java的教务管理系统设计-豆丁网</li>
+					</ul> 
+				</div>
+			</div>
+	</div>
+        </div>
+       
+       <dl class="liebiao" style="border:none;	float:left">
+            	<dt>文档中颜色标注说明：</dt>
+		<dd><span class="squre" style="background-color:#EE7700;"></span>橙色字体代表相似片段；</dd>
+            	<dd><span class="squre" style="background-color:#ff2424;"></span>红色字体代表相似片段；</dd>
+                <dd><span class="squre" style="background-color:#f0f000;"></span>黄色字体代表引用片段；</dd>
+                <dd><span class="squre" style="background-color:#000000;"></span>黑色字体代表自写片段；</dd>
+                <dd><span class="squre" style="background-color:#08c635;"></span>绿色表示参考文献引用规范。</dd>
+                <dd>请注意黄色字体的引用标注和参考文献序号是否相同。<br/>
+总相似比为红色字体和黄色字体占文章的总比率。</dd>
+         </dl>
+	 
+		</div>
+    </div>
+</div>
+</body>
+</html>

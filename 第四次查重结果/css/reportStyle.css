@@ -1,0 +1,111 @@
+﻿@charset "utf-8";
+/* CSS Document */
+/*重置*/
+h1{ margin:0px; padding:0px;}
+body{font-family:"microsoft yahei";}
+/*框架*/
+/*顶部*/
+.topBox{ width:100%;  box-sizing:border-box; min-width:960px;}
+.top{height:64px; background-color:#2c3032; padding-right:30px; box-sizing:border-box;}
+.top .logo{ float:left; width:64px; height:64px; background-color:#3f4346; text-align:center; box-shadow: inset 0px 2px 3px 0px rgba(13, 4, 8, 0.06); overflow:hidden;}
+.top .logo img{margin-top: 12px;}
+.top h1{font:bold 20px/64px "微软雅黑"; color:#000; vertical-align:middle; float:left;margin-left:30px;}
+.top h1 .left-arrow{ background:url(../images/left_arrow.png) center center no-repeat; width:6px; height:10px; display:inline-block; margin-right:20px; margin-bottom:2px;}
+.top h1 .right-arrow{ background:url(../images/right_arrow.png) center center no-repeat;width:6px; height:10px;display:inline-block; margin-left:20px;margin-bottom:2px}
+.top .report-info{ float:left; color:#797c7f; font-family:"微软雅黑"; }
+.top .author{ float:left;line-height:64px; margin-left:20px;border-right:solid 1px #e3e3e3; padding-right:16px;}
+.top .report-detail{ float:left; padding-top:12px; margin-left:16px; line-height:20px; }
+.top .check-report{ float:right; padding-right:10px; background:url(../images/xiala_arrow.png) right center no-repeat; color:#838689; font: normal 12px/64px "微软雅黑"; position:relative;cursor:pointer;}
+.top .check-report:hover{ color:#fff; background-image:url(../images/xiala_arrow_hover.png);}
+.top .erweima{ background:url(../images/erweima_kuang.png) no-repeat; position:absolute; right:-10px;top:40px; width:200px; height:200px; text-align:center; cursor:pointer; z-index:1000;}
+.top .erweima img{ position:absolute; left:14px; top:18px;width:180px; height:180px;}
+.top .school_name{float:right; padding-right:-10px; color:#000; font: normal 20px/44px "微软雅黑"; position:relative;cursor:pointer; border-left:solid 1px #e3e3e3; padding-left:20px;height: 56px;padding-top: 8px;}
+.top .school_name img{ width:44px;}
+/*内容*/
+.content{overflow: hidden;width: 100%;position: relative;}
+/*标题*/
+.lunwen_biaoti {
+  box-shadow: 0px 3px 8px 0px rgba(13, 4, 8, 0.12);
+  width: 510px;
+  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 20px;
+}
+.lunwen_biaoti h1{font-size: 20px;margin-bottom: 10px;}
+.lunwen_biaoti p{color: #797c7f;margin-bottom: 6px;}
+.icon_arrow1{background:url(../images/icon_arrow01.png) no-repeat;width: 6px;height: 10px;display: inline-block;margin-right: 10px;}
+.icon_arrow2{background:url(../images/icon_arrow02.png) no-repeat;width: 6px;height: 10px;display: inline-block;margin-left: 10px;}
+/*侧边栏*/
+.sidebar{width:131px; background-color: rgb(96, 104, 110); box-shadow: inset 0px 2px 3px 0px rgba(13, 4, 8, 0.06);position: absolute;left: 0;top: 0;float:left; overflow-x:hidden,overflow-y:auto }
+/*左边导航*/
+.sidebar-nav{overflow: hidden;float: left;}
+.sidebar-nav li{float: left;width:106px;border-right: solid 1px #1d1e1f;}
+.sidebar-nav .none_f{}
+
+.sidebar-nav li a{height:50px;
+box-sizing: content-box; 
+display:block;
+ background-position:center 10px;
+  background-repeat:no-repeat;
+  background-size: 20px;
+  padding-top: 14px; 
+  color:#fff;
+   line-height:64px;
+text-align:center;
+background-color:#2c3032;
+cursor: pointer;
+}
+.sidebar-nav li .sidebar_icon{background:url(../images/siderbar01.png) no-repeat center center; background-color:#687177; height:32px; padding:0;}
+.sidebar-nav li .report-jianjie{ background-image:url(../images/report_jianjie.png);}
+.sidebar-nav li .report-duibi{ background-image:url(../images/report_duibi.png);}
+.sidebar-nav li .report-xiangxi{ background-image:url(../images/report_xiangxi.png);}
+.sidebar-nav li .report-yinyong{ background-image:url(../images/report_yinyong.png);}
+.sidebar-nav li .report-guanjianchi{background-image:url(../images/report_guanjianchi.png);}
+.sidebar-nav li .report-onlinechange{background-image:url(../images/report_onlinechange.png);}
+.sidebar-nav li .report-pdf{background-image:url(../images/report_pdf.png);}
+.sidebar-nav li .report-print{background-image:url(../images/report_print.png);}
+.sidebar-nav .currentLi .report-jianjie{ background-image:url(../images/report_jianjie_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-duibi{ background-image:url(../images/report_duibi_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-xiangxi{ background-image:url(../images/report_xiangxi_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-yinyong{ background-image:url(../images/report_yinyong_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-guanjianchi{background-image:url(../images/report_guanjianchi_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-onlinechange{background-image:url(../images/report_onlinechange_hover.png); background-color:#007fcf;}
+.sidebar-nav .currentLi .report-pdf{ background-image:url(../images/report_pdf_hover.png); background-color:#007fcf;}
+.sidebar-nav .report-printLi{position:fixed; bottom:0px; left:0px;}
+.sidebar-nav .currentLi .report-print{ background-image:url(../images/report_print_hover.png); background-color:#007fcf;}
+/*ifram框框的边距设置*/
+.outSide_box {width: 100%;height: 100%;padding:20px 20px 20px 20px;box-sizing: border-box; }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
